@@ -1,6 +1,5 @@
 const os = require("os");
-const {MessageEmbed}=require("discord.js");
-const { version } = require("discord.js");
+const {MessageEmbed, version}=require("discord.js");
 const moment = require("moment");
 const m = require("moment-duration-format");
 let cpuStat = require("cpu-stat")
@@ -14,24 +13,18 @@ module.exports = {
     permissions: "EVERYONE",
     run: (client, message, args, connection) => {
         let emptychar = "\u200B";
-        connection.query(
-            "SELECT COUNT(*) as commands_runcount FROM runned_commands",
-            [message.guild.id],
-            async(err, results) => {
-              if (err) console.error(err);
-              let cpuLol;
             cpuStat.usagePercent(function(err, percent, seconds) {
             if (err) {
                 return console.log(err);
             }
             const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
-            let statsembed = new MessageEmbed()
+            let statsEmbed = new MessageEmbed()
                 .setColor("#a100b8")
                 .setAuthor(client.user.username, client.user.displayAvatarURL())
                 .setFooter(`Requested from: ${message.author.username}`, message.author.displayAvatarURL())
                 .addField(`╭╼╼╼╼╼╼╯ BOT STATS ╰╼╼╼╼╼╼╮`, emptychar)
                 .addField("• Uptime", `${duration}`, true)
-                .addField(`• Runned commands`,`${results[0].commands_runcount}`, true) // bot commands send
+                ///.addField(`• Runned commands`,`${results[0].commands_runcount}`, true) // bot commands send
                 .addField("• Users", `${client.users.cache.size.toLocaleString()}`, true)
                 .addField("• Servers", `${client.guilds.cache.size.toLocaleString()}`, true)
                 .addField("• Channels", `${client.channels.cache.size.toLocaleString()}`, true)
@@ -45,9 +38,7 @@ module.exports = {
                 .addField("• Platform", `\`\`${os.platform()}\`\``, true)
                 .addField(`╰╼╼╼╼╼╼╮ OS STATS ╭╼╼╼╼╼╼╯`, emptychar)
                 
-                message.channel.send(statsembed);
+                message.channel.send(statsEmbed);
             });
-        }
-    );
   }
  }

@@ -10,13 +10,11 @@ module.exports = {
     run: (client, message, args) => {
     
     const nanoid = customAlphabet('123456', 1)
-    let d;
-    d = nanoid()
-    var dice = new MessageEmbed()
+    let dice = new MessageEmbed()
     .setTimestamp()
     .setColor("#4c00e6")
     .setFooter(message.author.username, message.author.displayAvatarURL())
-    .setDescription(`🎲 | Your random dice is: ${d}`)
+    .setDescription(`🎲 | Your random dice is: ${nanoid()}`)
     message.channel.send(dice);
   }
  }
