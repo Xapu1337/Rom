@@ -54,7 +54,8 @@ client.on("message", async message => {
     const req = await client.db.findOne({id: message.guild.id});
     if(!req){
         await checkAndCreate(message.guild.id);
-        await message.reply("Something weird happened, try it again.");
+        if(message.content.startsWith("rr!"))
+            await message.reply("Something weird happened, try it again.");
         return;
     }
     if(message.author.bot) return;
