@@ -1,8 +1,8 @@
 const config = require("./config.json");
-const { Client, MessageAttachment, MessageEmbed, Collection} = require("discord.js");
-const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}}, {
-    disableMentions:"everyone"
-    });
+const GuildModel = require("./utils/GuildSchema");
+const { connect } = require("mongoose");
+const { Discord, Client, MessageAttachment, MessageEmbed, Collection} = require("discord.js");
+const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
 const { table } = require("table");
 const colors = require("colors");
@@ -10,6 +10,7 @@ const colors = require("colors");
 /*
 Public vars. accesable via Client.
  */
+client.db = GuildModel;
 client.botAuthor = client.users.fetch("188988455554908160");
 client.config = config;
 client.commands = new Collection();
@@ -23,6 +24,21 @@ client.booleanFromString = function (i){
     require(`./handlers/${handler}`)(client);
 });
 
+async function checkAndCreate(guildId){
+    if(!await GuildModel.findOne({id: guildId})){
+        let c = new GuildModel({id: guildId});
+        c.save();
+    }
+}
+
+client.on("guildCreate", async (guild) => {
+    await checkAndCreate(guild.id);
+});
+
+client.on("guildDelete", async (guild) => {
+    await GuildModel.findOneAndDelete({id: guild.id});
+})
+
 
 
 client.on("ready", () => {
@@ -35,9 +51,15 @@ client.on("ready", () => {
 });
 
 client.on("message", async message => {
+    const req = await client.db.findOne({id: message.guild.id});
+    if(!req){
+        await checkAndCreate(message.guild.id);
+        await message.reply("Something weird happened, try it again.");
+        return;
+    }
     if(message.author.bot) return;
     if(!message.guild) return;
-    let prefix = "rr!";
+    let prefix = req.prefix;
 
     if(!message.content.startsWith(prefix)) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
@@ -92,5 +114,9 @@ client.on("message", async message => {
 
 
 
-
-client.login(config.discord.token);
+(async () => {
+    await connect(config.database.login.url, {
+        useNewUrlParser: true,
+        useFindAndModify: false
+    }).then(client.login(config.discord.token));
+})()

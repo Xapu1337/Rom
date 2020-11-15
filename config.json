@@ -8,7 +8,7 @@
     "login": {
       "name": "",
       "password": "",
-      "url": ""
+      "url": "mongodb+srv://RomDBAccess:eEFvmYrNVxtVOdw4@romcluster1.fjssb.mongodb.net/RomCluster1?retryWrites=true&w=majority"
     }
   }
 }

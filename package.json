@@ -11,6 +11,7 @@
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
     "discord.js": "^12.4.1",
+    "mongoose": "^5.10.14",
     "table": "^6.0.3"
   }
 }
