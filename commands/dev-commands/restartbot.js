@@ -18,10 +18,10 @@ module.exports = {
 
         let commandName = args[0].toLowerCase();
         try{
-            for (const dir of readdirSync("../../../commands")) {
-                const commands = readdirSync(`../../../commands/${dir}/`).filter(file => file.endsWith(".js"));
+            for (const dir of readdirSync("../../commands")) {
+                const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
-                    let pull = require(`../../../commands/${dir}/${file}`);
+                    let pull = require(`../../commands/${dir}/${file}`);
                     if (pull.name && pull.name === commandName) {
                         if(client.categories.includes(pull.category)){
                             await client.commands.delete(pull.name);
