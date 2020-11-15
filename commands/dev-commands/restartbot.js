@@ -9,7 +9,7 @@ module.exports = {
     hidden: true,
     permissions: "AUTHOR",
     run: async (client, message, args) => {
-        console.log("checking pre botauthor")
+        console.log("checking pre botauthor "+(await client.botAuthor).tag)
     if(message.author.id === client.botAuthor.id){
         console.log("is author")
         if(!args[0]) return message.channel.send(`Bitte, gebe die Argumente ein für den reload!`);
