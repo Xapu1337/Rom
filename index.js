@@ -26,9 +26,11 @@ client.booleanFromString = function (i){
 
 async function checkAndCreate(guildId){
     if(!await GuildModel.findOne({id: guildId})){
+        console.log(`${(await client.guilds.fetch(guildId)).name} Does not exist in the databse.`);
         let c = new GuildModel({id: guildId});
         c.save();
     }
+    console.log(`${(await client.guilds.fetch(guildId)).name} Does exist in the databse.`);
 }
 
 client.on("guildCreate", async (guild) => {
