@@ -18,6 +18,17 @@ module.exports = {
 
         let commandName = args[0].toLowerCase();
         try{
+
+            readdirSync(__dirname +"../commands/").forEach(dir => console.log(dir));
+            readdirSync(__dirname +"./commands/").forEach(dir => console.log(dir));
+            readdirSync(__dirname +"../../commands/").forEach(dir => console.log(dir));
+            readdirSync(__dirname +"/../../commands/").forEach(dir => console.log(dir));
+            readdirSync(__dirname +"../.././commands/").forEach(dir => console.log(dir));
+            readdirSync("../commands/").forEach(dir => console.log(dir));
+            readdirSync("./commands/").forEach(dir => console.log(dir));
+            readdirSync("../../commands/").forEach(dir => console.log(dir));
+            readdirSync("/../../commands/").forEach(dir => console.log(dir));
+            readdirSync("../.././commands/").forEach(dir => console.log(dir));
             readdirSync("../commands/").forEach(dir => {
                 const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
