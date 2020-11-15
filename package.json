@@ -1,0 +1,16 @@
+{
+  "devDependencies": {
+    "@types/jest": "^23.3.12",
+    "ascii-table": "0.0.9",
+    "jest": "^23.6.0"
+  },
+  "scripts": {
+    "test": "jest"
+  },
+  "dependencies": {
+    "colors": "^1.4.0",
+    "common-tags": "^1.8.0",
+    "discord.js": "^12.4.1",
+    "table": "^6.0.3"
+  }
+}

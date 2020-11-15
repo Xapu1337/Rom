@@ -1,0 +1,14 @@
+{
+  "discord":
+  {
+    "token": "NjczNTE3MzUwNzg3NzQzNzQ1.XjbL6Q.RF7XmkzP1lWeY5xaXIdgJabrFwk"
+  },
+  "database":
+  {
+    "login": {
+      "name": "",
+      "password": "",
+      "url": ""
+    }
+  }
+}

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="package" />
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\maven\lib\maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1kIbuwQ9GiDrPgOU8jgqcU0r9BW" />
+  <component name="ProjectViewState">
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="javascript.nodejs.core.library.configured.version" value="14.6.0" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.6.0" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="RainbowCSV.Settings" />
+    <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="" />
+      <created>1605391278785</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1605391278785</updated>
+      <workItem from="1605391280158" duration="2138000" />
+      <workItem from="1605393451907" duration="1563000" />
+      <workItem from="1605395601525" duration="5637000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="2455" height="407" key="GridCell.Tab.0.bottom" timestamp="1605393878292">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state width="2455" height="407" key="GridCell.Tab.0.bottom/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393878292" />
+    <state width="2455" height="407" key="GridCell.Tab.0.center" timestamp="1605393878292">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state width="2455" height="407" key="GridCell.Tab.0.center/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393878292" />
+    <state width="2455" height="407" key="GridCell.Tab.0.left" timestamp="1605393878292">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state width="2455" height="407" key="GridCell.Tab.0.left/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393878292" />
+    <state width="2455" height="407" key="GridCell.Tab.0.right" timestamp="1605393878292">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state width="2455" height="407" key="GridCell.Tab.0.right/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393878292" />
+    <state x="750" y="364" key="SettingsEditor" timestamp="1605393485909">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393485909" />
+  </component>
+</project>
