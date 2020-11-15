@@ -10,7 +10,9 @@ module.exports = {
     permissions: "AUTHOR",
     run: async (client, message, args) => {
         console.log("checking pre botauthor "+(await client.botAuthor).tag)
-    if(message.author.id === client.botAuthor.id){
+        console.log(message.author.id)
+        console.log((await client.botAuthor).id)
+    if(message.author.id === (await client.botAuthor).id){
         console.log("is author")
         if(!args[0]) return message.channel.send(`Bitte, gebe die Argumente ein für den reload!`);
 
