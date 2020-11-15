@@ -17,18 +17,17 @@ module.exports = {
         if(!args[0]) return message.channel.send(`Bitte, gebe die Argumente ein für den reload!`);
 
         let commandName = args[0].toLowerCase();
+        readdirSync(__dirname +"../commands/").forEach(dir => console.log(dir));
+        readdirSync(__dirname +"./commands/").forEach(dir => console.log(dir));
+        readdirSync(__dirname +"../../commands/").forEach(dir => console.log(dir));
+        readdirSync(__dirname +"/../../commands/").forEach(dir => console.log(dir));
+        readdirSync(__dirname +"../.././commands/").forEach(dir => console.log(dir));
+        readdirSync("../commands/").forEach(dir => console.log(dir));
+        readdirSync("./commands/").forEach(dir => console.log(dir));
+        readdirSync("../../commands/").forEach(dir => console.log(dir));
+        readdirSync("/../../commands/").forEach(dir => console.log(dir));
+        readdirSync("../.././commands/").forEach(dir => console.log(dir));
         try{
-
-            readdirSync(__dirname +"../commands/").forEach(dir => console.log(dir));
-            readdirSync(__dirname +"./commands/").forEach(dir => console.log(dir));
-            readdirSync(__dirname +"../../commands/").forEach(dir => console.log(dir));
-            readdirSync(__dirname +"/../../commands/").forEach(dir => console.log(dir));
-            readdirSync(__dirname +"../.././commands/").forEach(dir => console.log(dir));
-            readdirSync("../commands/").forEach(dir => console.log(dir));
-            readdirSync("./commands/").forEach(dir => console.log(dir));
-            readdirSync("../../commands/").forEach(dir => console.log(dir));
-            readdirSync("/../../commands/").forEach(dir => console.log(dir));
-            readdirSync("../.././commands/").forEach(dir => console.log(dir));
             readdirSync("../commands/").forEach(dir => {
                 const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
