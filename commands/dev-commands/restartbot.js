@@ -1,4 +1,4 @@
-const {readdirSync} = require("fs");
+const { readdirSync } = require("fs");
 
 module.exports = {
     name: "reload",
@@ -18,7 +18,7 @@ module.exports = {
 
         let commandName = args[0].toLowerCase();
         try{
-            for (const dir of readdirSync("../../commands")) {
+            for (const dir of readdirSync("../../commands/")) {
                 const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
                     let pull = require(`../../commands/${dir}/${file}`);
