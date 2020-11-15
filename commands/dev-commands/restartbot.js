@@ -17,34 +17,27 @@ module.exports = {
         if(!args[0]) return message.channel.send(`Bitte, gebe die Argumente ein für den reload!`);
 
         let commandName = args[0].toLowerCase();
-        readdirSync(__dirname +"../commands/").forEach(dir => console.log(dir));
-        readdirSync(__dirname +"./commands/").forEach(dir => console.log(dir));
-        readdirSync(__dirname +"../../commands/").forEach(dir => console.log(dir));
-        readdirSync(__dirname +"/../../commands/").forEach(dir => console.log(dir));
-        readdirSync(__dirname +"../.././commands/").forEach(dir => console.log(dir));
-        readdirSync("../commands/").forEach(dir => console.log(dir));
-        readdirSync("./commands/").forEach(dir => console.log(dir));
-        readdirSync("../../commands/").forEach(dir => console.log(dir));
-        readdirSync("/../../commands/").forEach(dir => console.log(dir));
-        readdirSync("../.././commands/").forEach(dir => console.log(dir));
+        // works: __dirname +"/../../commands"
         try{
-            readdirSync("../commands/").forEach(dir => {
-                const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
+            readdirSync("./commands/").forEach(dir => {
+                const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
-                    let pull = require(`../../commands/${dir}/${file}`);
-                    if (pull.name && pull.name === commandName) {
+                    delete require.cache[require.resolve(`../../commands/${dir}/${file}`)]
+                    let pull = require(`../../commands/${dir}/${file}`);;
+                    if (pull.name && pull.name===commandName) {
                         if(client.categories.includes(pull.category)){
                             client.commands.delete(pull.name);
                             client.commands.set(pull.name, pull);
+                            console.log(pull)
+                            console.log(pull.run.toString())
                             console.log(`${"File:".bgBlack.green} ${file} ${"[".cyan.bgBlack+"Command:".bgBlack} ${pull.name.bgBlack.green}${"]".bgBlack.cyan} ${"Was loaded Successfully.".bgBlack.green}`);
                         } else {
                             console.log(`${file.red} ${"Category '%c%' doesn't exist.".replace("%c%", pull.category).red}`);
                         }
                     } else {
-                        message.reply("Command not found. Cannot reload anything.");
                         continue;
                     }
-
+                    if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.delete(alias));
                     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
                 }
             });

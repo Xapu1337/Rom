@@ -19,9 +19,22 @@ client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
 
-
+/*
+Prototyping to add extra functions.
+ */
 Boolean.prototype.parseFromString = function (i){
     return i === "1" || i === "true";
+};
+
+Array.prototype.remove = function() {
+    let what, a = arguments, L = a.length, ax;
+    while (L && this.length) {
+        what = a[--L];
+        while ((ax = this.indexOf(what)) !== -1) {
+            this.splice(ax, 1);
+        }
+    }
+    return this;
 };
 
 ["command"].forEach(handler => {
