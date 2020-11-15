@@ -16,10 +16,10 @@ module.exports = {
         let commandName = args[0].toLowerCase();
         try{
             for (const dir of readdirSync("./commands/")) {
-                const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js")).filter(file => file.startsWith(commandName));
+                const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
                     let pull = require(`../commands/${dir}/${file}`);
-                    if (pull.name) {
+                    if (pull.name && pull.name === commandName) {
                         if(client.categories.includes(pull.category)){
                             await client.commands.delete(pull.name);
                             await client.commands.set(pull.name, pull);
@@ -28,7 +28,7 @@ module.exports = {
                             console.log(`${file.red} ${"Category '%c%' doesn't exist.".replace("%c%", pull.category).red}`);
                         }
                     } else {
-                        console.log(`${file.red} ${"missing a help.name, or help.name is not a string!".red}`);
+                        message.reply("Command not found. Cannot reload anything.");
                         continue;
                     }
 
