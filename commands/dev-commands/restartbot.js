@@ -18,14 +18,14 @@ module.exports = {
 
         let commandName = args[0].toLowerCase();
         try{
-            for (const dir of readdirSync("../../commands/")) {
+            readdirSync("../commands/").forEach(dir => {
                 const commands = readdirSync(`../../commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
                     let pull = require(`../../commands/${dir}/${file}`);
                     if (pull.name && pull.name === commandName) {
                         if(client.categories.includes(pull.category)){
-                            await client.commands.delete(pull.name);
-                            await client.commands.set(pull.name, pull);
+                            client.commands.delete(pull.name);
+                            client.commands.set(pull.name, pull);
                             console.log(`${"File:".bgBlack.green} ${file} ${"[".cyan.bgBlack+"Command:".bgBlack} ${pull.name.bgBlack.green}${"]".bgBlack.cyan} ${"Was loaded Successfully.".bgBlack.green}`);
                         } else {
                             console.log(`${file.red} ${"Category '%c%' doesn't exist.".replace("%c%", pull.category).red}`);
@@ -37,7 +37,7 @@ module.exports = {
 
                     if (pull.aliases && Array.isArray(pull.aliases)) pull.aliases.forEach(alias => client.aliases.set(alias, pull.name));
                 }
-            }
+            });
         } catch(e){
             console.log(e);
             return message.channel.send(`Könnte nicht neuladen: ${args[0].toUpperCase()}, Fehler in der console geloggt!`);
