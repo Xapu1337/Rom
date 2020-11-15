@@ -1,5 +1,6 @@
 const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
+const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Discord, Client, MessageAttachment, MessageEmbed, Collection} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
@@ -10,13 +11,16 @@ const colors = require("colors");
 /*
 Public vars. accesable via Client.
  */
+client.utils = Utils;
 client.db = GuildModel;
 client.botAuthor = client.users.fetch("188988455554908160");
 client.config = config;
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
-client.booleanFromString = function (i){
+
+
+Boolean.prototype.parseFromString = function (i){
     return i === "1" || i === "true";
 };
 
@@ -26,11 +30,9 @@ client.booleanFromString = function (i){
 
 async function checkAndCreate(guildId){
     if(!await GuildModel.findOne({id: guildId})){
-        console.log(`${(await client.guilds.fetch(guildId)).name} Does not exist in the databse.`);
         let c = new GuildModel({id: guildId});
         c.save();
     }
-    console.log(`${(await client.guilds.fetch(guildId)).name} Does exist in the databse.`);
 }
 
 client.on("guildCreate", async (guild) => {
