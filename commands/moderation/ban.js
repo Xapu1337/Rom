@@ -1,6 +1,5 @@
 const { MessageEmbed } = require("discord.js");
 const { stripIndents } = require("common-tags");
-const { promptMessage } = require("../../functions.js");
 
 module.exports = {
     name: "ban",
@@ -69,7 +68,7 @@ module.exports = {
         // Send the message
         await message.channel.send(promptEmbed).then(async msg => {
             // Await the reactions and the reactioncollector
-            const emoji = await promptMessage(msg, message.author, 30, ["✅", "❌"]);
+            const emoji = await client.utils.promptMessage(msg, message.author, 30, ["✅", "❌"]);
 
             // Verification stuffs
             if (emoji === "✅") {
