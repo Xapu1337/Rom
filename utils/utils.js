@@ -1,4 +1,5 @@
 const {MessageEmbed} = require("discord.js");
+const {fetch} = require("node-fetch");
 
 module.exports = {
     getMember: function(message, toFind = '') {
@@ -17,6 +18,24 @@ module.exports = {
 
         return target;
     },
+
+    logError: function(message, client, ...ExtraError)
+        {
+            let errorMsgToSend = `Got an error. 
+            Guild infos: {
+            Guild id: ${message.guild.id}
+            Guild Name: ${message.guild.name}
+            }
+            Message: ${message.content}
+            More Details:
+             ${(ExtraError) ? "None." : ExtraError}
+            `;
+            fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
+            client.botAuthor.send(new MessageEmbed()
+                .setColor("DARK_RED")
+                .setDescription(errorMsgToSend))
+                .setThumbnail(message.guild.iconURL);
+        },
 
 
     errorEmbed: function (title, message, discord){

@@ -19,7 +19,16 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit" />
+    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/moderation/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -37,6 +46,9 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
   </component>
+  <component name="MacroExpansionManager">
+    <option name="directoryName" value="juao0cg6" />
+  </component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -53,31 +65,19 @@
   </component>
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
+    <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/AppData/Local/Android/Sdk" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="14.6.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.6.0" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="RainbowCSV.Settings" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="CLASS" />
-      <properties />
-      <listeners />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -92,6 +92,12 @@
       <workItem from="1605395601525" duration="6349000" />
       <workItem from="1605438000299" duration="8951000" />
       <workItem from="1605471899701" duration="5033000" />
+      <workItem from="1605515144271" duration="2512000" />
+      <workItem from="1605644472131" duration="155000" />
+      <workItem from="1605644649983" duration="2060000" />
+      <workItem from="1605649633301" duration="1710000" />
+      <workItem from="1605700184543" duration="641000" />
+      <workItem from="1605815759887" duration="773000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1605442370241</created>
@@ -300,10 +306,10 @@
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
     <state x="879" y="473" key="MultipleFileMergeDialog/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605442491566" />
-    <state x="750" y="364" key="SettingsEditor" timestamp="1605393485909">
+    <state x="750" y="364" key="SettingsEditor" timestamp="1605649609635">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605393485909" />
+    <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605649609635" />
     <state x="697" y="357" key="Vcs.Push.Dialog.v2" timestamp="1605476839767">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>

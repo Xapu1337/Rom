@@ -12,7 +12,6 @@ module.exports = {
     usage: "just 'stats'",
     permissions: "EVERYONE",
     run: (client, message, args, connection) => {
-        let emptychar = "\u200B";
             cpuStat.usagePercent(function(err, percent, seconds) {
             if (err) {
                 return console.log(err);
@@ -22,21 +21,21 @@ module.exports = {
                 .setColor("#a100b8")
                 .setAuthor(client.user.username, client.user.displayAvatarURL())
                 .setFooter(`Requested from: ${message.author.username}`, message.author.displayAvatarURL())
-                .addField(`╭╼╼╼╼╼╼╯ BOT STATS ╰╼╼╼╼╼╼╮`, emptychar)
+                .addField(`╭╼╼╼╼╼╼╯ BOT STATS ╰╼╼╼╼╼╼╮`, client.charList.EMPTY)
                 .addField("• Uptime", `${duration}`, true)
                 ///.addField(`• Runned commands`,`${results[0].commands_runcount}`, true) // bot commands send
                 .addField("• Users", `${client.users.cache.size.toLocaleString()}`, true)
                 .addField("• Servers", `${client.guilds.cache.size.toLocaleString()}`, true)
                 .addField("• Channels", `${client.channels.cache.size.toLocaleString()}`, true)
                 .addField("• Node.js", `${process.version}`, true)
-                .addField(`╰╼╼╼╼╼╼╮ BOT STATS ╭╼╼╼╼╼╼╯`, emptychar)
-                .addField(`╭╼╼╼╼╼╼╯ OS  STATS ╰╼╼╼╼╼╼╮`,emptychar)
+                .addField(`╰╼╼╼╼╼╼╮ BOT STATS ╭╼╼╼╼╼╼╯`, client.charList.EMPTY)
+                .addField(`╭╼╼╼╼╼╼╯ OS  STATS ╰╼╼╼╼╼╼╮`,client.charList.EMPTY)
                 .addField("• RAM Usage", `${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(2)} / ${(os.totalmem() / 1024 / 1024).toFixed(2)} MB`, true)
                 .addField("• CPU", `\`\`\`md\n${os.cpus().map(i => `${i.model}`)[0]}\`\`\``)
                 .addField("• CPU Usage", `\`${percent.toFixed(2)}%\``, true)
                 .addField("• OS Arch", `\`${os.arch()}\``, true)
                 .addField("• Platform", `\`\`${os.platform()}\`\``, true)
-                .addField(`╰╼╼╼╼╼╼╮ OS STATS ╭╼╼╼╼╼╼╯`, emptychar)
+                .addField(`╰╼╼╼╼╼╼╮ OS STATS ╭╼╼╼╼╼╼╯`, client.charList.EMPTY);
                 
                 message.channel.send(statsEmbed);
             });

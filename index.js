@@ -18,6 +18,9 @@ client.config = config;
 client.commands = new Collection();
 client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
+client.charList = {
+    EMPTY: "\u200B"
+}
 
 /*
 Prototyping to add extra functions.
@@ -47,6 +50,8 @@ async function checkAndCreate(guildId){
         c.save();
     }
 }
+
+
 
 client.on("guildCreate", async (guild) => {
     await checkAndCreate(guild.id);

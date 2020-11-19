@@ -9,12 +9,8 @@ module.exports = {
     hidden: true,
     permissions: "AUTHOR",
     run: async (client, message, args) => {
-        console.log("checking pre botauthor "+(await client.botAuthor).tag)
-        console.log(message.author.id)
-        console.log((await client.botAuthor).id)
     if(message.author.id === (await client.botAuthor).id){
-        console.log("is author")
-        if(!args[0]) return message.channel.send(`Bitte, gebe die Argumente ein für den reload!`);
+        if(!args[0]) return message.channel.send(`Please, Enter the command name.`);
 
         let commandName = args[0].toLowerCase();
         // works: __dirname +"/../../commands"
@@ -23,13 +19,11 @@ module.exports = {
                 const commands = readdirSync(`./commands/${dir}/`).filter(file => file.endsWith(".js"));
                 for (let file of commands) {
                     delete require.cache[require.resolve(`../../commands/${dir}/${file}`)]
-                    let pull = require(`../../commands/${dir}/${file}`);;
+                    let pull = require(`../../commands/${dir}/${file}`);
                     if (pull.name && pull.name===commandName) {
                         if(client.categories.includes(pull.category)){
                             client.commands.delete(pull.name);
                             client.commands.set(pull.name, pull);
-                            console.log(pull)
-                            console.log(pull.run.toString())
                             console.log(`${"File:".bgBlack.green} ${file} ${"[".cyan.bgBlack+"Command:".bgBlack} ${pull.name.bgBlack.green}${"]".bgBlack.cyan} ${"Was loaded Successfully.".bgBlack.green}`);
                         } else {
                             console.log(`${file.red} ${"Category '%c%' doesn't exist.".replace("%c%", pull.category).red}`);
@@ -43,10 +37,12 @@ module.exports = {
             });
         } catch(e){
             console.log(e);
-            return message.channel.send(`Könnte nicht neuladen: ${args[0].toUpperCase()}, Fehler in der console geloggt!`);
+            client.utils.logError(message, client, e);
+            return message.channel.send(`Could not reload: ${args[0].toUpperCase()}, Error was logged onto the Console!`);
         }
 
-        message.channel.send(`Modul ${args[0].toUpperCase()} Neugeladen!`)
+        message.channel.send(`Module ${args[0].toUpperCase()} Reloaded!`);
+        client.utils.logError(message, client, "Welcome to the Cumzone.");
     }
   }
  }
