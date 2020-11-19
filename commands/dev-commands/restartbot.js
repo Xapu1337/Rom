@@ -37,12 +37,12 @@ module.exports = {
             });
         } catch(e){
             console.log(e);
-            client.utils.logError(message, client, e);
+            client.logError(message, client, e);
             return message.channel.send(`Could not reload: ${args[0].toUpperCase()}, Error was logged onto the Console!`);
         }
 
         message.channel.send(`Module ${args[0].toUpperCase()} Reloaded!`);
-        client.utils.logError(message, client, "Welcome to the Cumzone.");
+        client.logError(message, client, "Welcome to the Cumzone.");
     }
   }
  }
