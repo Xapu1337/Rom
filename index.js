@@ -23,7 +23,7 @@ client.charList = {
     EMPTY: "\u200B"
 }
 
-client.logError = function(message, client, ...ExtraError)
+client.logError = function(message, client, errorMsg,...ExtraError)
 {
     let errorMsgToSend = `Got an error. 
             Guild infos: {
