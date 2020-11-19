@@ -7,7 +7,7 @@ const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disa
 const fs = require("fs");
 const { table } = require("table");
 const colors = require("colors");
-const {fetch} = require("node-fetch");
+const fetch = require("node-fetch");
 
 /*
 Public vars. accesable via Client.
