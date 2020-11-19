@@ -20,13 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -97,7 +92,7 @@
       <workItem from="1605644649983" duration="2060000" />
       <workItem from="1605649633301" duration="1710000" />
       <workItem from="1605700184543" duration="641000" />
-      <workItem from="1605815759887" duration="773000" />
+      <workItem from="1605815759887" duration="2063000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1605442370241</created>
@@ -253,7 +248,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605476837808</updated>
     </task>
-    <option name="localTasksCounter" value="23" />
+    <task id="LOCAL-00023" summary="yes">
+      <created>1605816561552</created>
+      <option name="number" value="00023" />
+      <option name="presentableId" value="LOCAL-00023" />
+      <option name="project" value="LOCAL" />
+      <updated>1605816561552</updated>
+    </task>
+    <option name="localTasksCounter" value="24" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -275,7 +277,8 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Initial commit" />
     <MESSAGE value="old stuff just adding up" />
-    <option name="LAST_COMMIT_MESSAGE" value="old stuff just adding up" />
+    <MESSAGE value="yes" />
+    <option name="LAST_COMMIT_MESSAGE" value="yes" />
   </component>
   <component name="WindowStateProjectService">
     <state x="1125" y="621" key="Github.ShareDialog" timestamp="1605402775647">
@@ -310,10 +313,10 @@
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
     <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605649609635" />
-    <state x="697" y="357" key="Vcs.Push.Dialog.v2" timestamp="1605476839767">
+    <state x="697" y="357" key="Vcs.Push.Dialog.v2" timestamp="1605816564343">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="697" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605476839767" />
+    <state x="697" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605816564343" />
     <state x="3147" y="355" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@2631.87.1849.1080" timestamp="1605442395419" />
     <state x="1066" y="629" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605442553712">
       <screen x="0" y="0" width="2498" height="1440" />
