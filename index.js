@@ -25,15 +25,18 @@ client.charList = {
 
 client.logError = function(message, client, errorMsg,...ExtraError)
 {
-    let errorMsgToSend = `Got an error. 
+    let errorMsgToSend = `
+            Got an error. 
             Guild infos: {
-            Guild id: ${message.guild.id}
-            Guild Name: ${message.guild.name}
+                Guild id: ${message.guild.id}
+                Guild Name: ${message.guild.name}
             }
             Message: ${message.content}
-            More Details:
-             ${(ExtraError) ? "None." : ExtraError}
-            `;
+            Error: {
+                Error Message: ${errorMsg}
+                More Details:
+                 ${(ExtraError) ? "None." : ExtraError}
+            }`;
     fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
     client.botAuthor.send(new MessageEmbed()
         .setColor("DARK_RED")
