@@ -38,7 +38,7 @@ client.getGuildDB = async function (guildID){
     }
 };
 
-client.logError = function(message, errorMsg, ...ExtraError)
+client.logError = async function(message, errorMsg, ...ExtraError)
 {
     let errorMsgToSend = `
             Got an error. 
@@ -52,8 +52,8 @@ client.logError = function(message, errorMsg, ...ExtraError)
                 More Details:
                  ${(ExtraError) ? "None." : ExtraError}
             }`;
-    fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
-    client.botAuthor.send(new MessageEmbed()
+    await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
+    await client.botAuthor.send(new MessageEmbed()
         .setColor("DARK_RED")
         .setDescription(errorMsgToSend))
         .setThumbnail(message.guild.iconURL);
