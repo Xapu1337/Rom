@@ -65,9 +65,9 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 
 client.addWarning = function (message, reason, user){
     let res = GuildModel.findOne({id: message.guild.id});
-    res.warnings.array.set({reason: reason, userID: user.id});
+    res.warnings.push({reason: reason, userID: user.id, creationTime: Date.now()});
     res.save();
-    console.log(res.warnings.array);
+    console.log(res.warnings);
 }
 
 
