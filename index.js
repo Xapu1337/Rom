@@ -83,7 +83,7 @@ client.addWarning = async function (message, reason, user){
 
 client.deleteWarning = async function (message, id){
     const req = await client.db.findOne({id: message.guild.id});
-    req.warnings.filter(i => i.id === id).remove();
+    req.warnings = req.warnings.filter(i => i.id === !id);
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
@@ -107,6 +107,14 @@ Array.prototype.remove = function() {
         while ((ax = this.indexOf(what)) !== -1) {
             this.splice(ax, 1);
         }
+    }
+    return this;
+};
+
+Array.prototype.removeByValue = function(v) {
+    var index = this.indexOf(v);
+    if (index > -1) {
+        this.splice(index, 1);
     }
     return this;
 };
