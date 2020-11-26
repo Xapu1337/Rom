@@ -23,8 +23,10 @@ const Guild = Schema({
     },
     warnings: [
         {
+            id: String,
             reason: String,
             userID: String,
+            creatorID: String,
             creationTime: {
                 type: Number, default: Date.now()
             }

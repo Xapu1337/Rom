@@ -8,6 +8,7 @@ const fs = require("fs");
 const { table } = require("table");
 const colors = require("colors");
 const fetch = require("node-fetch");
+const nano  = require("nanoid");
 
 /*
 Public vars. accesable via Client.
@@ -25,6 +26,10 @@ client.aliases = new Collection();
 client.categories = fs.readdirSync("./commands/");
 client.charList = {
     EMPTY: "\u200B"
+}
+
+client.extendedMemberSearch = async function (message, args, argsIndex){
+    return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
 }
 
 client.getGuildDB = async function (guildID){
@@ -64,12 +69,29 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, reason, user){
+    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM", 1);
     const req = await client.db.findOne({id: message.guild.id});
-    req.warnings.push({reason: reason, userID: user.id, creationTime: Date.now()});
+    req.warnings.push({reason: reason, userID: user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     req.save();
-    console.log(req.warnings);
-}
+    await message.channel.send(new MessageEmbed()
+        .setColor("GREEN")
+        .setTitle("Success! ✅")
+        .setDescription(`Created a warning with the id: \`${id()}\` for the user: ${user.name}`)
+        .setThumbnail(message.author.displayAvatarURL())
+    );
+};
 
+client.deleteWarning = async function (message, id){
+    const req = await client.db.findOne({id: message.guild.id});
+    req.warnings.filter(i => i.id === id).remove();
+    req.save();
+    await message.channel.send(new MessageEmbed()
+        .setColor("RED")
+        .setTitle("Success! ✅")
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${req.warnings.filter(i => i.id === id).reason})`)
+        .setThumbnail(message.author.displayAvatarURL())
+    );
+};
 
 /*
 Prototyping to add extra functions.
