@@ -20,7 +20,20 @@ const Guild = Schema({
     welcomeMessage: {
         default: "Welcome %user% to %server%!",
         type: String
-    }
+    },
+    warnings:
+        {
+            type: Array,
+            of: {
+                reason: String,
+                userID: String,
+                creationTime: {
+                    type: Number, default: Date.now()
+                }
+            }
+        },
+    registeredAt: { type: Number, default: Date.now() }
+
 });
 
 module.exports = model('Guild', Guild);

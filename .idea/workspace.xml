@@ -20,7 +20,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/GuildSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/GuildSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +75,11 @@
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\202.7660.26\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -90,7 +98,11 @@
       <workItem from="1605644649983" duration="2060000" />
       <workItem from="1605649633301" duration="1710000" />
       <workItem from="1605700184543" duration="641000" />
-      <workItem from="1605815759887" duration="2715000" />
+      <workItem from="1605815759887" duration="2824000" />
+      <workItem from="1605895273808" duration="696000" />
+      <workItem from="1605904671400" duration="65000" />
+      <workItem from="1605910293288" duration="166000" />
+      <workItem from="1606403995837" duration="4521000" />
     </task>
     <task id="LOCAL-00001" summary="Initial commit">
       <created>1605442370241</created>
@@ -281,7 +293,14 @@
       <option name="project" value="LOCAL" />
       <updated>1605821202146</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="yes">
+      <created>1605821349133</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1605821349133</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -307,6 +326,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="yes" />
   </component>
   <component name="WindowStateProjectService">
+    <state x="1029" y="474" key="FileChooserDialogImpl" timestamp="1605910443263">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state x="1029" y="474" key="FileChooserDialogImpl/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605910443263" />
     <state x="1125" y="621" key="Github.ShareDialog" timestamp="1605402775647">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
@@ -339,18 +362,22 @@
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
     <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605649609635" />
-    <state x="697" y="357" key="Vcs.Push.Dialog.v2" timestamp="1605821203720">
+    <state x="697" y="357" key="Vcs.Push.Dialog.v2" timestamp="1605821355882">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="697" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605821203720" />
+    <state x="697" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605821355882" />
     <state x="3147" y="355" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@2631.87.1849.1080" timestamp="1605442395419" />
-    <state x="1066" y="629" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605442553712">
+    <state x="1066" y="629" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1605895290479">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="1066" y="629" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605442553712" />
-    <state x="905" y="340" key="run.anything.popup" timestamp="1605473853259">
+    <state x="1066" y="629" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605895290479" />
+    <state x="836" y="321" key="new project wizard" timestamp="1605910458373">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="905" y="340" key="run.anything.popup/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605473853259" />
+    <state x="836" y="321" key="new project wizard/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605910458373" />
+    <state x="905" y="340" key="run.anything.popup" timestamp="1606409491647">
+      <screen x="0" y="0" width="2498" height="1440" />
+    </state>
+    <state x="905" y="340" key="run.anything.popup/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1606409491647" />
   </component>
 </project>

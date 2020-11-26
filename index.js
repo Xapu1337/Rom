@@ -14,7 +14,7 @@ Public vars. accesable via Client.
  */
 client.utils = Utils;
 client.db = GuildModel;
-client.botAuthor = client.users.fetch("188988455554908160");
+client.botAuthor = await (client.users.fetch("188988455554908160"));
 client.config = config;
 client.commands = new Collection();
 client.aliases = new Collection();
@@ -23,7 +23,22 @@ client.charList = {
     EMPTY: "\u200B"
 }
 
-client.logError = function(message, client, errorMsg,...ExtraError)
+client.getGuildDB = async function (guildID){
+
+    let guildDB = await guildsDB.findOne( { id: guildID } );
+
+    if(guildDB){
+        return guildDB;
+    } else {
+        guildDB = new guildsDB({
+            id: guildID
+        })
+        await guildDB.save().catch(err => console.log(err));
+        return guildDB;
+    }
+};
+
+client.logError = function(message, errorMsg, ...ExtraError)
 {
     let errorMsgToSend = `
             Got an error. 
@@ -42,6 +57,13 @@ client.logError = function(message, client, errorMsg,...ExtraError)
         .setColor("DARK_RED")
         .setDescription(errorMsgToSend))
         .setThumbnail(message.guild.iconURL);
+}
+
+client.addWarning = function (message, reason, user){
+    let res = GuildModel.findOne({id: message.guild.id});
+    res.warnings.array.set({reason: reason, userID: user.id});
+    res.save();
+    console.log(res.warnings.array);
 }
 
 
