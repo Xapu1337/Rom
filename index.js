@@ -63,10 +63,10 @@ client.logError = async function(message, errorMsg, ...ExtraError)
         .setThumbnail(message.guild.iconURL);
 }
 
-client.addWarning = function (message, reason, user){
-    let res = GuildModel.findOne({id: message.guild.id});
-    res.warnings.push({reason: reason, userID: user.id, creationTime: Date.now()});
-    res.save();
+client.addWarning = async function (message, reason, user){
+    const req = await client.db.findOne({id: message.guild.id});
+    req.warnings.push({reason: reason, userID: user.id, creationTime: Date.now()});
+    req.save();
     console.log(res.warnings);
 }
 
