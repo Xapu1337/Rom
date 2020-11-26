@@ -8,7 +8,7 @@ module.exports = {
     usage: "[args input]",
     hidden: true,
     permissions: "AUTHOR",
-    run: (client, message, args) => {
+    run: async (client, message, args) => {
         switch (args[0]){
             case "add":
                 client.addWarning(message, args[1], client.extendedMemberSearch(message, args, 2)).then(i => console.log(i));
@@ -19,10 +19,10 @@ module.exports = {
             case "getWarningsFromUser":
                 let ids = [];
                 let reasons = [];
-                let req = client.db.findOne({id: message.guild.id});
+                let req = await client.db.findOne({id: message.guild.id});
                 req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1).id).forEach(i => {
-                    ids += i.id;
-                    reasons += i.reason;
+                    ids.push(i.id);
+                    reasons.push(i.reason);
                 });
                 message.channel.send(new MessageEmbed()
                     .setDescription(`
