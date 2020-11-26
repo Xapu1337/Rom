@@ -83,7 +83,7 @@ client.addWarning = async function (message, reason, user){
 
 client.deleteWarning = async function (message, id){
     const req = await client.db.findOne({id: message.guild.id});
-    req.warnings.removeByValue(req.warnings.filter((i) => i.id === id))
+    delete req.warnings[req.warnings.indexOf(req.warnings.filter((i) => i.id === id))]
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
