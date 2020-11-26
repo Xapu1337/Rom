@@ -14,7 +14,11 @@ Public vars. accesable via Client.
  */
 client.utils = Utils;
 client.db = GuildModel;
-client.botAuthor = await client.users.fetch("188988455554908160");
+
+(async() => {
+    client.botAuthor = await client.users.fetch("188988455554908160");
+})();
+
 client.config = config;
 client.commands = new Collection();
 client.aliases = new Collection();
