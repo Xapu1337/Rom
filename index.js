@@ -81,14 +81,24 @@ client.addWarning = async function (message, reason, user){
     );
 };
 
+function removeItemOnce(arr, value) {
+    var index = arr.indexOf(value);
+    if (index > -1) {
+        arr.splice(index, 1);
+    }
+    return arr;
+}
+
 client.deleteWarning = async function (message, id){
     const req = await client.db.findOne({id: message.guild.id});
-    req.warnings.splice(req.warnings.indexOf(req.warnings.filter((i) => i.id === id)), 1)
+    let reason;
+    reason = req.warnings.filter(i => i.id === id).reason;
+    removeItemOnce(req.warnings, req.warnings.filter(i => i.id === id))
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${req.warnings.filter(i => i.id === id).reason})`)
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${reason})`)
         .setThumbnail(message.author.displayAvatarURL())
     );
 };
