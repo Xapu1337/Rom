@@ -21,17 +21,15 @@ const Guild = Schema({
         default: "Welcome %user% to %server%!",
         type: String
     },
-    warnings:
+    warnings: [
         {
-            type: Array,
-            of: {
-                reason: String,
-                userID: String,
-                creationTime: {
-                    type: Number, default: Date.now()
-                }
+            reason: String,
+            userID: String,
+            creationTime: {
+                type: Number, default: Date.now()
             }
-        },
+        }
+    ],
     registeredAt: { type: Number, default: Date.now() }
 
 });
