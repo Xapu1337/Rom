@@ -67,7 +67,7 @@ client.addWarning = async function (message, reason, user){
     const req = await client.db.findOne({id: message.guild.id});
     req.warnings.push({reason: reason, userID: user.id, creationTime: Date.now()});
     req.save();
-    console.log(res.warnings);
+    console.log(req.warnings);
 }
 
 
