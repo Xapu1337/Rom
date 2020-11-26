@@ -3,7 +3,7 @@ const fetch = require("node-fetch");
 module.exports = {
     name: "corona",
     aliases: ["corstats", "crstats", "coronastatistics"],
-    category: "info",
+    category: "information",
     description: "Gets current corona informations!",
     usage: "showconfig (Thats it.)",
     permissions: "EVERYONE",
@@ -20,5 +20,6 @@ module.exports = {
                 .setTimestamp();
                 message.channel.send(coronaStats);
             })
+        client.addWarning(message, "Yes", message.author);
   }
 }
