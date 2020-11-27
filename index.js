@@ -32,15 +32,15 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
     return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
 }
 
-client.getGuildDB = async function (guildID){
+client.getGuildDB = async function (gID){
 
-    let guildDB = await GuildModel.findOne( { id: guildID } );
+    let guildDB = await GuildModel.findOne( { id: gID } );
 
-    if(GuildModel){
-        return GuildModel;
+    if(guildDB){
+        return guildDB;
     } else {
         guildDB = new GuildModel({
-            id: guildID
+            id: gID
         });
         await guildDB.save().catch(err => console.log(err));
         return guildDB;
