@@ -69,7 +69,7 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, reason, user){
-    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM", 1);
+    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM", 13);
     const req = await client.db.findOne({id: message.guild.id});
     req.warnings.push({reason: reason, userID: user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     req.save();
@@ -93,7 +93,7 @@ client.deleteWarning = async function (message, id){
     const req = await client.db.findOne({id: message.guild.id});
     let reason;
     reason = req.warnings.filter(i => i.id === id).reason;
-    await removeItemOnce(req.warnings, req.warnings.filter(i => i.id === id))
+    req.warnings = req.warnings.filter(i => i.id !== id);
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
