@@ -14,7 +14,7 @@ const nano  = require("nanoid");
 Public vars. accesable via Client.
  */
 client.utils = Utils;
-client.db = GuildModel;
+
 
 (async() => {
     client.botAuthor = await client.users.fetch("188988455554908160");
@@ -34,14 +34,14 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
 
 client.getGuildDB = async function (guildID){
 
-    let guildDB = await guildsDB.findOne( { id: guildID } );
+    let guildDB = await GuildModel.findOne( { id: guildID } );
 
-    if(guildDB){
-        return guildDB;
+    if(GuildModel){
+        return GuildModel;
     } else {
-        guildDB = new guildsDB({
+        guildDB = new GuildModel({
             id: guildID
-        })
+        });
         await guildDB.save().catch(err => console.log(err));
         return guildDB;
     }
@@ -69,8 +69,8 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, reason, user){
-    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM", 13);
-    const req = await client.db.findOne({id: message.guild.id});
+    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM", 18);
+    const req = await client.getGuildDB(message.guild.id);
     req.warnings.push({reason: reason, userID: user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     req.save();
     await message.channel.send(new MessageEmbed()
@@ -82,8 +82,9 @@ client.addWarning = async function (message, reason, user){
 };
 
 client.deleteWarning = async function (message, id){
-    const req = await client.db.findOne({id: message.guild.id});
+    const req = await client.getGuildDB(id);
     let reason;
+    console.log(req.warnings.filter(i => i.id === id));
     reason = req.warnings.filter(i => i.id === id).reason;
     req.warnings = req.warnings.filter(i => i.id !== id);
     req.save();
@@ -113,29 +114,17 @@ Array.prototype.remove = function() {
     return this;
 };
 
-Array.prototype.removeByValue = function(v) {
-    var index = this.indexOf(v);
-    if (index > -1) {
-        this.splice(index, 1);
-    }
-    return this;
-};
 
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
 
-async function checkAndCreate(guildId){
-    if(!await GuildModel.findOne({id: guildId})){
-        let c = new GuildModel({id: guildId});
-        c.save();
-    }
-}
 
 
 
 client.on("guildCreate", async (guild) => {
-    await checkAndCreate(guild.id);
+    let c = new GuildModel({id: guild.id});
+    c.save().catch(e => console.log(e));
 });
 
 client.on("guildDelete", async (guild) => {
@@ -154,13 +143,7 @@ client.on("ready", () => {
 });
 
 client.on("message", async message => {
-    const req = await client.db.findOne({id: message.guild.id});
-    if(!req){
-        await checkAndCreate(message.guild.id);
-        if(message.content.startsWith("rr!"))
-            await message.reply("Something weird happened, try it again.");
-        return;
-    }
+    const req = await client.getGuildDB(message.guild.id);
     if(message.author.bot) return;
     if(!message.guild) return;
     let prefix = req.prefix;
