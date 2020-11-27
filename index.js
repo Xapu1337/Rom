@@ -81,14 +81,6 @@ client.addWarning = async function (message, reason, user){
     );
 };
 
-function removeItemOnce(arr, value) {
-    var index = arr.indexOf(value);
-    if (index > -1) {
-        arr.splice(index, 1);
-    }
-    return arr;
-}
-
 client.deleteWarning = async function (message, id){
     const req = await client.db.findOne({id: message.guild.id});
     let reason;
