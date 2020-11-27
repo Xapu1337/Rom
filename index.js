@@ -85,6 +85,8 @@ client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(id);
     let reason;
     console.log(req.warnings.filter(i => i.id === id));
+    console.log(req.warnings);
+    console.log(req.warnings.filter(i => i.id === id));
     reason = req.warnings.filter(i => i.id === id).reason;
     req.warnings = req.warnings.filter(i => i.id !== id);
     req.save();
