@@ -9,6 +9,8 @@ const { table } = require("table");
 const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
+const getColors = require("get-image-colors");
+const url = require('url');
 
 /*
 Public vars. accesable via Client.
@@ -30,6 +32,10 @@ client.charList = {
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
     return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
+}
+
+client.getColorFromImage = async function (URL){
+    return await getColors(URL.fileURLToPath(URL), {count: 1, type: "image/png"});
 }
 
 client.getGuildDB = async function (gID){

@@ -22,6 +22,8 @@
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,14 +105,8 @@
       <workItem from="1606403995837" duration="12113000" />
       <workItem from="1606417971240" duration="3962000" />
       <workItem from="1606453885064" duration="589000" />
-      <workItem from="1606502342272" duration="3138000" />
-    </task>
-    <task id="LOCAL-00006" summary="old stuff just adding up">
-      <created>1605472580097</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1605472580097</updated>
+      <workItem from="1606502342272" duration="3960000" />
+      <workItem from="1607015530783" duration="630000" />
     </task>
     <task id="LOCAL-00007" summary="old stuff just adding up">
       <created>1605472705519</created>
@@ -448,7 +444,14 @@
       <option name="project" value="LOCAL" />
       <updated>1606510273692</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="y">
+      <created>1606512510274</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1606512510274</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -513,10 +516,10 @@
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
     <state x="750" y="364" key="SettingsEditor/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1605649609635" />
-    <state x="698" y="357" key="Vcs.Push.Dialog.v2" timestamp="1606510275589">
+    <state x="698" y="357" key="Vcs.Push.Dialog.v2" timestamp="1606512511555">
       <screen x="0" y="0" width="2498" height="1440" />
     </state>
-    <state x="698" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2622.87.1858.1080@0.0.2498.1440" timestamp="1606510275589" />
+    <state x="698" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2622.87.1858.1080@0.0.2498.1440" timestamp="1606512511555" />
     <state x="3141" y="355" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2622.87.1858.1080@2622.87.1858.1080" timestamp="1606454459614" />
     <state x="697" y="357" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@0.0.2498.1440" timestamp="1606411741010" />
     <state x="3147" y="355" key="Vcs.Push.Dialog.v2/0.0.2498.1440/2631.87.1849.1080@2631.87.1849.1080" timestamp="1606416815400" />
