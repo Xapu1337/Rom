@@ -9,8 +9,6 @@ const { table } = require("table");
 const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
-const getColors = require("get-image-colors");
-const url = require('url');
 
 /*
 Public vars. accesable via Client.
