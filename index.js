@@ -17,6 +17,7 @@ Public vars. accesable via Client.
  */
 client.utils = Utils;
 
+let Vibrant = require('node-vibrant');
 
 (async() => {
     client.botAuthor = await client.users.fetch("188988455554908160");
@@ -34,8 +35,8 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
     return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
 }
 
-client.getColorFromImage = async function (URL){
-    return await getColors(URL.fileURLToPath(URL), {count: 1, type: "image/png"});
+client.getColorFromImage = async function (idFromUser){
+    return (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({size: 4096, format: "png"})).getPalette()).Vibrant.hex
 }
 
 client.getGuildDB = async function (gID){

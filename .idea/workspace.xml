@@ -20,7 +20,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/b.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/dice.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dice.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
@@ -107,6 +109,7 @@
       <workItem from="1606453885064" duration="589000" />
       <workItem from="1606502342272" duration="3960000" />
       <workItem from="1607015530783" duration="630000" />
+      <workItem from="1607016897303" duration="5155000" />
     </task>
     <task id="LOCAL-00007" summary="old stuff just adding up">
       <created>1605472705519</created>
