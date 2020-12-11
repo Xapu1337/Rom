@@ -17,16 +17,13 @@ module.exports = {
                 client.deleteWarning(message, args[1]).then(i => console.log(i));
                 break;
             case "getWarningsFromUser":
-                let ids = [];
-                let reasons = [];
+                let reasonIdMix = [];
                 let req = await client.getGuildDB(message.guild.id);
                 req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1).id).forEach(i => {
-                    ids.push(i.id);
-                    reasons.push(i.reason);
+                    reasonIdMix.push(i.id+" Reason: \""+i.reason+"\"");
                 });
                 await message.channel.send(new MessageEmbed()
-                    .setDescription(`
-                    ${ids.join("\n")} - ${reasons.join("\n")}`));
+                    .setDescription(reasonIdMix.join("\n")));
                 break;
         }
     }
