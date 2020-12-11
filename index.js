@@ -33,7 +33,9 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
 }
 
 client.getColorFromImage = async function (idFromUser){
-    return (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({size: 4096, format: "png"})).getPalette()).Vibrant.hex
+    while(idFromUser !== null || idFromUser !== undefined){
+        return (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({size: 4096, format: "png"})).getPalette()).Vibrant.hex
+    }
 }
 
 client.getGuildDB = async function (gID){
