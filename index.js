@@ -2,14 +2,16 @@ const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
 const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageEmbed, Collection} = require("discord.js");
+const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
+const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
 /*
 Public vars. accesable via Client.
  */
+
 client.utils = Utils;
 
 let Vibrant = require('node-vibrant');
