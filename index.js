@@ -2,16 +2,11 @@ const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
 const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable} = require("discord.js");
+const { Discord, Client, MessageEmbed, Collection} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
-const { table } = require("table");
-const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
-const getColors = require("get-image-colors");
-const url = require('url');
-
 /*
 Public vars. accesable via Client.
  */

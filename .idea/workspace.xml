@@ -19,10 +19,8 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,14 +112,7 @@
       <workItem from="1607458082660" duration="1628000" />
       <workItem from="1607499005587" duration="2898000" />
       <workItem from="1607669529293" duration="333000" />
-      <workItem from="1607714458766" duration="346000" />
-    </task>
-    <task id="LOCAL-00008" summary="old stuff just adding up">
-      <created>1605472801777</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1605472801777</updated>
+      <workItem from="1607714458766" duration="652000" />
     </task>
     <task id="LOCAL-00009" summary="old stuff just adding up">
       <created>1605472977657</created>
@@ -459,7 +450,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607104827171</updated>
     </task>
-    <option name="localTasksCounter" value="57" />
+    <task id="LOCAL-00057" summary="Initial commit">
+      <created>1607714832563</created>
+      <option name="number" value="00057" />
+      <option name="presentableId" value="LOCAL-00057" />
+      <option name="project" value="LOCAL" />
+      <updated>1607714832563</updated>
+    </task>
+    <option name="localTasksCounter" value="58" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -479,13 +477,13 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="old stuff just adding up" />
     <MESSAGE value="yes" />
     <MESSAGE value="12" />
     <MESSAGE value="1" />
     <MESSAGE value="y" />
     <MESSAGE value="6" />
-    <option name="LAST_COMMIT_MESSAGE" value="6" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
