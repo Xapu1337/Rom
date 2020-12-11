@@ -81,24 +81,20 @@ client.addWarning = async function (message, reason, user){
     await message.channel.send(new MessageEmbed()
         .setColor("GREEN")
         .setTitle("Success! ✅")
-        .setDescription(`Created a warning with the id: \`${id()}\` for the user: ${user.name}`)
+        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${user.name}`)
         .setThumbnail(message.author.displayAvatarURL())
     );
 };
 
 client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(id);
-    let reason;
-    console.log(req.warnings.filter(i => i.id === id));
-    console.log(req.warnings);
-    console.log(req.warnings.filter(i => i.id === id));
-    reason = req.warnings.filter(i => i.id === id).reason;
+    let filteredWarn = req.warnings.filter(i => i.id === id);
     req.warnings = req.warnings.filter(i => i.id !== id);
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${reason})`)
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
         .setThumbnail(message.author.displayAvatarURL())
     );
 };

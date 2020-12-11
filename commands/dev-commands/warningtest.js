@@ -19,7 +19,7 @@ module.exports = {
             case "getWarningsFromUser":
                 let ids = [];
                 let reasons = [];
-                let req = await client.db.findOne({id: message.guild.id});
+                let req = client.getGuildDB(message.guild.id);
                 req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1).id).forEach(i => {
                     ids.push(i.id);
                     reasons.push(i.reason);
