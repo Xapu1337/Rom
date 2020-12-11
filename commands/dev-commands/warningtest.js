@@ -19,12 +19,12 @@ module.exports = {
             case "getWarningsFromUser":
                 let ids = [];
                 let reasons = [];
-                let req = client.getGuildDB(message.guild.id);
+                let req = await client.getGuildDB(message.guild.id);
                 req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1).id).forEach(i => {
                     ids.push(i.id);
                     reasons.push(i.reason);
                 });
-                message.channel.send(new MessageEmbed()
+                await message.channel.send(new MessageEmbed()
                     .setDescription(`
                     ${ids.join(", ")}
                     (Reasons. Relative to the id:)
