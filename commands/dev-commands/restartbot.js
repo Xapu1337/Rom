@@ -11,7 +11,6 @@ module.exports = {
     run: async (client, message, args) => {
     if(message.author.id === (await client.botAuthor).id){
         if(!args[0]) return message.channel.send(`Please, Enter the command name.`);
-
         let commandName = args[0].toLowerCase();
         // works: __dirname +"/../../commands"
         try{

@@ -2,7 +2,7 @@ const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
 const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageAttachment, MessageEmbed, Collection} = require("discord.js");
+const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
 const { table } = require("table");
@@ -54,6 +54,10 @@ client.getGuildDB = async function (gID){
     }
 };
 
+Discord.Colors.getColorFromId = async function (idFromUser){
+    return (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({size: 4096, format: "png"})).getPalette()).Vibrant.hex
+}
+
 client.logError = async function(message, errorMsg, ...ExtraError)
 {
     let errorMsgToSend = `
@@ -66,7 +70,7 @@ client.logError = async function(message, errorMsg, ...ExtraError)
             Error: {
                 Error Message: ${errorMsg}
                 More Details:
-                 ${(ExtraError) ? "None." : ExtraError}
+                 ${(ExtraError) ? ExtraError : "None."}
             }`;
     await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
     await client.botAuthor.send(new MessageEmbed()
