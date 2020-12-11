@@ -49,9 +49,6 @@ client.getGuildDB = async function (gID){
     }
 };
 
-Discord.Colors.getColorFromId = async function (idFromUser){
-    return (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({size: 4096, format: "png"})).getPalette()).Vibrant.hex
-}
 
 client.logError = async function(message, errorMsg, ...ExtraError)
 {
