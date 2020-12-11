@@ -73,7 +73,7 @@ client.logError = async function(message, errorMsg, ...ExtraError)
         .setThumbnail(message.guild.iconURL).then(m => m.delete({timeout: 2500}));
 }
 
-client.addWarning = async function (message, reason, user){
+client.addWarning = async function (message, user, reason){
     const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM" + Math.random() * 420 + Math.sqrt(user.id^69) + user.username + message.author.name + message.author.discriminator, 21);
     const req = await client.getGuildDB(message.guild.id);
     req.warnings.push({reason: reason, userID: user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
@@ -83,7 +83,7 @@ client.addWarning = async function (message, reason, user){
         .setTitle("Success! ✅")
         .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${user.name}`)
         .setThumbnail(message.author.displayAvatarURL())
-    ).then(m => m.delete({timeout: 2500}));
+    ).then(m => m.delete({timeout: 3500}));
 };
 
 client.deleteWarning = async function (message, id){
@@ -96,7 +96,7 @@ client.deleteWarning = async function (message, id){
         .setTitle("Success! ✅")
         .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
         .setThumbnail(message.author.displayAvatarURL())
-    ).then(m => m.delete({timeout: 2500}));
+    ).then(m => m.delete({timeout: 3500}));
 };
 
 /*
