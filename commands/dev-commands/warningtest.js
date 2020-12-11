@@ -24,11 +24,16 @@ module.exports = {
                     ids.push(i.id);
                     reasons.push(i.reason);
                 });
+                let reasonIdMix = [];
+                for(let i = 0; i <= ids.length; i++){
+                    for(let r = 0; i <= reasons.length; i++){
+                        reasonIdMix.push(`${ids[i]} Reason: ${reasons[r]}`);
+                    }
+                }
                 await message.channel.send(new MessageEmbed()
                     .setDescription(`
-                    ${ids.join(", ")}
-                    (Reasons. Relative to the id:)
-                    ${reasons.join(", ")}`));
+                    ${reasonIdMix.join("\n")}
+                    `));
                 break;
         }
     }
