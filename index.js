@@ -33,6 +33,7 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
 }
 
 client.getColorFromImage = async function (idFromUser){
+        console.log(idFromUser)
         return (await Vibrant.from(await (await client.users.fetch(idFromUser)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
 }
 
