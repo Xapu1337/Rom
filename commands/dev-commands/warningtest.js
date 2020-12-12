@@ -20,11 +20,10 @@ module.exports = {
             case "getwarns":
                 let reasonIdMix = [];
                 let req = await client.getGuildDB(message.guild.id);
-                req.warnings.filter((i) => i.userID === mem.id).forEach(i => {
+                req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1)).forEach(i => {
                     reasonIdMix.push(i.id+" Reason: \""+i.reason+"\"");
                 });
                 console.log(mem)
-                console.log(mem + "ARGS 1")
                 console.log(reasonIdMix.join("\n"))
                 await message.channel.send(new MessageEmbed()
                     .addField(`Warns from: ${mem.username}`, `${await reasonIdMix.join("\\n")}`, false)
