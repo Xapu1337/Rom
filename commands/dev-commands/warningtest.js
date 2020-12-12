@@ -25,7 +25,7 @@ module.exports = {
                 console.log(await client.extendedMemberSearch(message, args, 1) + "ARGS 1")
                 await message.channel.send(new MessageEmbed()
                     .addField(`Warns from: ${client.extendedMemberSearch(message, args, 1).username}`, reasonIdMix.join("\n"), true)
-                    .setColor(await client.getColorFromImage(await client.extendedMemberSearch(message, args, 1).id))
+                    .setColor(await client.getColorFromUserId(await client.extendedMemberSearch(message, args, 1).id))
                     .setThumbnail(client.extendedMemberSearch(message, args, 1).displayAvatarURL())
                     .setFooter(`Called from the user: ${message.author.username}`));
                 break;

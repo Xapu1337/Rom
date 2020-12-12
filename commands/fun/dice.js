@@ -12,7 +12,7 @@ module.exports = {
     const nanoid = customAlphabet('123456', 1)
     let dice = new MessageEmbed()
     .setTimestamp()
-    .setColor(await client.getColorFromImage(message.author.id))
+    .setColor(await client.getColorFromUserId(message.author.id))
     .setFooter(message.author.username, message.author.displayAvatarURL())
     .setDescription(`🎲 | Your random dice is: ${nanoid()}`)
     message.channel.send(dice);
