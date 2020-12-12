@@ -29,7 +29,7 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    return message.mentions.members.first() || message.guild.members.cache.get(args[argsIndex]);
+    return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
 }
 
 client.getColorFromUserId = async function (user){
