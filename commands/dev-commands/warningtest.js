@@ -22,6 +22,7 @@ module.exports = {
                 req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 1).id).forEach(i => {
                     reasonIdMix.push(i.id+" Reason: \""+i.reason+"\"");
                 });
+                console.log(client.extendedMemberSearch(message, args, 1).id)
                 await message.channel.send(new MessageEmbed()
                     .addField(`Warns from: ${client.extendedMemberSearch(message, args, 1).username}`, reasonIdMix.join("\n"), true)
                     .setColor(await client.getColorFromImage(await client.extendedMemberSearch(message, args, 1).id))
