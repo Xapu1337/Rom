@@ -9,9 +9,10 @@ module.exports = {
     hidden: true,
     permissions: "AUTHOR",
     run: async (client, message, args) => {
+        let mem = await client.extendedMemberSearch(message, args, 1);
         switch (args[0].toLowerCase()){
             case "add":
-                client.addWarning(message, client.extendedMemberSearch(message, args, 1), args.split(1).join(" ")).then(i => console.log(i));
+                client.addWarning(message, mem, args.split(1).join(" ")).then(i => console.log(i));
                 break;
             case "remove":
                 client.deleteWarning(message, args[1]).then(i => console.log(i));
@@ -19,15 +20,15 @@ module.exports = {
             case "getwarns":
                 let reasonIdMix = [];
                 let req = await client.getGuildDB(message.guild.id);
-                req.warnings.filter((i) => i.userID === client.extendedMemberSearch(message, args, 0).id).forEach(i => {
+                req.warnings.filter((i) => i.userID === mem.id).forEach(i => {
                     reasonIdMix.push(i.id+" Reason: \""+i.reason+"\"");
                 });
-                console.log(await client.extendedMemberSearch(message, args, 0))
-                console.log(await client.extendedMemberSearch(message, args, 1) + "ARGS 1")
+                console.log(mem)
+                console.log(mem + "ARGS 1")
                 await message.channel.send(new MessageEmbed()
-                    .addField(`Warns from: ${client.extendedMemberSearch(message, args, 1).username}`, reasonIdMix.join("\n"), true)
-                    .setColor(await client.getColorFromUserId(await client.extendedMemberSearch(message, args, 1)))
-                    .setThumbnail(client.extendedMemberSearch(message, args, 1).user.displayAvatarURL())
+                    .addField(`Warns from: ${mem.username}`, reasonIdMix.join("\n"), true)
+                    .setColor(await client.getColorFromUserId(mem))
+                    .setThumbnail(mem.user.displayAvatarURL())
                     .setFooter(`Called from the user: ${message.author.username}`));
                 break;
         }
