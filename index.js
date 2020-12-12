@@ -2,7 +2,7 @@ const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
 const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable} = require("discord.js");
+const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
 const colors = require("colors");
@@ -29,11 +29,13 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
+    return message.mentions.members.first() || message.guild.members.fetch(args[argsIndex]);
 }
 
-client.getColorFromUserId = async function (idFromUser){
-        let userHex = (await Vibrant.from((await client.users.fetch(idFromUser)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
+client.getColorFromUserId = async function (user){
+    if(user instanceof GuildMember)
+        console.log("Member")
+        let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
         if(userHex === null || userHex === undefined){
             return "#f0f0f0";
         }
