@@ -21,6 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -113,13 +114,8 @@
       <workItem from="1607669529293" duration="333000" />
       <workItem from="1607714458766" duration="4967000" />
       <workItem from="1607720540346" duration="2678000" />
-    </task>
-    <task id="LOCAL-00019" summary="old stuff just adding up">
-      <created>1605474874059</created>
-      <option name="number" value="00019" />
-      <option name="presentableId" value="LOCAL-00019" />
-      <option name="project" value="LOCAL" />
-      <updated>1605474874059</updated>
+      <workItem from="1607728043804" duration="328000" />
+      <workItem from="1607810663851" duration="49000" />
     </task>
     <task id="LOCAL-00020" summary="old stuff just adding up">
       <created>1605475078446</created>
@@ -457,7 +453,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607722758539</updated>
     </task>
-    <option name="localTasksCounter" value="68" />
+    <task id="LOCAL-00068" summary="Initial commit">
+      <created>1607728257197</created>
+      <option name="number" value="00068" />
+      <option name="presentableId" value="LOCAL-00068" />
+      <option name="project" value="LOCAL" />
+      <updated>1607728257197</updated>
+    </task>
+    <option name="localTasksCounter" value="69" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
