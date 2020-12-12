@@ -21,7 +21,6 @@
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -115,14 +114,7 @@
       <workItem from="1607714458766" duration="4967000" />
       <workItem from="1607720540346" duration="2678000" />
       <workItem from="1607728043804" duration="328000" />
-      <workItem from="1607810663851" duration="400000" />
-    </task>
-    <task id="LOCAL-00022" summary="old stuff just adding up">
-      <created>1605476837808</created>
-      <option name="number" value="00022" />
-      <option name="presentableId" value="LOCAL-00022" />
-      <option name="project" value="LOCAL" />
-      <updated>1605476837808</updated>
+      <workItem from="1607810663851" duration="525000" />
     </task>
     <task id="LOCAL-00023" summary="yes">
       <created>1605816561552</created>
@@ -460,7 +452,14 @@
       <option name="project" value="LOCAL" />
       <updated>1607810927280</updated>
     </task>
-    <option name="localTasksCounter" value="71" />
+    <task id="LOCAL-00071" summary="Initial commit">
+      <created>1607811081902</created>
+      <option name="number" value="00071" />
+      <option name="presentableId" value="LOCAL-00071" />
+      <option name="project" value="LOCAL" />
+      <updated>1607811081902</updated>
+    </task>
+    <option name="localTasksCounter" value="72" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
