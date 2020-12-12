@@ -12,7 +12,7 @@ module.exports = {
         let u = message.mentions.members.first() || await message.guild.members.cache.get(args[1]);
         switch (args[0].toLowerCase()){
             case "add":
-                client.addWarning(message, client.extendedMemberSearch(message, args, 1), args.split(1).join(" ")).then(i => console.log(i));
+                client.addWarning(message, client.extendedMemberSearch(message, args, 1), args.slice(1).join(" ")).then(i => console.log(i));
                 break;
             case "remove":
                 client.deleteWarning(message, args[1]).then(i => console.log(i));
