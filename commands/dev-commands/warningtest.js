@@ -25,10 +25,11 @@ module.exports = {
                 });
                 console.log(mem)
                 console.log(mem + "ARGS 1")
+                console.log(reasonIdMix.join("\n"))
                 await message.channel.send(new MessageEmbed()
-                    .addField(`Warns from: ${mem.username}`, await reasonIdMix.join("\n"), true)
+                    .addField(`Warns from: ${mem.username}`, `${await reasonIdMix.join("\\n")}`, false)
                     .setColor(await client.getColorFromUserId(mem))
-                    .setThumbnail(mem.user.displayAvatarURL())
+                    .setThumbnail(mem.displayAvatarUrl())
                     .setFooter(`Called from the user: ${message.author.username}`));
                 break;
         }
