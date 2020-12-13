@@ -80,16 +80,18 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, user, reason){
-    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM" + Math.random() * 420 + Math.sqrt(user.id^69) + user.username + message.author.name + message.author.discriminator, 21);
+    message.delete();
+    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM" +  user.username + message.author.name + message.author.discriminator, 21);
     const req = await client.getGuildDB(message.guild.id);
-    req.warnings.push({reason: reason, userID: user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
+    console.log(await user.user)
+    req.warnings.push({reason: reason, userID: await user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("GREEN")
         .setTitle("Success! ✅")
-        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${user.name}`)
+        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${await user.username}`)
         .setThumbnail(message.author.displayAvatarURL())
-    ).then(m => m.delete({timeout: 3500}));
+    ).then(m => m.delete({timeout: 6500}));
 };
 
 client.deleteWarning = async function (message, id){
@@ -102,7 +104,7 @@ client.deleteWarning = async function (message, id){
         .setTitle("Success! ✅")
         .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
         .setThumbnail(message.author.displayAvatarURL())
-    ).then(m => m.delete({timeout: 3500}));
+    ).then(m => m.delete({timeout: 6500}));
 };
 
 /*
