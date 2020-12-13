@@ -17,7 +17,6 @@
     "cpu-stat": "^2.0.1",
     "dateformat": "^3.0.3",
     "discord.js": "^12.4.1",
-    "get-image-colors": "^4.0.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.10.14",

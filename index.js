@@ -29,7 +29,10 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    return await message.mentions.members.first() || await message.guild.members.cache.get(args[argsIndex]);
+    console.log(message.guild.members.cache.get(args[argsIndex]))
+    console.log(args[argsIndex])
+    console.log(argsIndex)
+    return message.mentions.members.first() || message.guild.members.cache.get(args[argsIndex]);
 }
 
 client.getColorFromUserId = async function (user){
@@ -80,8 +83,8 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, user, reason){
-    message.delete();
-    const id = nano.customAlphabet(message.id + message.guild.id + user.id + "WARNINGSYSTEM" +  user.username + message.author.name + message.author.discriminator, 21);
+    console.log(user)
+    const id = nano.customAlphabet(message.id + message.guild.id + await user.id + "WARNINGSYSTEM" +  await user.username + message.author.name + message.author.discriminator, 21);
     const req = await client.getGuildDB(message.guild.id);
     console.log(await user.user)
     req.warnings.push({reason: reason, userID: await user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
@@ -89,8 +92,8 @@ client.addWarning = async function (message, user, reason){
     await message.channel.send(new MessageEmbed()
         .setColor("GREEN")
         .setTitle("Success! ✅")
-        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${await user.username}`)
-        .setThumbnail(message.author.displayAvatarURL())
+        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${await user.user}`)
+        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
     ).then(m => m.delete({timeout: 6500}));
 };
 
@@ -102,7 +105,7 @@ client.deleteWarning = async function (message, id){
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn})`)
         .setThumbnail(message.author.displayAvatarURL())
     ).then(m => m.delete({timeout: 6500}));
 };
