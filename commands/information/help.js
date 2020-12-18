@@ -14,13 +14,12 @@ module.exports = {
             return getCMD(client, message, args[0]);
         } else {
             return getAll(client, message);
-            console.log(getAll(client, message));
         }
     }
 }
-function getAll(client, message) {
+async function getAll(client, message) {
     const embed = new MessageEmbed()
-        .setColor("RANDOM")
+        .setColor(await client.getColorFromUserId(message.author))
         .addField('Emoji Definition:', `
         ⚙️ - This command you run and it will ask for an message, write the Message and it will use the message automatically.`, false)
     const commands = (category) => {
@@ -28,19 +27,19 @@ function getAll(client, message) {
         // Future note: is empty is just an category mismatch
         return client.commands
             .filter(cmd => cmd.category === category)
-            .map(cmd => cmd.hidden === true ? "" : `\`${cmd.name} ${(cmd.note)?cmd.note:""}(${cmd.permissions})\``)
+            .map(cmd => cmd.hidden === true ? "" : `\`${cmd.name} ${(cmd.note) ? cmd.note : ""}(${cmd.permissions})\``)
             .join(", ");
     }
 
-    const info = client.categories
+    let info = client.categories
         .remove("dev-commands")
-        .map(cat => stripIndents `**${cat[0].toUpperCase() + cat.slice(1)}:** \n${commands(cat)}`)
+        .map(cat => stripIndents`**${client.betterCategoryNames.has(cat) ? client.betterCategoryNames.get(cat) : cat[0].toUpperCase() + cat.slice(1)}:** \n${commands(cat)}`)
         .reduce((string, category) => string + "\n" + category);
 
     return message.channel.send(embed.setDescription(info));
 }
 
-function getCMD(client, message, input) {
+async function getCMD(client, message, input) {
     const embed = new MessageEmbed()
 
     const cmd = client.commands.get(input.toLowerCase()) || client.commands.get(client.aliases.get(input.toLowerCase()));
@@ -60,5 +59,5 @@ function getCMD(client, message, input) {
         embed.setFooter(`Arguments: <> = required, [] = optional`);
     }
 
-    return message.channel.send(embed.setColor("BLUE").setDescription(info));
+    return message.channel.send(embed.setColor(await client.getColorFromUserId(message.author)).setDescription(info));
 }

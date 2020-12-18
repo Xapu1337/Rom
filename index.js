@@ -2,17 +2,37 @@ const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
 const { Utils } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageAttachment, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
+const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
 const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
+const { Player } = require("discord-music-player");
+const player = new Player(client, {
+    leaveOnEnd: true,
+    leaveOnStop: true,
+    leaveOnEmpty: true,
+});
+client.player = player;
+const betterCatNames = new Map();
+betterCatNames.set("botrelated-informations", "🤖 - Bot information");
+betterCatNames.set("fun", "🎭 - Fun Commands");
+betterCatNames.set("information", "📃 - Information");
+betterCatNames.set("moderation", "🛡 - Moderation");
+betterCatNames.set("music-commands", "🎵 - Music Commands");
+betterCatNames.set("server-actions", "💻 - Server Actions");
+client.betterCategoryNames = betterCatNames;
+
+
 /*
 Public vars. accesable via Client.
  */
 
 client.utils = Utils;
+
+
+
 
 let Vibrant = require('node-vibrant');
 
@@ -46,7 +66,6 @@ client.getColorFromUserId = async function (user){
 }
 
 client.getGuildDB = async function (gID){
-
     let guildDB = await GuildModel.findOne( { id: gID } );
 
     if(guildDB){
@@ -66,20 +85,20 @@ client.logError = async function(message, errorMsg, ...ExtraError)
     let errorMsgToSend = `
             Got an error. 
             Guild infos: {
-                Guild id: ${message.guild.id}
-                Guild Name: ${message.guild.name}
+                Guild id: ${message ? message.guild : "Message empty. got an non command or message error."}
+                Guild Name: ${message ? message.guild.name : "Message empty. got an non command or message error."}
             }
-            Message: ${message.content}
+            Message: ${message ? message.content : "Message empty. got an non command or message error."}
             Error: {
                 Error Message: ${errorMsg}
                 More Details:
-                 ${(ExtraError) ? ExtraError : "None."}
+                 ${(ExtraError) ? JSON.stringify(ExtraError, null, '  ') : "None."}
             }`;
     await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
     await client.botAuthor.send(new MessageEmbed()
         .setColor("DARK_RED")
         .setDescription(errorMsgToSend))
-        .setThumbnail(message.guild.iconURL).then(m => m.delete({timeout: 2500}));
+//        .setThumbnail( message.guild.iconURL).then(m => m.delete({timeout: 2500}));
 }
 
 client.addWarning = async function (message, user, reason){
@@ -128,13 +147,18 @@ Array.prototype.remove = function() {
     return this;
 };
 
+String.prototype.chunk = function(size) {
+    return this.match(new RegExp('.{1,' + size + '}', 'g'));
+};
 
 ["command"].forEach(handler => {
     require(`./handlers/${handler}`)(client);
 });
 
-
-
+String.prototype.convertStringToArray = function (maxPartSize){
+    const reg = new RegExp(".{1,"+maxPartSize+"}", "g");
+    return this.match(reg);
+};
 
 client.on("guildCreate", async (guild) => {
     let c = new GuildModel({id: guild.id});
@@ -157,9 +181,9 @@ client.on("ready", () => {
 });
 
 client.on("message", async message => {
-    const req = await client.getGuildDB(message.guild.id);
     if(message.author.bot) return;
     if(!message.guild) return;
+    const req = await client.getGuildDB(message.guild.id);
     let prefix = req.prefix;
 
     if(!message.content.startsWith(prefix)) return;
@@ -213,6 +237,7 @@ client.on("message", async message => {
     
 });
 
+process.on("error", e => client.logError(null, "Process got a error.", e));
 
 
 (async () => {

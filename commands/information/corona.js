@@ -18,8 +18,8 @@ module.exports = {
                 .setFooter("Corona stats from 'covidapi.info' and the idea was from the bot 'Dyno'", 'https://cdn.discordapp.com/attachments/239446877953720321/691020838379716698/unknown.png')
                 .setColor("#a72b2a")
                 .setTimestamp();
+                client.logError(message, "Lel", "what if");
                 message.channel.send(coronaStats);
             })
-        client.addWarning(message, "Yes", message.author);
   }
 }
