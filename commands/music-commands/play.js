@@ -14,7 +14,7 @@ module.exports = {
             return new MessageEmbed()
                 .setColor(await client.getColorFromUserId(song.song.requestedBy))
                 .setThumbnail(song.song.thumbnail)
-                .setFooter(`An request from: ${song.song.requestedBy.username}`)
+                //.setFooter(`An request from: ${song.song.requestedBy.username}`)
                 .setTimestamp()
                 .addField(isQueue ? "Added to queue" : "Playing...", `[${song.song.name}](${song.song.url}) from \`${song.song.author.name}\``);
         };
