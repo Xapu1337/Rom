@@ -21,6 +21,7 @@
     "discord-player": "^3.0.3",
     "discord.js": "^12.4.1",
     "ffmpeg-static": "^4.2.7",
+    "get-image-colors": "^4.0.0",
     "moment": "^2.29.1",
     "moment-duration-format": "^2.3.2",
     "mongoose": "^5.11.7",

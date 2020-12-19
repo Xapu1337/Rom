@@ -35,7 +35,8 @@ client.utils = Utils;
 
 
 
-let Vibrant = require('node-vibrant');
+//let Vibrant = require('node-vibrant');
+const getColors = require('get-image-colors');
 
 (async() => {
     client.botAuthor = await client.users.fetch("188988455554908160");
@@ -50,16 +51,15 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    console.log(message.guild.members.cache.get(args[argsIndex]))
-    console.log(args[argsIndex])
-    console.log(argsIndex)
     return message.mentions.members.first() || message.guild.members.cache.get(args[argsIndex]);
 }
 
 client.getColorFromUserId = async function (user){
-    if(user instanceof GuildMember)
-        console.log("Member")
-        let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
+        //let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
+        let userHex;
+        await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"}), {count: '1'}).then(value => {
+            userHex = value[Math.randomBetween(0, value.length-1)]._rgb;
+        });
         if(userHex === null || userHex === undefined){
             return "#f0f0f0";
         }
@@ -147,6 +147,12 @@ Array.prototype.remove = function() {
     }
     return this;
 };
+
+Math.randomBetween = function (min, max) {
+    return Math.floor(
+        Math.random() * (max - min + 1) + min
+    )
+}
 
 String.prototype.chunk = function(size) {
     return this.match(new RegExp('.{1,' + size + '}', 'g'));
@@ -238,7 +244,10 @@ client.on("message", async message => {
     
 });
 
-process.on("error", e => client.logError(null, "Process got a error.", e));
+process.on("error", e => {
+    client.logError(null, "Process got a error.", e)
+    console.log(e)
+});
 
 
 (async () => {

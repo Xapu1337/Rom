@@ -1,15 +1,4 @@
-function TimeToMiliseconds(time) {
-    let items = time.split(':'),
-        s = 0, m = 1;
-
-    while (items.length > 0) {
-        s += m * parseInt(items.pop(), 10);
-        m *= 60;
-    }
-
-    return s * 1000;
-}
-
+const { MessageEmbed } = require("discord.js");
 
 
 module.exports = {
@@ -21,6 +10,14 @@ module.exports = {
     hidden: false,
     permissions: "EVERYONE",
     run: async(client, message, args) => {
+        const playStartedEmbed = async (song, isQueue) => {
+            return new MessageEmbed()
+                .setColor(await client.getColorFromUserId(song.song.requestedBy))
+                .setThumbnail(song.song.thumbnail)
+                .setFooter(`An request from: ${song.song.requestedBy.username}`)
+                .setTimestamp()
+                .addField(isQueue ? "Added to queue" : "Playing...", `[${song.song.name}](${song.song.url}) from \`${song.song.author.name}\``);
+        };
         if(!message.member.voice.channel){
             message.reply("You aren't in an Voice channel.");
             return;
@@ -34,28 +31,29 @@ module.exports = {
             return;
         }
         if (client.player.isPlaying(message.guild.id)) {
-            await client.player.addToQueue(message.guild.id, args.join(" "), {duration: 'short'}).then(async song => {
+            await client.player.addToQueue(message.guild.id, args.join(" "), {duration: 'short'}, message.member).then(async song => {
                 if (song.error) throw(song.error);
-                message.channel.send(`Song ${song.song.name} was added to the queue!`);
+                message.channel.send(await playStartedEmbed(song, true));
             }).catch(err => {
                 if(err.type === "SearchIsNull"){
                     message.reply("Nothing found. please search again. or provide an link.");
 
                 } else {
                     client.logError(message, "Error while executing the play command...", err)
+                    console.log(err)
                 }
             });
         } else {
-            await client.player.play(message.member.voice.channel, args.join(" "), {duration: 'short'}).then(async song => {
+            await client.player.play(message.member.voice.channel, args.join(" "), {duration: 'short'}, message.member).then(async song => {
                 if (song.error) throw(song.error);
-                message.channel.send(`Playing ${song.song.name}...`);
-                console.log(song)
+                message.channel.send(await playStartedEmbed(song, false));
             }).catch(err => {
                 if(err.type === "SearchIsNull"){
                     message.reply("Nothing found. please search again. or provide an link.");
 
                 } else {
                     client.logError(message, "Error while executing the play command...", err)
+                    console.log(err)
                 }
             });
         }
