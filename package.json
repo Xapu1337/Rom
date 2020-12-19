@@ -31,7 +31,7 @@
     "process": "^0.11.10",
     "snyk": "^1.434.4",
     "table": "^6.0.4",
-    "ytdl-core": "^4.2.0"
+    "ytdl-core": "^4.2.1"
   },
   "snyk": true,
   "name": "Rom"

@@ -8,13 +8,14 @@ const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
-const { Player } = require("discord-music-player");
+const { Player, Util } = require("discord-music-player");
 const player = new Player(client, {
     leaveOnEnd: true,
     leaveOnStop: true,
     leaveOnEmpty: true,
 });
 client.player = player;
+client.playerUtils = Util;
 const betterCatNames = new Map();
 betterCatNames.set("botrelated-informations", "🤖 - Bot information");
 betterCatNames.set("fun", "🎭 - Fun Commands");
