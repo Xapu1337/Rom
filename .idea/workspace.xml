@@ -20,11 +20,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/GuildSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/GuildSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,7 +43,7 @@
     </option>
   </component>
   <component name="Git.Merge.Settings">
-    <option name="BRANCH" value="origin/master" />
+    <option name="BRANCH" value="origin/snyk-upgrade-e3d212f6a2809e5d8fcf3498a1cfa8e1" />
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -73,12 +76,15 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.10" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../TrollGUI" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/commands/music-commands" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="vcs.Git" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.5981.155\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\XapuR\OneDrive\Rom\commands\music-commands" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
     </key>
@@ -129,21 +135,12 @@
       <workItem from="1608275324892" duration="2168000" />
       <workItem from="1608288514278" duration="9730000" />
       <workItem from="1608381791715" duration="1184000" />
-      <workItem from="1608386506486" duration="3824000" />
-    </task>
-    <task id="LOCAL-00043" summary="1">
-      <created>1606418811937</created>
-      <option name="number" value="00043" />
-      <option name="presentableId" value="LOCAL-00043" />
-      <option name="project" value="LOCAL" />
-      <updated>1606418811937</updated>
-    </task>
-    <task id="LOCAL-00044" summary="1">
-      <created>1606419157768</created>
-      <option name="number" value="00044" />
-      <option name="presentableId" value="LOCAL-00044" />
-      <option name="project" value="LOCAL" />
-      <updated>1606419157768</updated>
+      <workItem from="1608386506486" duration="6126000" />
+      <workItem from="1608416943543" duration="1673000" />
+      <workItem from="1608462408940" duration="17574000" />
+      <workItem from="1608525660691" duration="5919000" />
+      <workItem from="1608561327932" duration="4139000" />
+      <workItem from="1608568044920" duration="1624000" />
     </task>
     <task id="LOCAL-00045" summary="1">
       <created>1606419588906</created>
@@ -474,7 +471,21 @@
       <option name="project" value="LOCAL" />
       <updated>1608387030239</updated>
     </task>
-    <option name="localTasksCounter" value="92" />
+    <task id="LOCAL-00092" summary="Initial commit">
+      <created>1608390526029</created>
+      <option name="number" value="00092" />
+      <option name="presentableId" value="LOCAL-00092" />
+      <option name="project" value="LOCAL" />
+      <updated>1608390526029</updated>
+    </task>
+    <task id="LOCAL-00093" summary="Initial commit">
+      <created>1608390652236</created>
+      <option name="number" value="00093" />
+      <option name="presentableId" value="LOCAL-00093" />
+      <option name="project" value="LOCAL" />
+      <updated>1608390652236</updated>
+    </task>
+    <option name="localTasksCounter" value="94" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

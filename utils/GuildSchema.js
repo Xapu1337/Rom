@@ -21,6 +21,10 @@ const Guild = Schema({
         default: "Welcome %user% to %server%!",
         type: String
     },
+    isPremium: {
+        default: false,
+        type: Boolean
+    },
     warnings: [
         {
             id: String,

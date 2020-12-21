@@ -8,6 +8,7 @@ const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
+//const { Player, Util } = require("discord-music-player");
 const { Player, Util } = require("discord-music-player");
 const player = new Player(client, {
     leaveOnEnd: true,
@@ -57,7 +58,7 @@ client.extendedMemberSearch = async function (message, args, argsIndex){
 client.getColorFromUserId = async function (user){
         //let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
         let userHex;
-        await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"}), {count: '1'}).then(value => {
+        await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).then(value => {
             userHex = value[Math.randomBetween(0, value.length-1)]._rgb;
         });
         if(userHex === null || userHex === undefined){
@@ -95,7 +96,11 @@ client.logError = async function(message, errorMsg, ...ExtraError)
                 More Details:
                  ${(ExtraError) ? JSON.stringify(ExtraError, null, '  ') : "None."}
             }`;
-    await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
+    try{
+        await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
+    } catch (e) {
+        return;
+    }
     await client.botAuthor.send(new MessageEmbed()
         .setColor("DARK_RED")
         .setDescription(errorMsgToSend))
@@ -152,10 +157,6 @@ Math.randomBetween = function (min, max) {
     return Math.floor(
         Math.random() * (max - min + 1) + min
     )
-}
-
-String.prototype.chunk = function(size) {
-    return this.match(new RegExp('.{1,' + size + '}', 'g'));
 };
 
 ["command"].forEach(handler => {
@@ -163,14 +164,10 @@ String.prototype.chunk = function(size) {
 });
 
 String.prototype.convertStringToArray = function (maxPartSize){
-    const reg = new RegExp(".{1,"+maxPartSize+"}", "g");
+    const reg = new RegExp("[^]{1,"+maxPartSize+"}", "g");
     return this.match(reg);
 };
 
-client.on("guildCreate", async (guild) => {
-    let c = new GuildModel({id: guild.id});
-    c.save().catch(e => console.log(e));
-});
 
 client.on("guildDelete", async (guild) => {
     await GuildModel.findOneAndDelete({id: guild.id});
@@ -182,7 +179,7 @@ client.on("ready", () => {
    console.log("Done. Logged in as: "+client.user.tag);
 
     client.user.setPresence({
-        activity: { name: `rr!help | Tag me on a guild to see the guild prefix! ${client.guilds.cache.size}`, type: "LISTENING" },
+        activity: { name: `rr!help | Tag me on a guild to see the guild prefix!. Currently on: ${client.guilds.cache.size} servers.`, type: "LISTENING" },
         status: "online"
     });
 });
