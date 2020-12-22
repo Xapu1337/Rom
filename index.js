@@ -9,14 +9,14 @@ const colors = require("colors");
 const fetch = require("node-fetch");
 const nano  = require("nanoid");
 //const { Player, Util } = require("discord-music-player");
-const { Player, Util } = require("discord-music-player");
+const { Player, PUtils } = require("discord-music-player");
 const player = new Player(client, {
     leaveOnEnd: true,
     leaveOnStop: true,
     leaveOnEmpty: true,
 });
 client.player = player;
-client.playerUtils = Util;
+client.player.utilsModule = PUtils;
 const betterCatNames = new Map();
 betterCatNames.set("botrelated-informations", "🤖 - Bot information");
 betterCatNames.set("fun", "🎭 - Fun Commands");
@@ -108,10 +108,9 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 }
 
 client.addWarning = async function (message, user, reason){
-    console.log(user)
+    reason = reason.length > 0 ? reason : "None.";
     const id = nano.customAlphabet(message.id + message.guild.id + await user.id + "WARNINGSYSTEM" +  await user.username + message.author.name + message.author.discriminator, 21);
     const req = await client.getGuildDB(message.guild.id);
-    console.log(await user.user)
     req.warnings.push({reason: reason, userID: await user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     req.save();
     await message.channel.send(new MessageEmbed()
@@ -123,14 +122,18 @@ client.addWarning = async function (message, user, reason){
 };
 
 client.deleteWarning = async function (message, id){
-    const req = await client.getGuildDB(id);
+    const req = await client.getGuildDB(message.guild.id);
     let filteredWarn = req.warnings.filter(i => i.id === id);
+    if(filteredWarn.length < 0) {
+        message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
+        return;
+    }
     req.warnings = req.warnings.filter(i => i.id !== id);
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn})`)
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
         .setThumbnail(message.author.displayAvatarURL())
     ).then(m => m.delete({timeout: 6500}));
 };
@@ -167,6 +170,10 @@ String.prototype.convertStringToArray = function (maxPartSize){
     const reg = new RegExp("[^]{1,"+maxPartSize+"}", "g");
     return this.match(reg);
 };
+
+// setInterval(function () {
+//     console.log("heartbeat send.");
+// }, 6000);
 
 
 client.on("guildDelete", async (guild) => {

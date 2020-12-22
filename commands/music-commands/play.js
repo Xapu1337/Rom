@@ -27,12 +27,6 @@ module.exports = {
             let ql = (queue.songs.map((song, i) => {
                 return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.name}\`${song.author.name ?  ` | \`${song.author.name}\`` : ""}`
             })).join("\n");
-            // let splittedEmbedFor = splitStringBySegmentLength(ql, 1024);
-            // let spliited = [];
-            // for(let i = 0; i < spliited.length; i++){
-            //     spliited.push(ql.substr(0, 1024))
-            // }
-            // console.log(spliited);
             let embed =  new MessageEmbed()
                 .setColor(await client.getColorFromUserId(message.member))
                 .setFooter(`A request from: ${message.author.username}`)
@@ -59,48 +53,45 @@ module.exports = {
             message.reply("Your channel is full. Can't join.");
             return;
         }
-        if(args.includes("spotify.com")){
-            message.reply("Spotify links are broken. they are crash the bot.");
-            return;
+        let areArgsExisting = args.join(" ") && args.length > 0 && args.join(" ").length > 0
+        if(areArgsExisting){
+
+            if (client.player.isPlaying(message.guild.id)) {
+                await client.player.addToQueue(message.guild.id, args.join(" "), null , message.member).then(async song => {
+                    if (song.error) throw(song.error);
+                    message.channel.send(`Added: \`${song.song.name}\` to the queue.`);
+                    await message.channel.send(await getQueueEmbed());
+                }).catch(err => {
+                    if(err.type === "SearchIsNull"){
+                        message.reply("Nothing found. please search again. or provide an link.");
+
+                    } else {
+                        client.logError(message, "Error while executing the play command...", err)
+                        console.log(err)
+                    }
+                });
+            } else {
+                await client.player.play(message.member.voice.channel, args.join(" "), null, message.member).then(async song => {
+                    if (song.error) throw(song.error);
+                    message.channel.send(`Playing: \`${song.song.name}\``);
+                    try{
+                        await message.channel.send(await getQueueEmbed());
+                    } catch (e) {
+                        console.log(e);
+                    }
+                }).catch(err => {
+                    if(err.type === "SearchIsNull"){
+                        message.reply("Nothing found. please search again. or provide an link.");
+
+                    } else {
+                        client.logError(message, "Error while executing the play command...", err)
+                        console.log(err)
+                    }
+                });
+            }
+        } else {
+            message.reply("Please provide an song or a youtube link.");
+
         }
-       try{
-           if (client.player.isPlaying(message.guild.id)) {
-               await client.player.addToQueue(message.guild.id, args.join(" "), {duration: 'short'}, message.member).then(async song => {
-                   if (song.error) throw(song.error);
-                   message.channel.send(`Added: \`${song.song.name}\` to the queue.`);
-                   await message.channel.send(await getQueueEmbed());
-               }).catch(err => {
-                   if(err.type === "SearchIsNull"){
-                       message.reply("Nothing found. please search again. or provide an link.");
-
-                   } else {
-                       client.logError(message, "Error while executing the play command...", err)
-                       console.log(err)
-                   }
-               });
-           } else {
-               await client.player.play(message.member.voice.channel, args.join(" "), {duration: 'short'}, message.member).then(async song => {
-                   if (song.error) throw(song.error);
-                   message.channel.send(`Playing: \`${song.song.name}\``);
-                   try{
-                       await message.channel.send(await getQueueEmbed());
-                   } catch (e) {
-                       console.log(e);
-                   }
-               }).catch(err => {
-                   if(err.type === "SearchIsNull"){
-                       message.reply("Nothing found. please search again. or provide an link.");
-
-                   } else {
-                       client.logError(message, "Error while executing the play command...", err)
-                       console.log(err)
-                   }
-               });
-           }
-       } catch (e) {
-           console.log(e);
-           message.reply("Please try it again.");
-       }
-
     }
 }
