@@ -22,8 +22,7 @@
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -139,14 +138,14 @@
       <workItem from="1608525660691" duration="5919000" />
       <workItem from="1608561327932" duration="4139000" />
       <workItem from="1608568044920" duration="15034000" />
-      <workItem from="1608638170803" duration="5430000" />
-    </task>
-    <task id="LOCAL-00047" summary="1">
-      <created>1606420005244</created>
-      <option name="number" value="00047" />
-      <option name="presentableId" value="LOCAL-00047" />
-      <option name="project" value="LOCAL" />
-      <updated>1606420005244</updated>
+      <workItem from="1608638170803" duration="9396000" />
+      <workItem from="1608732484649" duration="595000" />
+      <workItem from="1608926894209" duration="603000" />
+      <workItem from="1608928124986" duration="593000" />
+      <workItem from="1608991234707" duration="622000" />
+      <workItem from="1609038512636" duration="11000" />
+      <workItem from="1609124249084" duration="702000" />
+      <workItem from="1609258136588" duration="1068000" />
     </task>
     <task id="LOCAL-00048" summary="1">
       <created>1606420170563</created>
@@ -484,7 +483,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608570574740</updated>
     </task>
-    <option name="localTasksCounter" value="96" />
+    <task id="LOCAL-00096" summary="Initial commit">
+      <created>1608664817911</created>
+      <option name="number" value="00096" />
+      <option name="presentableId" value="LOCAL-00096" />
+      <option name="project" value="LOCAL" />
+      <updated>1608664817914</updated>
+    </task>
+    <option name="localTasksCounter" value="97" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

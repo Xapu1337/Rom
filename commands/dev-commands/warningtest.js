@@ -20,7 +20,7 @@ module.exports = {
                 let reasonIdMix = [];
                 let req = await client.getGuildDB(message.guild.id);
                 req.warnings.filter(async(i) => await i.userID === await client.extendedMemberSearch(message, args, 0).id).forEach(i => {
-                    reasonIdMix.push(`ID: \`${i.id}\` Reason: \`${i.reason}\``);
+                    reasonIdMix.push(`ID: \`${i.id}\` Reason: \`${i.reason.length >= 256 ? i.reason.convertStringToArray(512)[0] + "..."  : i.reason}\``);
                 });
                 let embed = new MessageEmbed()
                     .setColor(await client.getColorFromUserId(await client.extendedMemberSearch(message, args, 1)))
