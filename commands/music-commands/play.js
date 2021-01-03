@@ -1,18 +1,4 @@
 const { MessageEmbed } = require("discord.js");
-
-function splitStringBySegmentLength(str,  maxPartSize) {
-    const chunkArr = [];
-    let leftStr = str;
-    do {
-
-        chunkArr.push(leftStr.substring(0, maxPartSize));
-        leftStr = leftStr.substring(maxPartSize, leftStr.length);
-
-    } while (leftStr.length > 0);
-
-    return chunkArr;
-}
-
 module.exports = {
     name: "mplay",
     aliases: ["playmusic", "mply"],
@@ -55,7 +41,7 @@ module.exports = {
         }
         let areArgsExisting = args.join(" ") && args.length > 0 && args.join(" ").length > 0
         if(areArgsExisting){
-
+            message.reply(`Searching for \`${args.join(" ")}\`... please wait.`);
             if (client.player.isPlaying(message.guild.id)) {
                 await client.player.addToQueue(message.guild.id, args.join(" "), null , message.member).then(async song => {
                     if (song.error) throw(song.error);

@@ -7,6 +7,8 @@ const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disa
 const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
+const snowModule = require("snowflake-api").Client;
+const snowClient = new snowModule("MTg4OTg4NDU1NTU0OTA4MTYw.MTYwOTY4NTA1NTYwNQ==.bd278b074d53f1f324f6fe9a8f842993");
 const nano  = require("nanoid");
 //const { Player, Util } = require("discord-music-player");
 const { Player, PUtils } = require("discord-music-player");
@@ -17,6 +19,7 @@ const player = new Player(client, {
 });
 client.player = player;
 client.player.utilsModule = PUtils;
+client.snowapi = snowClient;
 const betterCatNames = new Map();
 betterCatNames.set("botrelated-informations", "🤖 - Bot information");
 betterCatNames.set("fun", "🎭 - Fun Commands");
@@ -229,7 +232,6 @@ client.on("message", async message => {
         } else {
             command.run(client, message, args);
         }
-
         if (message.author.id !== (await client.botAuthor).id) {
             const embed = new MessageEmbed()
                 .setTitle("Command executed")

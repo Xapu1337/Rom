@@ -21,7 +21,7 @@ async function getAll(client, message) {
     const embed = new MessageEmbed()
         .setColor(await client.getColorFromUserId(message.author))
         .addField('Emoji Definition:', `
-        ⚙️ - This command you run and it will ask for an message, write the Message and it will use the message automatically.`, false)
+        ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false)
     const commands = (category) => {
 
         // Future note: is empty is just an category mismatch

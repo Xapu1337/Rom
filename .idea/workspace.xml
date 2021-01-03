@@ -19,10 +19,14 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
+    <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/commands/fun/cat.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/fun/chatbot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
@@ -73,7 +77,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.10" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/commands/music-commands" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/klee" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.5981.155\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -85,6 +89,19 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -145,14 +162,12 @@
       <workItem from="1608991234707" duration="622000" />
       <workItem from="1609038512636" duration="11000" />
       <workItem from="1609124249084" duration="702000" />
-      <workItem from="1609258136588" duration="1068000" />
-    </task>
-    <task id="LOCAL-00048" summary="1">
-      <created>1606420170563</created>
-      <option name="number" value="00048" />
-      <option name="presentableId" value="LOCAL-00048" />
-      <option name="project" value="LOCAL" />
-      <updated>1606420170563</updated>
+      <workItem from="1609258136588" duration="6652000" />
+      <workItem from="1609363367292" duration="375000" />
+      <workItem from="1609399599321" duration="8701000" />
+      <workItem from="1609505191079" duration="2739000" />
+      <workItem from="1609609167923" duration="548000" />
+      <workItem from="1609689249765" duration="6979000" />
     </task>
     <task id="LOCAL-00049" summary="1">
       <created>1606420833278</created>
@@ -490,7 +505,14 @@
       <option name="project" value="LOCAL" />
       <updated>1608664817914</updated>
     </task>
-    <option name="localTasksCounter" value="97" />
+    <task id="LOCAL-00097" summary="Initial commit">
+      <created>1609259236487</created>
+      <option name="number" value="00097" />
+      <option name="presentableId" value="LOCAL-00097" />
+      <option name="project" value="LOCAL" />
+      <updated>1609259236488</updated>
+    </task>
+    <option name="localTasksCounter" value="98" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
