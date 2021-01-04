@@ -16,7 +16,7 @@ module.exports = {
             .addField("⏱ Current requests", me.requests)
             .addField("⏲ Token created at ",dateFormat(me.tokenCreatedTimestamp, "dd, mm, yyyy | hh:mm:ss"))
             .addField("⏲ Account created at ",dateFormat(me.createdTimestamp , "dd, mm, yyyy | hh:mm:ss"))
-            .setColor("#515F95"));
+            .setColor("#4357a9"));
         console.log(await client.snowapi.me());
   }
- }
+ }  
