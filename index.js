@@ -250,9 +250,13 @@ client.on("message", async message => {
     
 });
 
-process.on("error", e => {
+client.on("error", e => {
     client.logError(null, "Process got a error.", e)
     console.log(e)
+});
+
+client.on("warn", e => {
+    console.log(e);
 });
 
 

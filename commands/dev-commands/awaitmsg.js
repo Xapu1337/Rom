@@ -1,20 +1,19 @@
+const {MessageEmbed} = require("discord.js");
+const dateFormat = require("dateformat");
 module.exports = {
-    name: "awaittest",
+    name: "snowflake",
     aliases: [],
     category: "dev-commands",
     description: "DEV TEST",
     usage: "",
     permissions: "AUTHOR",
     run: (client, message, args) => {
-    const filter = m => m.author.id === message.author.id;
-    message.reply(`Now write an message, 10 seconds until this expire!`).then(r => r.delete({timeout: 10000}));
-    message.channel.awaitMessages(filter, {
-        max: 1,
-        time: 10000
-    }).then(collected => {
-        console.log(collected)
-    }).catch(err =>{
-        console.log(err);
-    });
+        message.reply(new MessageEmbed()
+            .setTitle(`Current information about snowflake. ${client.snowapi.me().banned ? "*BANNED!*" : ""}`)
+            .addField("💎", `Premium? ${client.snowapi.me().pro ? "***Yes.***" : "*No.*"}`)
+            .addField("⏱ Current ratelimit", client.snowapi.me().ratelimits)
+            .addField("⏲ Current requests", client.snowapi.me().requests)
+            .addField("⏲ Token created at ",dateFormat(client.snowapi.me().tokenCreatedTimestamp, "dd, mm, yyyy | hh:mm:ss"))
+            .addField("⏲ Account created at ",dateFormat(client.snowapi.me().createdTimestamp , "dd, mm, yyyy | hh:mm:ss")));
   }
  }
