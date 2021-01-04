@@ -22,7 +22,6 @@
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -161,14 +160,7 @@
       <workItem from="1609399599321" duration="8701000" />
       <workItem from="1609505191079" duration="2739000" />
       <workItem from="1609609167923" duration="548000" />
-      <workItem from="1609689249765" duration="12382000" />
-    </task>
-    <task id="LOCAL-00051" summary="1">
-      <created>1606421323574</created>
-      <option name="number" value="00051" />
-      <option name="presentableId" value="LOCAL-00051" />
-      <option name="project" value="LOCAL" />
-      <updated>1606421323574</updated>
+      <workItem from="1609689249765" duration="12794000" />
     </task>
     <task id="LOCAL-00052" summary="y">
       <created>1606454457316</created>
@@ -506,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609721512024</updated>
     </task>
-    <option name="localTasksCounter" value="100" />
+    <task id="LOCAL-00100" summary="Initial commit">
+      <created>1609723698097</created>
+      <option name="number" value="00100" />
+      <option name="presentableId" value="LOCAL-00100" />
+      <option name="project" value="LOCAL" />
+      <updated>1609723698098</updated>
+    </task>
+    <option name="localTasksCounter" value="101" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
