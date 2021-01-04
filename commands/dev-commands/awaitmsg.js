@@ -15,5 +15,6 @@ module.exports = {
             .addField("⏱ Current requests", await client.snowapi.me().requests)
             .addField("⏲ Token created at ",dateFormat(await client.snowapi.me().tokenCreatedTimestamp, "dd, mm, yyyy | hh:mm:ss"))
             .addField("⏲ Account created at ",dateFormat(await client.snowapi.me().createdTimestamp , "dd, mm, yyyy | hh:mm:ss")));
+        console.log(await client.snowapi.me());
   }
  }
