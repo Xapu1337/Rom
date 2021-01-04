@@ -8,13 +8,14 @@ module.exports = {
     usage: "",
     permissions: "AUTHOR",
     run: async(client, message, args) => {
+        let me = await client.snowapi.me();
         message.reply(new MessageEmbed()
-            .setTitle(`Current information about snowflake. ${await client.snowapi.me().banned ? "*BANNED!*" : ""}`)
-            .addField("💎", `Premium? ${await client.snowapi.me().pro ? "***Yes.***" : "*No.*"}`)
-            .addField("⏱ Current ratelimit", await client.snowapi.me().ratelimits)
-            .addField("⏱ Current requests", await client.snowapi.me().requests)
-            .addField("⏲ Token created at ",dateFormat(await client.snowapi.me().tokenCreatedTimestamp, "dd, mm, yyyy | hh:mm:ss"))
-            .addField("⏲ Account created at ",dateFormat(await client.snowapi.me().createdTimestamp , "dd, mm, yyyy | hh:mm:ss")));
+            .setTitle(`Current information about snowflake. ${me.banned ? "*BANNED!*" : ""}`)
+            .addField("💎", `Premium? ${me.pro ? "***Yes.***" : "*No.*"}`)
+            .addField("⏱ Current ratelimit", me.ratelimits)
+            .addField("⏱ Current requests", me.requests)
+            .addField("⏲ Token created at ",dateFormat(me.tokenCreatedTimestamp, "dd, mm, yyyy | hh:mm:ss"))
+            .addField("⏲ Account created at ",dateFormat(me.createdTimestamp , "dd, mm, yyyy | hh:mm:ss")));
         console.log(await client.snowapi.me());
   }
  }
