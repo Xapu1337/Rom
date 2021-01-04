@@ -11,7 +11,7 @@
     "common-tags": "^1.8.0",
     "cpu-stat": "^2.0.1",
     "dateformat": "^3.0.3",
-    "debug": "^4.3.1",
+    "debug": "^4.3.2",
     "discord-music-player": "^6.2.0",
     "discord-player": "^3.0.3",
     "discord.js": "^12.5.1",
