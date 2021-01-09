@@ -3,7 +3,7 @@ const { MessageEmbed } = require("discord.js");
 
 module.exports = {
     name: "mskip",
-    aliases: ["skipmusic", "mskp"],
+    aliases: ["skipmusic", "mskp", "skip"],
     category: "music-commands",
     description: "Play musik fucker",
     usage: "[args input]",

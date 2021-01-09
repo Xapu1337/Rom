@@ -20,9 +20,12 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/commands/fun/duck.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/fun/fox.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/fun/roast.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/information/corona.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/corona.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,10 +74,10 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.10" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../romWebsite" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
-    <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.5981.155\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.6682.168\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -150,14 +153,14 @@
       <workItem from="1609609167923" duration="548000" />
       <workItem from="1609689249765" duration="13544000" />
       <workItem from="1609755701664" duration="624000" />
-      <workItem from="1609778335900" duration="5037000" />
-    </task>
-    <task id="LOCAL-00058" summary="Initial commit">
-      <created>1607715279931</created>
-      <option name="number" value="00058" />
-      <option name="presentableId" value="LOCAL-00058" />
-      <option name="project" value="LOCAL" />
-      <updated>1607715279931</updated>
+      <workItem from="1609778335900" duration="5666000" />
+      <workItem from="1609802042605" duration="1586000" />
+      <workItem from="1609854509449" duration="593000" />
+      <workItem from="1609924375949" duration="593000" />
+      <workItem from="1609927448345" duration="595000" />
+      <workItem from="1610087029287" duration="2188000" />
+      <workItem from="1610129679074" duration="2459000" />
+      <workItem from="1610189773187" duration="31000" />
     </task>
     <task id="LOCAL-00059" summary="Initial commit">
       <created>1607715627243</created>
@@ -495,7 +498,14 @@
       <option name="project" value="LOCAL" />
       <updated>1609724652664</updated>
     </task>
-    <option name="localTasksCounter" value="107" />
+    <task id="LOCAL-00107" summary="Initial commit">
+      <created>1609784722162</created>
+      <option name="number" value="00107" />
+      <option name="presentableId" value="LOCAL-00107" />
+      <option name="project" value="LOCAL" />
+      <updated>1609784722163</updated>
+    </task>
+    <option name="localTasksCounter" value="108" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

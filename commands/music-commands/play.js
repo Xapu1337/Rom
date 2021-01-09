@@ -1,7 +1,7 @@
 const { MessageEmbed } = require("discord.js");
 module.exports = {
     name: "mplay",
-    aliases: ["playmusic", "mply"],
+    aliases: ["playmusic", "mply", "play"],
     category: "music-commands",
     description: "Play musik fucker",
     usage: "[args input]",
