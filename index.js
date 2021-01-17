@@ -99,6 +99,8 @@ client.logError = async function(message, errorMsg, ...ExtraError)
                 More Details:
                  ${(ExtraError) ? JSON.stringify(ExtraError, null, '  ') : "None."}
             }`;
+
+    console.log(errorMsg);
     try{
         await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
     } catch (e) {
@@ -106,7 +108,7 @@ client.logError = async function(message, errorMsg, ...ExtraError)
     }
     await client.botAuthor.send(new MessageEmbed()
         .setColor("DARK_RED")
-        .setDescription(errorMsgToSend))
+        .setDescription(errorMsgToSend));
 //        .setThumbnail( message.guild.iconURL).then(m => m.delete({timeout: 2500}));
 }
 
@@ -210,27 +212,32 @@ client.on("message", async message => {
     if(!command) command = client.commands.get(client.aliases.get(cmd));
 
     if(command) {
-        if (command.permissions) {
-            const membercmd = await message.member;
-            if (command.permissions !== "AUTHOR" && command.permissions !== "EVERYONE" && membercmd.hasPermission(command.permissions) || command.permissions !== "AUTHOR" && command.permissions === "EVERYONE") {
-                command.run(client, message, args);
-                // } else if(message.author.id === (await client.botAuthor).id && results[0].authorShouldSkipPermissionCheck){
-                //     if(client.booleanFromString(results[0].authorShouldSkipPermissionCheck)){
-                //         command.run(client, message, args);
-                //         await message.reply("Executed because you are my author. and owner has not disabled the skip flag yet.")
-                //     }
-                // }
-            } else if (command.permissions === "AUTHOR") {
-                if (message.author.id === (await client.botAuthor).id) {
+        try {
+            if (command.permissions) {
+                const membercmd = await message.member;
+                if (command.permissions !== "AUTHOR" && command.permissions !== "EVERYONE" && membercmd.hasPermission(command.permissions) || command.permissions !== "AUTHOR" && command.permissions === "EVERYONE") {
                     command.run(client, message, args);
+                    // } else if(message.author.id === (await client.botAuthor).id && results[0].authorShouldSkipPermissionCheck){
+                    //     if(client.booleanFromString(results[0].authorShouldSkipPermissionCheck)){
+                    //         command.run(client, message, args);
+                    //         await message.reply("Executed because you are my author. and owner has not disabled the skip flag yet.")
+                    //     }
+                    // }
+                } else if (command.permissions === "AUTHOR") {
+                    if (message.author.id === (await client.botAuthor).id) {
+                        command.run(client, message, args);
+                    } else {
+                        await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
+                    }
                 } else {
-                    await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
+                    await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
                 }
             } else {
-                await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
+                command.run(client, message, args);
             }
-        } else {
-            command.run(client, message, args);
+        } catch (e) {
+            await message.reply(`Something went wrong... this error is logged. try it later again.`);
+            await client.logError(message, "Error executing an command...", e);
         }
         if (message.author.id !== (await client.botAuthor).id) {
             const embed = new MessageEmbed()

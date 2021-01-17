@@ -20,57 +20,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitattributes" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.github/workflows/main.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/Rom.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/aws.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/discord.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_07_47_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_07_47__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_08_01_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_08_01__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_08_06_[Default_Changelist]/shelved.patch" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Update_at_11_01_2021_08_06__Default_Changelist_.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.snyk" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/SECURITY.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/b.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/cat.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/chatbot.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/dice.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/dog.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/duck.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/fox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/fun/roast.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/information/corona.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/music-commands/queue.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/music-commands/stop.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/server-actions/giveaway.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffmpeg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ffprobe" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/handlers/command.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/qt-faststart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/GuildSchema.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -119,11 +70,12 @@
     <property name="aspect.path.notification.shown" value="true" />
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
-    <property name="javascript.nodejs.core.library.typings.version" value="14.14.10" />
+    <property name="javascript.nodejs.core.library.typings.version" value="14.14.20" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\IDEA-U\ch-0\203.6682.168\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -132,19 +84,6 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
-      <option name="arquillianRunConfiguration">
-        <value>
-          <option name="containerStateName" value="" />
-        </value>
-      </option>
-      <option name="TEST_OBJECT" value="class" />
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -222,6 +161,8 @@
       <workItem from="1610189773187" duration="2941000" />
       <workItem from="1610291459480" duration="142000" />
       <workItem from="1610291620246" duration="992000" />
+      <workItem from="1610438912581" duration="83000" />
+      <workItem from="1610481605507" duration="3478000" />
     </task>
     <task id="LOCAL-00064" summary="Initial commit">
       <created>1607717846321</created>
