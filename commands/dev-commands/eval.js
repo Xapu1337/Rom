@@ -1,5 +1,5 @@
 const { inspect } = require('util');
-const { MessageEmbed } = require('discord.js')
+const { MessageEmbed, MessageAttachment } = require('discord.js')
 
 module.exports = {
     name: "eval",
