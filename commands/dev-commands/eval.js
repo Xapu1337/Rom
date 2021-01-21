@@ -9,14 +9,10 @@ module.exports = {
     usage: "eval <args>",
     permissions: "DEVS",
     run: async(client, message, args) => {
-        const waitEval = (ev) => {
-            return new Promise((resolve, reject) => {
-                eval(ev);
-            });
-        };
+
         try {
             let codein = args.join(" ");
-            let code = await waitEval(codein) ;
+            let code = eval("(async () => {" + codein + "})()");
 
             if (typeof code !== 'string')
                 code = require('util').inspect(code, { depth: 0});
