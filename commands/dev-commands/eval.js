@@ -19,12 +19,12 @@ module.exports = {
             let code = await waitEval(codein) ;
 
             if (typeof code !== 'string')
-                code = await require('util').inspect(await code, { depth: 0});
+                code = require('util').inspect(code, { depth: 0});
             let embed = new MessageEmbed()
                 .setAuthor(`Eval`)
                 .setColor('RANDOM')
                 .addField(':inbox_tray: Input', `\`\`\`js\n${codein}\`\`\``)
-                .addField(':outbox_tray: Output', `\`\`\`js\n${await code}\n\`\`\``)
+                .addField(':outbox_tray: Output', `\`\`\`js\n${code}\n\`\`\``)
             message.channel.send(await embed)
         } catch (e) {
             message.channel.send(`\`\`\`js\n${await e}\n\`\`\``);
