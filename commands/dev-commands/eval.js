@@ -20,9 +20,9 @@ module.exports = {
                 .setColor('RANDOM')
                 .addField(':inbox_tray: Input', `\`\`\`js\n${codein}\`\`\``)
                 .addField(':outbox_tray: Output', `\`\`\`js\n${code}\n\`\`\``)
-            await message.channel.send(await embed)
+            await message.channel.send(embed)
         } catch (e) {
-            await message.channel.send(`\`\`\`js\n${await e}\n\`\`\``);
+            await message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
         }
 
     }
