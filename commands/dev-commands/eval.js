@@ -24,7 +24,7 @@ module.exports = {
                 .setAuthor(`Eval`)
                 .setColor('RANDOM')
                 .addField(':inbox_tray: Input', `\`\`\`js\n${codein}\`\`\``)
-                .addField(':outbox_tray: Output', `\`\`\`js\n${await code}\n\`\`\``)
+                .addField(':outbox_tray: Output', `\`\`\`js\n${code}\n\`\`\``)
             message.channel.send(await embed)
         } catch (e) {
             message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
