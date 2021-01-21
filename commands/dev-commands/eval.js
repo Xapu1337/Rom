@@ -9,12 +9,17 @@ module.exports = {
     usage: "eval <args>",
     permissions: "DEVS",
     run: async(client, message, args) => {
+        const waitEval = (ev) => {
+            return new Promise((resolve, reject) => {
+                eval(ev);
+            });
+        };
         try {
             let codein = args.join(" ");
-            let code = eval(codein);
+            let code = await waitEval(codein) ;
 
             if (typeof code !== 'string')
-                code = require('util').inspect(code, { depth: 0 });
+                code = require('util').inspect(await code, { depth: 0});
             let embed = new MessageEmbed()
                 .setAuthor(`Eval`)
                 .setColor('RANDOM')
