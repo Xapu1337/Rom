@@ -11,7 +11,7 @@ module.exports = {
     run: async(client, message, args) => {
         try {
             let codein = args.join(" ");
-            let code = await eval("(async () => {" + codein + "})()");
+            let code = eval("(async () => {" + codein + "})()");
 
             if (typeof code !== 'string')
                 code = require('util').inspect(code, { depth: 0});
