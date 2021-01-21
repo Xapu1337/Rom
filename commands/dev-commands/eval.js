@@ -9,9 +9,14 @@ module.exports = {
     usage: "eval <args>",
     permissions: "DEVS",
     run: async(client, message, args) => {
+        const waitEval = (ev) => {
+            return new Promise((resolve, reject) => {
+                eval(ev);
+            });
+        };
         try {
             let codein = args.join(" ");
-            let code = eval("(async () => {" + codein + "})()");
+            let code = await waitEval(codein) ;
 
             if (typeof code !== 'string')
                 code = require('util').inspect(code, { depth: 0});
@@ -20,9 +25,9 @@ module.exports = {
                 .setColor('RANDOM')
                 .addField(':inbox_tray: Input', `\`\`\`js\n${codein}\`\`\``)
                 .addField(':outbox_tray: Output', `\`\`\`js\n${code}\n\`\`\``)
-            await message.channel.send(embed)
+            await message.channel.send(await embed)
         } catch (e) {
-            await message.channel.send(`\`\`\`js\n${e}\n\`\`\``);
+            await message.channel.send(`\`\`\`js\n${await e}\n\`\`\``);
         }
 
     }
