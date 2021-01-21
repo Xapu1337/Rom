@@ -258,12 +258,26 @@ client.on("message", async message => {
 });
 
 client.on("error", e => {
-    client.logError(null, "Process got a error.", e)
-    console.log(e)
+    client.logError(null, "Process got a error.", e);
+    console.log(e);
 });
 
 client.on("warn", e => {
     console.log(e);
+});
+
+process.on('unhandledRejection', (e) => {
+    client.logError(null, "unhandledrejection", e);
+    console.log('UNHANDLED_REJECTION: ', e);
+});
+
+process.on('uncaughtException', (e) => {
+    console.log('UNCAUGHT_EXCEPTION: ', e);
+    client.logError(null, "unhandledExeption", e);
+    console.log('NODE_WARN: ', {
+        stack: 'Uncaught Exception detected. Restarting...'
+    });
+    process.exit(1);
 });
 
 

@@ -9,7 +9,6 @@ module.exports = {
     usage: "eval <args>",
     permissions: "DEVS",
     run: async(client, message, args) => {
-        message.channel.send(client.snowapi.discordToken());
         try {
             let codein = args.join(" ");
             let code = eval(codein);
