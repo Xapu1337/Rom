@@ -114,16 +114,22 @@ client.logError = async function(message, errorMsg, ...ExtraError)
 
 client.addWarning = async function (message, user, reason){
     reason = reason.length > 0 ? reason : "None.";
+    // if the reason was not included. use "none" else its shit.
     const id = nano.customAlphabet(message.id + message.guild.id + await user.id + "WARNINGSYSTEM" +  await user.username + message.author.name + message.author.discriminator, 21);
+    // Cursed way of getting an id. this is actually shit but i don't care and it is kinda unique... i guess.
     const req = await client.getGuildDB(message.guild.id);
+    // GET THAT FUCKING MONGODB
     req.warnings.push({reason: reason, userID: await user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
+    // CUKA PUSHING THE ARRAY HARDER THEN THE T-28 THE .308 ANTI TANK ARMOR BULLETS
     req.save();
+    // What my parents should do before i were born, make an save game.
     await message.channel.send(new MessageEmbed()
         .setColor("GREEN")
         .setTitle("Success! ✅")
         .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${await user.user}`)
         .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
     ).then(m => m.delete({timeout: 6500}));
+    // Send embed that is... s t y l i s h ? and delete after 6.5 seconds.
 };
 
 client.deleteWarning = async function (message, id){
@@ -214,23 +220,23 @@ client.on("message", async message => {
     if(command) {
         try {
             if (command.permissions) {
-                const membercmd = await message.member;
-                if (command.permissions !== "AUTHOR" && command.permissions !== "EVERYONE" && membercmd.hasPermission(command.permissions) || command.permissions !== "AUTHOR" && command.permissions === "EVERYONE") {
-                    command.run(client, message, args);
-                    // } else if(message.author.id === (await client.botAuthor).id && results[0].authorShouldSkipPermissionCheck){
-                    //     if(client.booleanFromString(results[0].authorShouldSkipPermissionCheck)){
-                    //         command.run(client, message, args);
-                    //         await message.reply("Executed because you are my author. and owner has not disabled the skip flag yet.")
-                    //     }
-                    // }
-                } else if (command.permissions === "AUTHOR") {
-                    if (message.author.id === (await client.botAuthor).id) {
+                switch (command.permissions) {
+                    case "AUTHOR":
+                        if (message.author.id === (await client.botAuthor).id) {
+                            command.run(client, message, args);
+                        } else {
+                            await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
+                        }
+                        break;
+                    case "EVERYONE":
                         command.run(client, message, args);
-                    } else {
-                        await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
-                    }
-                } else {
-                    await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
+                        break;
+                    default:
+                        if(message.member.hasPermission(command.permissions)){
+                            command.run(client, message, args);
+                        } else {
+                            await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
+                        }
                 }
             } else {
                 command.run(client, message, args);
@@ -239,6 +245,7 @@ client.on("message", async message => {
             await message.reply(`Something went wrong... this error is logged. try it later again.`);
             await client.logError(message, "Error executing an command...", e);
         }
+
         if (message.author.id !== (await client.botAuthor).id) {
             const embed = new MessageEmbed()
                 .setTitle("Command executed")
