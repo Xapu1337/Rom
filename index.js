@@ -237,6 +237,7 @@ client.on("message", async message => {
                         } else {
                             await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
                         }
+                        break;
                 }
             } else {
                 command.run(client, message, args);

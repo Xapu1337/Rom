@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -175,13 +174,7 @@
       <workItem from="1611118408508" duration="690000" />
       <workItem from="1611207267974" duration="2739000" />
       <workItem from="1611249173186" duration="3060000" />
-    </task>
-    <task id="LOCAL-00079" summary="Initial commit">
-      <created>1607812755596</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1607812755596</updated>
+      <workItem from="1611310737419" duration="206000" />
     </task>
     <task id="LOCAL-00080" summary="Initial commit">
       <created>1607813547076</created>
@@ -519,7 +512,14 @@
       <option name="project" value="LOCAL" />
       <updated>1611229215317</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="YES">
+      <created>1611310876089</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1611310876089</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -558,6 +558,7 @@
     <MESSAGE value="y" />
     <MESSAGE value="6" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="YES" />
+    <option name="LAST_COMMIT_MESSAGE" value="YES" />
   </component>
 </project>
