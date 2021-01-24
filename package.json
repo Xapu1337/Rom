@@ -6,7 +6,7 @@
     "@discordjs/opus": "^0.3.3",
     "@types/jest": "^23.3.12",
     "ascii-table": "0.0.9",
-    "bufferutil": "^4.0.2",
+    "bufferutil": "^4.0.3",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
     "cpu-stat": "^2.0.1",
