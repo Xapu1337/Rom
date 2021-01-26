@@ -197,8 +197,12 @@ client.on("ready", () => {
    console.log("Done. Logged in as: "+client.user.tag);
 
     client.user.setPresence({
-        activity: { name: `rr!help | Tag me on a guild to see the guild prefix!. Currently on: ${client.guilds.cache.size} servers.`, type: "LISTENING" },
-        status: "online"
+        activity: {
+            name: `rr!help | Tag me on a guild to see the guild prefix!. Currently on: ${client.guilds.cache.size} servers.`,
+            type: "LISTENING",
+            url: "https://xapu1337.ml",
+        },
+        status: "online",
     });
 });
 
