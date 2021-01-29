@@ -13,31 +13,82 @@ module.exports = {
         if (args[0]) {
             return getCMD(client, message, args[0]);
         } else {
-            return getAll(client, message);
+            const embed = new MessageEmbed()
+            .setColor(await client.getColorFromUserId(message.author))
+            .addField('Emoji Definition:', `
+        ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false);
+
+            const commands = (category) => {
+
+                // Future note: is empty is just an category mismatch
+                return client.commands
+                    .filter(cmd => cmd.category === category)
+                    .map(cmd => cmd.hidden === true ? "" : `\`${cmd.name} ${(cmd.note) ? cmd.note : ""}(${cmd.permissions})\``)
+                    .join(", ");
+            };
+            let pages = [];
+
+
+            const filter = (reaction, user) => {
+                return ['◀', '▶'].includes(reaction.emoji.name) && user.id === message.author.id;
+            };
+
+
+            client.categories
+                .remove("dev-commands")
+                .forEach((value) => {
+                pages.push({
+                    title: stripIndents`**${client.betterCategoryNames.has(value) ? client.betterCategoryNames.get(value) : value[0].toUpperCase() + value.slice(1)}:**`,
+                    value: commands(value),
+                });
+            });
+
+            let options = {
+                limit: 15 * 1000,
+                min: 0,
+                max: pages.length - 1,
+                page: 0,
+            };
+
+
+
+            embed.setTitle(pages[options.page].title)
+            embed.setDescription(pages[options.page].value);
+            let msg = await message.channel.send(embed);
+            await msg.react("▶");
+            let collector = msg.createReactionCollector(filter, {time: 60000});
+
+            collector.on("collect", async (reaction) => {
+                switch(reaction.emoji.name){
+                    case "▶":
+                        reaction.remove();
+                        if(options.page < options.max){
+                            options.page++;
+                            embed.setTitle(pages[options.page].title)
+                            embed.setDescription(pages[options.page].value);
+                            await msg.edit(embed);
+                            await msg.react('◀');
+                            await msg.react('▶');
+                        }
+                        break;
+                    case "◀":
+                        reaction.remove();
+                        if(options.page > options.min){
+                            options.page--;
+                            embed.setTitle(pages[options.page].title)
+                            embed.setDescription(pages[options.page].value);
+                            await msg.edit(embed);
+                            await msg.react('◀');
+                            await msg.react('▶');
+                        }
+                        break;
+                }
+            });
+
         }
     }
 }
-async function getAll(client, message) {
-    const embed = new MessageEmbed()
-        .setColor(await client.getColorFromUserId(message.author))
-        .addField('Emoji Definition:', `
-        ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false)
-    const commands = (category) => {
 
-        // Future note: is empty is just an category mismatch
-        return client.commands
-            .filter(cmd => cmd.category === category)
-            .map(cmd => cmd.hidden === true ? "" : `\`${cmd.name} ${(cmd.note) ? cmd.note : ""}(${cmd.permissions})\``)
-            .join(", ");
-    }
-
-    let info = client.categories
-        .remove("dev-commands")
-        .map(cat => stripIndents`**${client.betterCategoryNames.has(cat) ? client.betterCategoryNames.get(cat) : cat[0].toUpperCase() + cat.slice(1)}:** \n${commands(cat)}`)
-        .reduce((string, category) => string + "\n" + category);
-
-    return message.channel.send(embed.setDescription(info));
-}
 
 async function getCMD(client, message, input) {
     const embed = new MessageEmbed()

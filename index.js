@@ -16,6 +16,8 @@ const player = new Player(client, {
     leaveOnEnd: true,
     leaveOnStop: true,
     leaveOnEmpty: true,
+    volume: 25,
+    timeout: 300
 });
 client.player = player;
 client.player.utilsModule = PUtils;
