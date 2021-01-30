@@ -28,11 +28,9 @@ module.exports = {
             };
             let pages = [];
 
-
             const filter = (reaction, user) => {
                 return ['◀', '▶'].includes(reaction.emoji.name) && user.id === message.author.id;
             };
-
 
             client.categories
                 .remove("dev-commands")
@@ -49,8 +47,6 @@ module.exports = {
                 max: pages.length - 1,
                 page: 0,
             };
-
-
 
             embed.setTitle(pages[options.page].title)
             embed.setDescription(pages[options.page].value);

@@ -214,7 +214,7 @@ client.on("message", async message => {
     const req = await client.getGuildDB(message.guild.id);
     let prefix = req.prefix;
 
-    if(!message.content.startsWith(prefix)) return;
+    if(!message.content.startsWith(prefix) || message.content.startsWith(`<@${client.user.id}>`)) return;
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
