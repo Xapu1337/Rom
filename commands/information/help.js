@@ -58,7 +58,7 @@ module.exports = {
                 switch(reaction.emoji.name){
                     case "▶":
                          await reaction.remove();
-                        if(options.page < options.max){
+                        if(options.page <= options.max){
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
@@ -69,7 +69,7 @@ module.exports = {
                         break;
                     case "◀":
                         await reaction.remove();
-                        if(options.page > options.min){
+                        if(options.page >= options.min){
                             options.page--;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
