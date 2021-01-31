@@ -20,7 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -185,14 +184,7 @@
       <workItem from="1612033549969" duration="1479000" />
       <workItem from="1612035075163" duration="277000" />
       <workItem from="1612036589371" duration="1602000" />
-      <workItem from="1612085234243" duration="65000" />
-    </task>
-    <task id="LOCAL-00091" summary="Initial commit">
-      <created>1608387030239</created>
-      <option name="number" value="00091" />
-      <option name="presentableId" value="LOCAL-00091" />
-      <option name="project" value="LOCAL" />
-      <updated>1608387030239</updated>
+      <workItem from="1612085234243" duration="186000" />
     </task>
     <task id="LOCAL-00092" summary="Initial commit">
       <created>1608390526029</created>
@@ -530,7 +522,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612047454920</updated>
     </task>
-    <option name="localTasksCounter" value="140" />
+    <task id="LOCAL-00140" summary="master">
+      <created>1612085324579</created>
+      <option name="number" value="00140" />
+      <option name="presentableId" value="LOCAL-00140" />
+      <option name="project" value="LOCAL" />
+      <updated>1612085324580</updated>
+    </task>
+    <option name="localTasksCounter" value="141" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -570,6 +569,7 @@
     <MESSAGE value="6" />
     <MESSAGE value="YES" />
     <MESSAGE value="Initial commit" />
-    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
+    <MESSAGE value="master" />
+    <option name="LAST_COMMIT_MESSAGE" value="master" />
   </component>
 </project>

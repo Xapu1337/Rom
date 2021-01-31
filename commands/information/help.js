@@ -44,7 +44,7 @@ module.exports = {
             let options = {
                 limit: 15 * 1000,
                 min: 0,
-                max: pages.length - 1,
+                max: pages.length,
                 page: 0,
             };
 
