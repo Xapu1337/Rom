@@ -64,6 +64,7 @@ module.exports = {
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
                             await msg.react('◀');
+                            if(options.page < options.min)
                             await msg.react('▶');
                         }
                         break;
@@ -71,11 +72,12 @@ module.exports = {
                         await msg.reactions.removeAll();
                         if(options.page > options.min){
                             options.page--;
+                            if(options.page > options.min)
+                            await msg.react('◀');
+                            await msg.react('▶');
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
-                            await msg.react('◀');
-                            await msg.react('▶');
                         }
                         break;
                 }
