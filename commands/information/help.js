@@ -61,24 +61,26 @@ module.exports = {
                     case "▶":
                             if(options.page > options.max)
                                 break;
+                        await msg.react('◀');
+                        if(options.page < options.max)
+                            await msg.react('▶');
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
-                            await msg.react('◀');
-                            if(options.page < options.max)
-                                await msg.react('▶');
+
                         break;
                     case "◀":
                             if(options.page < options.min)
                                 break;
+                        if(options.page > options.min)
+                            await msg.react('◀');
+                        await msg.react('▶');
                             options.page--;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
-                        if(options.page > options.min)
-                            await msg.react('◀');
-                            await msg.react('▶');
+
 
                         break;
                 }
