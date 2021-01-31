@@ -15,6 +15,7 @@ module.exports = {
         } else {
             const embed = new MessageEmbed()
             .setColor(await client.getColorFromUserId(message.author))
+            .setTimestamp()
             .addField('Emoji Definition:', `
         ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false);
 
@@ -44,7 +45,7 @@ module.exports = {
             let options = {
                 limit: 15 * 1000,
                 min: 0,
-                max: pages.length,
+                max: pages.length - 1,
                 page: 0,
             };
 
@@ -57,22 +58,24 @@ module.exports = {
             collector.on("collect", async (reaction) => {
                 switch(reaction.emoji.name){
                     case "▶":
-                        reaction.remove();
-                        if(options.page > options.max){
+                        if(options.page < options.max){
+                            await msg.reactions.removeAll();
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
+                            embed.setFooter(options.page < options.max ? "" : "You've reached the last page.");
                             await msg.edit(embed);
                             await msg.react('◀');
                             await msg.react('▶');
                         }
                         break;
                     case "◀":
-                        reaction.remove();
-                        if(options.page < options.min){
+                        if(options.page > options.min){
+                            await msg.reactions.removeAll();
                             options.page--;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
+                            embed.setFooter(options.page > options.min ? "" : "You've reached the first page.");
                             await msg.edit(embed);
                             await msg.react('◀');
                             await msg.react('▶');
