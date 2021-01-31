@@ -57,27 +57,25 @@ module.exports = {
             collector.on("collect", async (reaction) => {
                 switch(reaction.emoji.name){
                     case "▶":
+                        reaction.remove();
                         if(options.page < options.max){
-                            await msg.reactions.removeAll();
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
                             await msg.react('◀');
-                            if(options.page > options.min)
                             await msg.react('▶');
                         }
                         break;
                     case "◀":
+                        reaction.remove();
                         if(options.page > options.min){
-                            await msg.reactions.removeAll();
                             options.page--;
-                            if(options.page < options.min)
-                            await msg.react('◀');
-                            await msg.react('▶');
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
+                            await msg.react('◀');
+                            await msg.react('▶');
                         }
                         break;
                 }
