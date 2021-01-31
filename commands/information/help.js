@@ -56,6 +56,7 @@ module.exports = {
 
             collector.on("collect", async (reaction) => {
                 await msg.reactions.removeAll();
+                message.reply(options);
                 switch(reaction.emoji.name){
                     case "▶":
                         if(options.page <= options.max){
