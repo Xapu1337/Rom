@@ -57,8 +57,8 @@ module.exports = {
             collector.on("collect", async (reaction) => {
                 switch(reaction.emoji.name){
                     case "▶":
-                        await msg.reactions.removeAll();
                         if(options.page < options.max){
+                            await msg.reactions.removeAll();
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
@@ -69,8 +69,8 @@ module.exports = {
                         }
                         break;
                     case "◀":
-                        await msg.reactions.removeAll();
                         if(options.page > options.min){
+                            await msg.reactions.removeAll();
                             options.page--;
                             if(options.page > options.min)
                             await msg.react('◀');
