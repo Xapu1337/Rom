@@ -43,7 +43,7 @@ module.exports = {
 
             let options = {
                 limit: 15 * 1000,
-                min: 1,
+                min: 0,
                 max: pages.length,
                 page: 0,
             };
@@ -56,32 +56,28 @@ module.exports = {
 
             collector.on("collect", async (reaction) => {
                 await msg.reactions.removeAll();
-                message.reply(JSON.stringify(pages));
                 switch(reaction.emoji.name){
                     case "▶":
-                            if(options.page > options.max)
-                                break;
-                        await msg.react('◀');
-                        if(options.page < options.max)
-                            await msg.react('▶');
+                        reaction.remove();
+                        if(options.page <= options.max){
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
-
+                            await msg.react('◀');
+                            await msg.react('▶');
+                        }
                         break;
                     case "◀":
-                            if(options.page < options.min)
-                                break;
-                        if(options.page > options.min)
-                            await msg.react('◀');
-                        await msg.react('▶');
+                        reaction.remove();
+                        if(options.page >= options.min){
                             options.page--;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
-
-
+                            await msg.react('◀');
+                            await msg.react('▶');
+                        }
                         break;
                 }
             });
