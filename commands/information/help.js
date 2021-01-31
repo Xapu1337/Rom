@@ -43,7 +43,7 @@ module.exports = {
 
             let options = {
                 limit: 15 * 1000,
-                min: 0,
+                min: 1,
                 max: pages.length,
                 page: 0,
             };
@@ -56,27 +56,30 @@ module.exports = {
 
             collector.on("collect", async (reaction) => {
                 await msg.reactions.removeAll();
-                message.reply(JSON.stringify(options));
+                message.reply(JSON.stringify(pages));
                 switch(reaction.emoji.name){
                     case "▶":
-                        if(options.page <= options.max){
+                            if(options.page > options.max)
+                                break;
                             options.page++;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
                             await msg.react('◀');
-                            await msg.react('▶');
-                        }
+                            if(options.page < options.max)
+                                await msg.react('▶');
                         break;
                     case "◀":
-                        if(options.page >= options.min){
+                            if(options.page < options.min)
+                                break;
                             options.page--;
                             embed.setTitle(pages[options.page].title)
                             embed.setDescription(pages[options.page].value);
                             await msg.edit(embed);
+                        if(options.page > options.min)
                             await msg.react('◀');
                             await msg.react('▶');
-                        }
+
                         break;
                 }
             });
