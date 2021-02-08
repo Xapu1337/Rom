@@ -8,6 +8,6 @@ module.exports = {
     usage: "",
     permissions: "AUTHOR",
     run: async (client, message, args) => {
-        message.channel.send(`\`\`\`${args.join(" ").replaceAll("0", " ").replaceAll("1","█")}\`\`\``);
+        message.channel.send(`\`\`\`${args.join(" ").replaceAll("0", " ").replaceAll("1","▄")}\`\`\``);
     }
 }
