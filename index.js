@@ -213,8 +213,11 @@ client.on("message", async message => {
     if(!message.guild) return;
     const req = await client.getGuildDB(message.guild.id);
     let prefix = req.prefix;
+    let stupidThingBecauseItIsStupid =  (message.content.startsWith(prefix) || message.content.startsWith(`<@${client.user.id}`));
 
-    if(!message.content.startsWith(prefix) || !message.content.startsWith(`<@${client.user.id}>`)) return;
+    if(!stupidThingBecauseItIsStupid)
+        return;
+
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 

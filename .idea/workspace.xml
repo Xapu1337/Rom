@@ -20,8 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/commands/dev-commands/asciiart.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -189,14 +187,7 @@
       <workItem from="1612085234243" duration="3881000" />
       <workItem from="1612201186087" duration="606000" />
       <workItem from="1612733718178" duration="1552000" />
-      <workItem from="1612777260671" duration="449000" />
-    </task>
-    <task id="LOCAL-00105" summary="Initial commit">
-      <created>1609724453828</created>
-      <option name="number" value="00105" />
-      <option name="presentableId" value="LOCAL-00105" />
-      <option name="project" value="LOCAL" />
-      <updated>1609724453828</updated>
+      <workItem from="1612777260671" duration="679000" />
     </task>
     <task id="LOCAL-00106" summary="Initial commit">
       <created>1609724652664</created>
@@ -534,7 +525,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612088313771</updated>
     </task>
-    <option name="localTasksCounter" value="154" />
+    <task id="LOCAL-00154" summary="Initial commit">
+      <created>1612777737502</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1612777737502</updated>
+    </task>
+    <option name="localTasksCounter" value="155" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -573,8 +571,8 @@
     <MESSAGE value="y" />
     <MESSAGE value="6" />
     <MESSAGE value="YES" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="master" />
-    <option name="LAST_COMMIT_MESSAGE" value="master" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
