@@ -208,15 +208,18 @@ client.on("ready", () => {
     });
 });
 
+
+const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+
+
 client.on("message", async message => {
     if(message.author.bot) return;
     if(!message.guild) return;
     const req = await client.getGuildDB(message.guild.id);
     let prefix = req.prefix;
-    let stupidThingBecauseItIsStupid =  (message.content.startsWith(prefix) || message.content.startsWith(client.user.tag));
 
-    if(!stupidThingBecauseItIsStupid)
-        return;
+    const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
+    if (!prefixRegex.test(message.content)) return;
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
