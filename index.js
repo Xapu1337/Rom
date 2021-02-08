@@ -221,6 +221,9 @@ client.on("message", async message => {
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
 
+    const [, matchedPrefix] = message.content.match(prefixRegex);
+
+
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
