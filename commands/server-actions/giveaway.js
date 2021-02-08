@@ -88,20 +88,20 @@ module.exports = {
             }
             collected.delete()
             let toWinItem = collected.first().content;
-            if(isNaN(ms(toWinItem))) return message.reply(client.embederror(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
+            if(isNaN(ms(toWinItem))) return message.reply(client.embederror(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
             if(toWinItem){
-              if(toWinItem<1)return message.channel.send(client.embederror(`ERROR! | Time is too small!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
-              if(toWinItem>3)return message.channel.send(client.embederror(`ERROR! | Time is too big!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
+              if(toWinItem<1)return message.channel.send(client.embederror(`ERROR! | Time is too small!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
+              if(toWinItem>3)return message.channel.send(client.embederror(`ERROR! | Time is too big!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
               if(toWinItem.startsWith("-")) return message.channel.send(`The number can't start with '-' !`)
               if(ms(toWinItem) > ms('31d')){ 
-                return message.channel.send(client.embederror(`ERROR! | 31 days (1 Month) Is the limit of the time!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`)) 
+                return message.channel.send(client.embederror(`ERROR! | 31 days (1 Month) Is the limit of the time!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`))
               } else if(ms(toWinItem) < ms('1m')){
-                return message.channel.send(client.embederror(`ERROR! | Time cant be under 1 Min!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`)) 
+                return message.channel.send(client.embederror(`ERROR! | Time cant be under 1 Min!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`))
               } else {
                 finished_time = ms(toWinItem);
               }
             } else {
-              return message.channel.send(client.embederror(`ERROR! | Time got errored, idk why but try it again!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!\nYour time is "${toWinItem}" (If this field is empty. you didnt defined the time!)`));
+              return message.channel.send(client.embederror(`ERROR! | Time got errored, idk why but try it again!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!\nYour time is "${toWinItem}" (If this field is empty. you didnt defined the time!)`));
             }
             
             resolve()

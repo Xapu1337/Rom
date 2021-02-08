@@ -20,8 +20,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
+      <change afterPath="$PROJECT_DIR$/utils/y.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/dice.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/moderation/kick.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/queue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/server-actions/giveaway.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -188,21 +198,7 @@
       <workItem from="1612085234243" duration="3881000" />
       <workItem from="1612201186087" duration="606000" />
       <workItem from="1612733718178" duration="1552000" />
-      <workItem from="1612777260671" duration="2358000" />
-    </task>
-    <task id="LOCAL-00109" summary="Initial commit">
-      <created>1610348459384</created>
-      <option name="number" value="00109" />
-      <option name="presentableId" value="LOCAL-00109" />
-      <option name="project" value="LOCAL" />
-      <updated>1610348459384</updated>
-    </task>
-    <task id="LOCAL-00110" summary="Initial commit">
-      <created>1610348522022</created>
-      <option name="number" value="00110" />
-      <option name="presentableId" value="LOCAL-00110" />
-      <option name="project" value="LOCAL" />
-      <updated>1610348522022</updated>
+      <workItem from="1612777260671" duration="10713000" />
     </task>
     <task id="LOCAL-00111" summary="Initial commit">
       <created>1610349270861</created>
@@ -533,7 +529,21 @@
       <option name="project" value="LOCAL" />
       <updated>1612778367077</updated>
     </task>
-    <option name="localTasksCounter" value="158" />
+    <task id="LOCAL-00158" summary="Initial commit">
+      <created>1612780197639</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1612780197639</updated>
+    </task>
+    <task id="LOCAL-00159" summary="Initial commit">
+      <created>1612782715305</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1612782715305</updated>
+    </task>
+    <option name="localTasksCounter" value="160" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

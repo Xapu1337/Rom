@@ -17,7 +17,7 @@ module.exports = {
                 .setColor(await client.getColorFromUserId(message.member))
                 .setFooter(`A request from: ${message.author.username}`)
                 .setTimestamp()
-                .setThumbnail(message.author.displayAvatarURL())
+                .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
                 .setDescription(ql.length >= 2048 ? "Splitting into fields..." : ql);
             if(ql.length >= 2048){
                 let qql = ql.convertStringToArray(1024);

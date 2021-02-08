@@ -10,6 +10,8 @@ module.exports = {
     run: async(client, message, args) => {
         const getQueueEmbed = async () => {
             let queue = await client.player.getQueue(message.guild.id);
+            if(!queue)
+                return "Current queue is empty";
             let ql = (queue.songs.map((song, i) => {
                 return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.name}\`${song.author.name ?  ` | \`${song.author.name}\`` : ""}`
             })).join("\n");
@@ -17,7 +19,7 @@ module.exports = {
                 .setColor(await client.getColorFromUserId(message.member))
                 .setFooter(`A request from: ${message.author.username}`)
                 .setTimestamp()
-                .setThumbnail(message.author.displayAvatarURL())
+                .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
                 .setDescription(ql.length >= 2048 ? "Splitting into fields..." : ql);
             if(ql.length >= 2048){
                 let qql = ql.convertStringToArray(1024);
@@ -27,10 +29,6 @@ module.exports = {
             }
             return embed;
         };
-        if(client.player.isPlaying(message)){
-            message.channel.send("\`Sending queue...\`").then(async value => value.channel.send(await getQueueEmbed()));
-        } else {
-            message.reply("Currently there is nothing playing.")
-        }
+        await message.channel.send(await getQueueEmbed());
     }
 }

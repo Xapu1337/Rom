@@ -33,7 +33,7 @@ module.exports = {
                 .then(m => m.delete({timeout: 5000}));
         }
 
-        const toKick = message.mentions.members.first() || message.guild.members.get(args[0]);
+        const toKick = client.extendedMemberSearch(message, args, 0);
 
         // No member found
         if (!toKick) {
@@ -55,8 +55,8 @@ module.exports = {
 
         const embed = new MessageEmbed()
             .setColor("#ff0000")
-            .setThumbnail(toKick.user.displayAvatarURL())
-            .setFooter(message.member.displayName, message.author.displayAvatarURL())
+            .setThumbnail(toKick.user.displayAvatarURL({dynamic: true}))
+            .setFooter(message.member.displayName, message.author.displayAvatarURL({dynamic: true}))
             .setTimestamp()
             .setDescription(stripIndents `**> Kicked member:** ${toKick} (${toKick.id})
             **> Kicked by:** ${message.member} (${message.member.id})

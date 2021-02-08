@@ -16,7 +16,7 @@ module.exports = {
                 .setColor(await client.getColorFromUserId(message.member))
                 .setFooter(`An request from: ${message.author.username}`)
                 .setTimestamp()
-                .setThumbnail(message.author.displayAvatarURL())
+                .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
                 .addField(`Current queue: `, (queue.songs.map((song, i) => {
                     return `${i === 0 ? 'Now Playing' : `#${i+1}`} - [${song.name}](${song.url}) | \`${song.author.name}\``
                 }).join('\n')));

@@ -39,7 +39,7 @@ module.exports = {
         }
         let mutetime = args[1];
         if(!mutetime) return message.reply(`You didn't specify a time!`);
-        if(isNaN(ms(mutetime))) return message.reply(client.embederror(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL(), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
+        if(isNaN(ms(mutetime))) return message.reply(client.embederror(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
         await(tomute.roles.add(muterole.id));
         message.reply(`<@${tomute.id}> has been muted for ${pms(ms(mutetime), {verbose: true})}`).then(m => m.delete({timeout: 5000}));
 

@@ -19,8 +19,8 @@ module.exports = {
             const duration = moment.duration(client.uptime).format(" D [days], H [hrs], m [mins], s [secs]");
             let statsEmbed = new MessageEmbed()
                 .setColor("#a100b8")
-                .setAuthor(client.user.username, client.user.displayAvatarURL())
-                .setFooter(`Requested from: ${message.author.username}`, message.author.displayAvatarURL())
+                .setAuthor(client.user.username, client.user.displayAvatarURL({dynamic: true}))
+                .setFooter(`Requested from: ${message.author.username}`, message.author.displayAvatarURL({dynamic: true}))
                 .addField(`╭╼╼╼╼╼╼╯ BOT STATS ╰╼╼╼╼╼╼╮`, client.charList.EMPTY)
                 .addField("• Uptime", `${duration}`, true)
                 ///.addField(`• Runned commands`,`${results[0].commands_runcount}`, true) // bot commands send

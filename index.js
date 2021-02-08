@@ -1,6 +1,6 @@
 const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
-const { Utils } = require("./utils/utils");
+const { getMember } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
@@ -36,7 +36,6 @@ client.betterCategoryNames = betterCatNames;
 Public vars. accesable via Client.
  */
 
-client.utils = Utils;
 
 
 
@@ -57,7 +56,7 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    return message.mentions.members.first() || message.guild.members.cache.get(args[argsIndex]);
+    return getMember(message, args[argsIndex]);
 }
 
 client.getColorFromUserId = async function (user){
@@ -147,7 +146,7 @@ client.deleteWarning = async function (message, id){
         .setColor("RED")
         .setTitle("Success! ✅")
         .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
-        .setThumbnail(message.author.displayAvatarURL())
+        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
     ).then(m => m.delete({timeout: 6500}));
 };
 

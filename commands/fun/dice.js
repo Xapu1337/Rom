@@ -13,7 +13,7 @@ module.exports = {
     let dice = new MessageEmbed()
     .setTimestamp()
     .setColor(await client.getColorFromUserId(message.author))
-    .setFooter(message.author.username, message.author.displayAvatarURL())
+    .setFooter(message.author.username, message.author.displayAvatarURL({dynamic: true}))
     .setDescription(`🎲 | Your random dice is: ${nanoid()}`)
     message.channel.send(dice);
   }
