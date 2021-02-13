@@ -20,18 +20,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/utils/y.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/asciiart.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/eval.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/eval.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/cat.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/cat.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/chatbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/chatbot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/fun/dice.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dice.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/dog.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dog.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/duck.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/duck.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/fox.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/fox.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/fun/roast.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/roast.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/information/corona.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/corona.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/moderation/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/moderation/kick.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/music-commands/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/queue.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/music-commands/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/stop.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/stop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/server-actions/giveaway.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/y.js" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,6 +67,14 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
@@ -84,7 +107,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.20" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Desktop/Homework/Presences" />
+    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/conrad" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\203.7148.54\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
@@ -199,6 +222,13 @@
       <workItem from="1612201186087" duration="606000" />
       <workItem from="1612733718178" duration="1552000" />
       <workItem from="1612777260671" duration="10713000" />
+      <workItem from="1612860039625" duration="3892000" />
+      <workItem from="1612901502897" duration="368000" />
+      <workItem from="1612933502722" duration="766000" />
+      <workItem from="1613228488458" duration="2554000" />
+      <workItem from="1613240781741" duration="5437000" />
+      <workItem from="1613247177952" duration="1608000" />
+      <workItem from="1613249781776" duration="755000" />
     </task>
     <task id="LOCAL-00111" summary="Initial commit">
       <created>1610349270861</created>

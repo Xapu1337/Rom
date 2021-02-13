@@ -11,16 +11,14 @@ const snowModule = require("snowflake-api").Client;
 const snowClient = new snowModule("MTg4OTg4NDU1NTU0OTA4MTYw.MTYwOTY4NTA1NTYwNQ==.bd278b074d53f1f324f6fe9a8f842993");
 const nano  = require("nanoid");
 //const { Player, Util } = require("discord-music-player");
-const { Player, PUtils } = require("discord-music-player");
+const { Player } = require("discord-player");
 const player = new Player(client, {
     leaveOnEnd: true,
     leaveOnStop: true,
     leaveOnEmpty: true,
-    volume: 25,
-    timeout: 300
+    leaveOnEndCooldown: 15 * 60,
+    autoSelfDeaf: true
 });
-client.player = player;
-client.player.utilsModule = PUtils;
 client.snowapi = snowClient;
 const betterCatNames = new Map();
 betterCatNames.set("botrelated-informations", "🤖 - Bot information");
@@ -35,6 +33,89 @@ client.betterCategoryNames = betterCatNames;
 /*
 Public vars. accesable via Client.
  */
+let searchMessage;
+client.getQueueEmbed = async (message) => {
+        let queue = await client.player.getQueue(message);
+        let ql = (queue.tracks.map((song, i) => {
+            return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.title}\`${song.author ?  ` | \`${song.author}\`` : ""} (${song.duration})`
+        })).join("\n");
+        let embed = new MessageEmbed()
+            .setColor(await client.getColorFromUserId(message.member))
+            .setFooter(`A request from: ${message.author.username}`)
+            .setTimestamp()
+            .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
+            .setDescription(ql.length >= 2048 ? "Splitting into fields..." : ql);
+        if(ql.length >= 2048){
+            let qql = ql.convertStringToArray(1024);
+            qql.forEach(i => {
+                embed.addField(client.charList.EMPTY, i);
+            });
+        }
+        return embed;
+};
+
+let searchTrys = 0;
+client.player = player
+.on("error", async (err, message) => {
+   await message.reply("Something went wrong. Try it again");
+   console.log(err);
+   await client.logError(message, "Player error not resolved.", err);
+})
+.on("noResults", async (message, search) => {
+    await message.channel.send(`Nothing was found for ${search}`);
+})
+.on('searchResults', async(message, query, tracks) => {
+    const embed = new MessageEmbed()
+        .setAuthor(`Here are your search results for ${query}!`)
+        .setDescription(tracks.map((t, i) =>
+            `\`#${i+1}\` - ${t.title} ${t.author ? ` | \`${t.author}\`` : ""} (${t.duration})`
+        ))
+        .setFooter('Send the number of the song you want to play!')
+        .setColor(await client.getColorFromUserId(message.author))
+    searchMessage = await message.channel.send(embed);
+
+})
+.on('searchInvalidResponse', async(message, query, tracks, content, collector) => {
+    if (content.toLowerCase() === 'cancel') {
+        await searchMessage.delete();
+        return message.channel.send('Search cancelled!')
+    }
+
+    if(searchTrys > 2){
+        await message.channel.send("Search failed 3 times, Aborting current search...").then(value => {
+            collector.stop();
+        });
+        await searchMessage.delete();
+        return;
+    }
+
+    await message.channel.send(`Please provide a number between 1 and ${tracks.length}! try ${searchTrys + 1} / 3`);
+    searchTrys += 1;
+
+})
+.on('searchCancel', async(message, query, tracks) => {
+    await message.channel.send('Response is not valid, canceling...');
+    await searchMessage.delete();
+})
+.on('noResults', (message, query) => message.channel.send(`No results found on YouTube for ${query}!`))
+    .on('error', async(error, message) => {
+        switch(error){
+            case 'NotPlaying':
+                await message.channel.send('There is no music being played on this server!')
+                break;
+            case 'NotConnected':
+                await message.channel.send('You are not connected in any voice channel!')
+                break;
+            case 'UnableToJoin':
+                await message.channel.send('I am not able to join your voice channel, please check my permissions!')
+                break;
+            case 'LiveVideo':
+                await message.channel.send('YouTube lives are not supported!')
+                break;
+            default:
+                await message.channel.send(`Something went wrong... Error: ${error}`)
+        }
+    });
 
 
 

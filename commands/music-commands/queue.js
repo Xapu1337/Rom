@@ -9,13 +9,13 @@ module.exports = {
     permissions: "EVERYONE",
     run: async(client, message, args) => {
         const getQueueEmbed = async () => {
-            let queue = await client.player.getQueue(message.guild.id);
+            let queue = await client.player.getQueue(message);
             if(!queue)
                 return "Current queue is empty";
-            let ql = (queue.songs.map((song, i) => {
-                return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.name}\`${song.author.name ?  ` | \`${song.author.name}\`` : ""}`
+            let ql = (queue.tracks.map((song, i) => {
+                return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.title}\`${song.author ?  ` | \`${song.author}\`` : ""} (${song.duration})`
             })).join("\n");
-            let embed =  new MessageEmbed()
+            let embed = new MessageEmbed()
                 .setColor(await client.getColorFromUserId(message.member))
                 .setFooter(`A request from: ${message.author.username}`)
                 .setTimestamp()
