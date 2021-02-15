@@ -217,11 +217,12 @@ client.addWarning = async function (message, user, reason){
 client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(message.guild.id);
     let filteredWarn = req.warnings.filter(i => i.warnID === id);
+    await message.reply(JSON.stringify(filteredWarn));
     if(filteredWarn.length < 0) {
         message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
         return;
     }
-    req.warnings = req.warnings.filter(i => i.id !== id);
+    req.warnings = req.warnings.filter(i => i.warnID !== id);
     req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
