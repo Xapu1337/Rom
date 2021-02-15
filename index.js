@@ -216,8 +216,9 @@ client.addWarning = async function (message, user, reason){
 
 client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(message.guild.id);
-    let filteredWarn = await req.warnings.filter(i => i.warnID === id);
-    if(filteredWarn.length < 0) {
+    let filteredWarn = req.warnings.filter(i => i.warnID === id);
+    message.reply(filteredWarn);
+    if(!filteredWarn.id) {
         message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
         return;
     }
