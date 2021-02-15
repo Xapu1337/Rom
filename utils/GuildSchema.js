@@ -27,7 +27,7 @@ const Guild = Schema({
     },
     warnings: [
         {
-            id: String,
+            warnID: String,
             reason: String,
             userID: String,
             creatorID: String,

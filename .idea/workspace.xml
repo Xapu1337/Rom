@@ -21,32 +21,9 @@
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/asciiart.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/awaitmsg.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/eval.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/eval.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/restartbot.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/cat.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/cat.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/chatbot.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/chatbot.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/dice.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dice.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/dog.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/dog.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/duck.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/duck.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/fox.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/fox.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/fun/roast.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/fun/roast.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/information/corona.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/corona.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/kick.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/queue.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/music-commands/stop.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/stop.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/server-actions/giveaway.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/y.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/GuildSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/GuildSchema.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -229,13 +206,8 @@
       <workItem from="1613240781741" duration="5437000" />
       <workItem from="1613247177952" duration="1608000" />
       <workItem from="1613249781776" duration="755000" />
-    </task>
-    <task id="LOCAL-00111" summary="Initial commit">
-      <created>1610349270861</created>
-      <option name="number" value="00111" />
-      <option name="presentableId" value="LOCAL-00111" />
-      <option name="project" value="LOCAL" />
-      <updated>1610349270861</updated>
+      <workItem from="1613256981865" duration="1355000" />
+      <workItem from="1613373739055" duration="621000" />
     </task>
     <task id="LOCAL-00112" summary="Initial commit">
       <created>1610359722581</created>
@@ -573,7 +545,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612782715305</updated>
     </task>
-    <option name="localTasksCounter" value="160" />
+    <task id="LOCAL-00160" summary="Initial commit">
+      <created>1613257102718</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1613257102718</updated>
+    </task>
+    <option name="localTasksCounter" value="161" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

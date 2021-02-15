@@ -201,7 +201,7 @@ client.addWarning = async function (message, user, reason){
     // Cursed way of getting an id. this is actually shit but i don't care and it is kinda unique... i guess.
     const req = await client.getGuildDB(message.guild.id);
     // GET THAT FUCKING MONGODB
-    req.warnings.push({reason: reason, userID: await user.id, id: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
+    req.warnings.push({reason: reason, userID: await user.id, warnID: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     // CUKA PUSHING THE ARRAY HARDER THEN THE T-28 THE .308 ANTI TANK ARMOR BULLETS
     req.save();
     // What my parents should do before i were born, make an save game.
@@ -216,7 +216,7 @@ client.addWarning = async function (message, user, reason){
 
 client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(message.guild.id);
-    let filteredWarn = req.warnings.filter(i => i.id === id);
+    let filteredWarn = req.warnings.filter(i => i.warnID === id);
     if(filteredWarn.length < 0) {
         message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
         return;
