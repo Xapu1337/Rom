@@ -216,8 +216,7 @@ client.addWarning = async function (message, user, reason){
 
 client.deleteWarning = async function (message, id){
     const req = await client.getGuildDB(message.guild.id);
-    let filteredWarn = req.warnings.filter(i => i.warnID === id);
-    await message.reply(JSON.stringify(filteredWarn));
+    let filteredWarn = await req.warnings.filter(i => i.warnID === id);
     if(filteredWarn.length < 0) {
         message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
         return;
@@ -227,7 +226,7 @@ client.deleteWarning = async function (message, id){
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${filteredWarn.reason})`)
+        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${await req.warnings.filter(i => i.warnID === id).reason})`)
         .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
     ).then(m => m.delete({timeout: 6500}));
 };
