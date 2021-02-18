@@ -369,6 +369,95 @@ client.on("error", e => {
 client.on("warn", e => {
     console.log(e);
 });
+client.on('raw', async packet => {
+
+    // We don't want this to run on unrelated packets
+    if (!['MESSAGE_REACTION_ADD', 'MESSAGE_REACTION_REMOVE'].includes(packet.t)) return;
+    // Grab the channel to check the message from
+    const channel = client.channels.cache.get(packet.d.channel_id);
+    // There's no need to emit if the message is cached, because the event will fire anyway for that
+    if (channel.messages.cache.has(packet.d.message_id)) return;
+
+    // Since we have confirmed the message is not cached, let's fetch it
+    const message =
+        channel.messages.cache.get(packet.d.message_id) ||
+        (await channel.messages.fetch(packet.d.message_id));
+
+        // Emojis can have identifiers of name:id format, so we have to account for that case as well
+        const emoji = packet.d.emoji.id ? packet.d.emoji.id : packet.d.emoji.name; // ${packet.d.emoji.name}:
+
+        // This gives us the reaction we need to emit the event properly, in top of the message object
+        const reaction = await message.reactions.cache.get(emoji);
+        // // Adds the currently reacting user to the reaction's users collection.
+        // if (reaction) reaction.users.cache.set(packet.d.user_id, client.users.cache.get(packet.d.user_id));
+        // Check which type of event it is before emitting
+        if (packet.t === 'MESSAGE_REACTION_ADD') {
+            client.emit('messageReactionAdd', reaction, client.users.cache.get(packet.d.user_id));
+        }
+        if (packet.t === 'MESSAGE_REACTION_REMOVE') {
+            client.emit('messageReactionRemove', reaction, client.users.cache.get(packet.d.user_id));
+        }
+});
+
+
+client.on('messageReactionAdd', async (reaction, user)=>{
+    if(reaction.message.partial)
+        await reaction.message.fetch()
+    if(user.bot) return;
+
+
+    let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
+
+    let req = await client.getGuildDB(reaction.message.guild.id);
+
+    if(req){
+        let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
+        if(role === [] || !role || !role[0]) return;
+        let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
+        if(!((await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return; // permission check.
+        if(!reaction.message.member.roles.cache.has(role[0].roleID))
+            await member.roles.add(role[0].roleID);
+    }
+
+    // con.query(`SELECT roleid FROM reactrole WHERE emoid = '${emote}' AND messageid = '${reaction.message.id}'`, (err, rows)=>{
+    //     if(err) throw err;
+    //     if(rows.length>0){
+    //         rolID = rows[0].roleid
+    //         var role = reaction.message.guild.roles.cache.find(role=>role.id===rolID);
+    //         var member = reaction.message.guild.members.cache.find(member=> member.id=== user.id)
+    //         member.roles.add(role);
+    //     }
+    // });
+});
+
+client.on('messageReactionRemove', async (reaction, user)=>{
+    if(reaction.message.partial)
+        await reaction.message.fetch()
+
+    if(user.bot) return;
+    let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
+    let req = await client.getGuildDB(reaction.message.guild.id);
+
+    if(req){
+        let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
+        if(role === [] || !role || !role[0]) return;
+        let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
+
+        if(!((await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return;
+        if(reaction.message.member.roles.cache.has(role[0].roleID))
+            await member.roles.remove(role[0].roleID);
+    }
+    // con.query(`SELECT roleid FROM reactrole WHERE emoid = '${emote}' AND messageid = '${reaction.message.id}'`, (err, rows)=>{
+    //     if(err) throw err;
+    //     if(rows.length>0){
+    //         rolID = rows[0].roleid
+    //         var role = reaction.message.guild.roles.cache.find(role=>role.id===rolID);
+    //         var member = reaction.message.guild.members.cache.find(member=> member.id=== user.id)
+    //         member.roles.remove(role);
+    //     }
+    // })
+})
+
 
 process.on('unhandledRejection', (e) => {
     client.logError(null, "unhandledRejection", e);
@@ -383,6 +472,9 @@ process.on('uncaughtException', (e) => {
     });
     process.exit(1);
 });
+
+
+
 
 
 (async () => {

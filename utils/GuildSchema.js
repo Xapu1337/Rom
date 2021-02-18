@@ -36,6 +36,25 @@ const Guild = Schema({
             }
         }
     ],
+    suggestions: [
+        {
+            messageID: String,
+            message: String,
+            userID: String,
+            replied: Boolean,
+            reply: String,
+            replyedFrom: String,
+        }
+    ],
+    reactionRoles: [
+        {
+            messageID: {
+                type: String,
+            },
+            roleID: String,
+            emoteID: String,
+        }
+    ],
     registeredAt: { type: Number, default: Date.now() }
 
 });

@@ -7,7 +7,7 @@ module.exports = {
     category: "dev-commands",
     description: "Can't tell u",
     usage: "eval <args>",
-    permissions: "DEVS",
+    permissions: "AUTHOR",
     run: async(client, message, args) => {
 
         try {
