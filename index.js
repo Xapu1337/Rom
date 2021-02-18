@@ -414,7 +414,7 @@ client.on('messageReactionAdd', async (reaction, user)=>{
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
         if(role === [] || !role || !role[0]) return;
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
-        if(!((await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return; // permission check.
+        if(!(await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES")) return; // permission check.
         if(!reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.add(role[0].roleID);
     }
@@ -443,7 +443,7 @@ client.on('messageReactionRemove', async (reaction, user)=>{
         if(role === [] || !role || !role[0]) return;
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
 
-        if(!((await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return;
+        if(!(await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES")) return; // permission check.
         if(reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.remove(role[0].roleID);
     }
