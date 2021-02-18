@@ -433,20 +433,22 @@ client.on('messageReactionAdd', async (reaction, user)=>{
 client.on('messageReactionRemove', async (reaction, user)=>{
     if(reaction.message.partial)
         await reaction.message.fetch()
-
     if(user.bot) return;
+
+
     let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
+
     let req = await client.getGuildDB(reaction.message.guild.id);
 
     if(req){
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
         if(role === [] || !role || !role[0]) return;
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
-
         if(!(await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES")) return; // permission check.
-        if(reaction.message.member.roles.cache.has(role[0].roleID))
+        if(!reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.remove(role[0].roleID);
     }
+
     // con.query(`SELECT roleid FROM reactrole WHERE emoid = '${emote}' AND messageid = '${reaction.message.id}'`, (err, rows)=>{
     //     if(err) throw err;
     //     if(rows.length>0){
