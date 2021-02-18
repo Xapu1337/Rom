@@ -11,7 +11,7 @@ module.exports = {
     run: async(client, message, args) => {
 
 
-        if(!((await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return message.reply("I Don't have the permissions to edit the role.");
+        if(!((await message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return message.reply("I Don't have the permissions to edit the role.");
         await message.channel.send("Enter the message ID.");
         let answer = await message.channel.awaitMessages(answer => answer.author.id === message.author.id,{max:1})
         let msgID = (answer.map(answers=>answers.content).join())
