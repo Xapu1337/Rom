@@ -10,8 +10,7 @@ module.exports = {
     permissions: "AUTHOR",
     run: async(client, message, args) => {
 
-
-        if(!((await message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES"))) return message.reply("I Don't have the permissions to give the role.");
+        if(!message.guild.me.hasPermission("MANAGE_ROLES")) return message.reply("I Don't have the permissions to give / remove roles.");
 
         await message.channel.send("Enter the message ID.");
         let answer = await message.channel.awaitMessages(answer => answer.author.id === message.author.id,{max:1})

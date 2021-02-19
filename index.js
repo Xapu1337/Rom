@@ -3,7 +3,7 @@ const GuildModel = require("./utils/GuildSchema");
 const { getMember } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
-const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, disableMentions: "everyone"});
+const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER"], disableMentions: "everyone"});
 const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
@@ -404,7 +404,7 @@ client.on('messageReactionAdd', async (reaction, user)=>{
     if(reaction.message.partial)
         await reaction.message.fetch()
     if(user.bot) return;
-
+    if(!reaction.message.guild.me.hasPermission("MANAGE_ROLES")) return; // permission check.
 
     let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
 
@@ -414,7 +414,6 @@ client.on('messageReactionAdd', async (reaction, user)=>{
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
         if(role === [] || !role || !role[0]) return;
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
-        if(!(await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES")) return; // permission check.
         if(!reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.add(role[0].roleID);
     }
@@ -434,6 +433,7 @@ client.on('messageReactionRemove', async (reaction, user)=>{
     if(reaction.message.partial)
         await reaction.message.fetch()
     if(user.bot) return;
+    if(!reaction.message.guild.me.hasPermission("MANAGE_ROLES")) return; // permission check.
 
 
     let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
@@ -444,7 +444,6 @@ client.on('messageReactionRemove', async (reaction, user)=>{
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
         if(role === [] || !role || !role[0]) return;
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
-        if(!(await reaction.message.guild.members.fetch(client.user.id)).hasPermission("MANAGE_ROLES")) return; // permission check.
         if(!reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.remove(role[0].roleID);
     }
