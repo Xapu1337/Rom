@@ -417,16 +417,6 @@ client.on('messageReactionAdd', async (reaction, user)=>{
         // if(!reaction.message.member.roles.cache.has(role[0].roleID))
             await member.roles.add(role[0].roleID);
     }
-
-    // con.query(`SELECT roleid FROM reactrole WHERE emoid = '${emote}' AND messageid = '${reaction.message.id}'`, (err, rows)=>{
-    //     if(err) throw err;
-    //     if(rows.length>0){
-    //         rolID = rows[0].roleid
-    //         var role = reaction.message.guild.roles.cache.find(role=>role.id===rolID);
-    //         var member = reaction.message.guild.members.cache.find(member=> member.id=== user.id)
-    //         member.roles.add(role);
-    //     }
-    // });
 });
 
 client.on('messageReactionRemove', async (reaction, user)=>{
@@ -446,16 +436,6 @@ client.on('messageReactionRemove', async (reaction, user)=>{
         let member = reaction.message.guild.members.cache.find(value => value.id === user.id);
             await member.roles.remove(role[0].roleID);
     }
-
-    // con.query(`SELECT roleid FROM reactrole WHERE emoid = '${emote}' AND messageid = '${reaction.message.id}'`, (err, rows)=>{
-    //     if(err) throw err;
-    //     if(rows.length>0){
-    //         rolID = rows[0].roleid
-    //         var role = reaction.message.guild.roles.cache.find(role=>role.id===rolID);
-    //         var member = reaction.message.guild.members.cache.find(member=> member.id=== user.id)
-    //         member.roles.remove(role);
-    //     }
-    // })
 })
 
 

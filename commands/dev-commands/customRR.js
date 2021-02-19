@@ -28,11 +28,7 @@ module.exports = {
         emoid = emoid.split(':')
         emoid = emoid[2] ? emoid[2] : emoid[1];
 
-
-        await message.react(emoid ? emoid : emoji)
         message.channel.messages.fetch({around: msgID, limit: 1}).then(async msg => {
-            message.reply(msg.first().content);
-            message.reply(msg.first().id);
             await msg.first().react(emoid ? emoid : emoji);
 
 
