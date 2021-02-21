@@ -45,9 +45,12 @@ module.exports = {
         amount = Number(amount); // else its a string.
         if(!req || !userID)
             return;
+
         let userAcc = await req.eco.filter(value => value.userID === userID);
-        if(!userAcc[0] || userAcc === [] || !userAcc)
-            await req.eco.push({userID, money: 0});
+        if (!userAcc || userAcc === [] || userAcc.length < 0 || !userAcc[0]) {
+            req.eco.push({userID, money: 0});
+            req.save();
+        }
 
         switch(operator){
             case "+":
