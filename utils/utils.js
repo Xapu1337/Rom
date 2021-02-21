@@ -46,31 +46,31 @@ module.exports = {
         if(!req || !userID)
             return;
         let userAcc = await req.eco.filter(value => value.userID === userID);
-        if(!userAcc[0])
+        if(!userAcc[0] || userAcc === [] || !userAcc)
             await req.eco.push({userID, money: 0});
         console.log(userAcc)
 
         switch(operator){
             case "+":
-                userAcc[0].money = userAcc[0].money + amount;
+                userAcc[0].money += amount;
                 break;
             case "-":
-                userAcc[0].money = userAcc[0].money - amount;
+                userAcc[0].money -= amount;
                 break;
             case "/":
-                userAcc[0].money = userAcc[0].money / amount;
+                userAcc[0].money /= amount;
                 break;
             case "*":
-                userAcc[0].money = userAcc[0].money * amount;
+                userAcc[0].money *= amount;
                 break;
             case "^":
-                userAcc[0].money = userAcc[0].money ^ amount;
+                userAcc[0].money ^= amount;
                 break;
             case "=":
                 userAcc[0].money = amount;
                 break;
             case "%":
-                userAcc[0].money = userAcc[0].money % amount;
+                userAcc[0].money %= amount;
                 break;
             default:
                 console.log("Fucker forget the operator in the eco math function.");

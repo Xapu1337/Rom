@@ -20,13 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change afterPath="$PROJECT_DIR$/commands/dev-commands/ecoDebug.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/commands/nsfw/r34.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/warningtest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/kick.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/GuildSchema.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/GuildSchema.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -216,14 +210,7 @@
       <workItem from="1613600158651" duration="5356000" />
       <workItem from="1613631414091" duration="9247000" />
       <workItem from="1613714736104" duration="2371000" />
-      <workItem from="1613823242658" duration="19060000" />
-    </task>
-    <task id="LOCAL-00123" summary="Initial commit">
-      <created>1611228459816</created>
-      <option name="number" value="00123" />
-      <option name="presentableId" value="LOCAL-00123" />
-      <option name="project" value="LOCAL" />
-      <updated>1611228459816</updated>
+      <workItem from="1613823242658" duration="19564000" />
     </task>
     <task id="LOCAL-00124" summary="Initial commit">
       <created>1611228850767</created>
@@ -561,7 +548,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613721943604</updated>
     </task>
-    <option name="localTasksCounter" value="172" />
+    <task id="LOCAL-00172" summary="Initial commit">
+      <created>1613871371211</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1613871371213</updated>
+    </task>
+    <option name="localTasksCounter" value="173" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -601,8 +595,8 @@
     <MESSAGE value="6" />
     <MESSAGE value="YES" />
     <MESSAGE value="master" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="yeet" />
-    <option name="LAST_COMMIT_MESSAGE" value="yeet" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
