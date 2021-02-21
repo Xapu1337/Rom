@@ -48,7 +48,6 @@ module.exports = {
         let userAcc = await req.eco.filter(value => value.userID === userID);
         if(!userAcc[0] || userAcc === [] || !userAcc)
             await req.eco.push({userID, money: 0});
-        console.log(userAcc)
 
         switch(operator){
             case "+":
