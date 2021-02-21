@@ -1,12 +1,12 @@
 const {MessageEmbed} = require("discord.js");
-
-
+const guildSchema = require("../utils/GuildSchema")
 module.exports = {
     getMember: function(message, toFind = '') {
         toFind = toFind.toLowerCase();
         let target = message.guild.members.cache.get(toFind);
         if (!target && message.mentions.members)
             target = message.mentions.members.first();
+
         if (!target && toFind) {
             target = message.guild.members.cache.find(member => {
                 return member.displayName.toLowerCase().includes(toFind) ||
@@ -14,7 +14,7 @@ module.exports = {
             });
         }
         if (!target)
-            target = message.member;
+            target = "NOT_FOUND";
 
         return target;
     },
@@ -38,6 +38,67 @@ module.exports = {
 
     formatDate: function(date) {
         return new Intl.DateTimeFormat('en-US').format(date)
+    },
+
+    ecoMathAcc: async function (client, guildID, userID, amount, operator){
+        let req = await client.getGuildDB(guildID);
+        amount = Number(amount); // else its a string.
+        if(!req || !userID)
+            return;
+        let userAcc = await req.eco.filter(value => value.userID === userID);
+        if(!userAcc[0])
+            await req.eco.push({userID, money: 0});
+        console.log(userAcc)
+
+        switch(operator){
+            case "+":
+                userAcc[0].money = userAcc[0].money + amount;
+                break;
+            case "-":
+                userAcc[0].money = userAcc[0].money - amount;
+                break;
+            case "/":
+                userAcc[0].money = userAcc[0].money / amount;
+                break;
+            case "*":
+                userAcc[0].money = userAcc[0].money * amount;
+                break;
+            case "^":
+                userAcc[0].money = userAcc[0].money ^ amount;
+                break;
+            case "=":
+                userAcc[0].money = amount;
+                break;
+            case "%":
+                userAcc[0].money = userAcc[0].money % amount;
+                break;
+            default:
+                console.log("Fucker forget the operator in the eco math function.");
+                break;
+        }
+        // console.log(req.eco);
+        // console.log(userAcc.money);
+        // guildSchema.updateOne({'eco.userId': 2}, {'$set': {
+        //         'eco.$.money': userAcc.money,
+        //     }
+        // });
+        // console.log(req.eco);
+        await req.save();
+    },
+
+    getEcoAcc: async function (client, guildID, userID){
+        let req = await client.getGuildDB(guildID);
+        let userEco = await req.eco.filter(value => value.userID === userID);
+        if(!req || !userID){
+            return;
+        }
+        if (!userEco || userEco === [] || userEco.length < 0 || !userEco[0]) {
+            let b = req.eco.push({userID, money: 0});
+            req.save();
+            return b;
+        } else {
+            return req.eco.filter(value => value.userID === userID);
+        }
     },
 
     promptMessage: async function(message, author, time, validReactions) {

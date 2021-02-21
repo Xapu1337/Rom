@@ -1,8 +1,8 @@
 const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
-const { getMember } = require("./utils/utils");
+const { getMember, ecoMathAcc, getEcoAcc } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember} = require("discord.js");
+const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember, Message} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER"], disableMentions: "everyone"});
 const fs = require("fs");
 const colors = require("colors");
@@ -28,7 +28,10 @@ betterCatNames.set("moderation", "🛡 - Moderation");
 betterCatNames.set("music-commands", "🎵 - Music Commands");
 betterCatNames.set("server-actions", "💻 - Server Actions");
 client.betterCategoryNames = betterCatNames;
-
+client.ECO = {
+    getEcoAcc,
+    ecoMathAcc
+};
 
 /*
 Public vars. accesable via Client.
@@ -137,19 +140,31 @@ client.charList = {
 }
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
-    return getMember(message, args[argsIndex]);
+    let user = await getMember(message, args[argsIndex])
+    if (user === "NOT_FOUND") {
+        message.reply("This user was not found.");
+
+    } else {
+
+        return user;
+    }
 }
 
 client.getColorFromUserId = async function (user){
-        //let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
-        let userHex;
-        await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).then(value => {
-            userHex = value[Math.randomBetween(0, value.length-1)]._rgb;
-        });
-        if(userHex === null || userHex === undefined){
-            return "#f0f0f0";
+        if(!user || user.isPrototypeOf(Message) || user.content)
+            return;
+    //let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
+        if(user) {
+            let userHex;
+            await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).then(value => {
+                userHex = value[Math.randomBetween(0, value.length - 1)]._rgb;
+            });
+            if (userHex === null || userHex === undefined) {
+                return "#f0f0f0";
+            }
+            return userHex
         }
-        return userHex
+
 }
 
 client.getGuildDB = async function (gID){
@@ -303,7 +318,6 @@ client.on("message", async message => {
     if (!prefixRegex.test(message.content)) return;
 
     const [, matchedPrefix] = message.content.match(prefixRegex);
-
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();

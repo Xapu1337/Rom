@@ -34,6 +34,8 @@ module.exports = {
         }
 
         const toKick = client.extendedMemberSearch(message, args, 0);
+        if(!toKick)
+            return;
 
         // No member found
         if (!toKick) {

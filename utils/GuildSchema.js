@@ -55,6 +55,18 @@ const Guild = Schema({
             emoteID: String,
         }
     ],
+    eco: [
+        {
+            userID: {
+                type: String,
+            },
+            money: {
+                type: Number,
+                default: 0,
+            },
+
+        }
+    ],
     registeredAt: { type: Number, default: Date.now() }
 
 });
