@@ -24,7 +24,7 @@ module.exports = {
                 .then(m => m.delete({timeout: 5000}));
         }
 
-       
+
         // No bot permissions
         if (!message.guild.me.hasPermission("BAN_MEMBERS")) {
             return message.reply("❌ I do not have permissions to ban members.")
@@ -50,7 +50,7 @@ module.exports = {
             return message.reply("I can't ban that person due to role hierarchy, I suppose.")
                 .then(m => m.delete({timeout: 5000}));
         }
-        
+
         const embed = new MessageEmbed()
             .setColor("#e50b0b")
             .setThumbnail(toBan.user.displayAvatarURL)

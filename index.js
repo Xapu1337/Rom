@@ -313,7 +313,6 @@ client.on("message", async message => {
     if(!message.guild) return;
     const req = await client.getGuildDB(message.guild.id);
     let prefix = req.prefix;
-
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
 
@@ -432,6 +431,20 @@ client.on('messageReactionAdd', async (reaction, user)=>{
             await member.roles.add(role[0].roleID);
     }
 });
+
+client.ws.on('INTERACTION_CREATE', async interaction => {
+   switch (interaction.data.options[0].name.toLowerCase()) {
+       case "ping":
+           client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+                   type: 4,
+                   data: {
+                       content: `Fucker no ping but here is your id: ${interaction.member.user.id}`
+                   }
+               }
+           })
+           break;
+   }
+})
 
 client.on('messageReactionRemove', async (reaction, user)=>{
     if(reaction.message.partial)

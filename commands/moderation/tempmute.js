@@ -18,20 +18,20 @@ module.exports = {
             try{
                 muterole = await message.guild.roles.create({
                     data: {
-                    name: "muted",
-                    color: "#000000",
-                    permissions: []
+                        name: "muted",
+                        color: "#000000",
+                        permissions: []
                     }
                 })
                 message.guild.channels.cache.forEach(async (channel, id) => {
                     await channel.overwritePermissions([
                         {
-                            
+
                             id: muterole.id,
                             deny: ['SEND_MESSAGES', 'ADD_REACTIONS'],
-                            
+
                         },
-                      ], 'Adding Muted role for the bot.');
+                    ], 'Adding Muted role for the bot.');
                 });
             }catch(e){
                 console.log(e.stack);
@@ -46,5 +46,5 @@ module.exports = {
         setTimeout(function(){
             tomute.roles.remove(muterole.id);
         }, ms(mutetime));
-  }
- }
+    }
+}

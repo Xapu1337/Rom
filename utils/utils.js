@@ -20,11 +20,11 @@ module.exports = {
     },
 
     errorEmbed: function (title, message, discord){
-      return new MessageEmbed
-          .setTitle("Error while executing.")
-          .addField("\u200B", message, true)
-          .setColor("DARK_RED")
-          .setThumbnail("https://cdn.discordapp.com/attachments/673161310145609750/777529948956524544/668146823231307776.png");
+        return new MessageEmbed
+            .setTitle("Error while executing.")
+            .addField("\u200B", message, true)
+            .setColor("DARK_RED")
+            .setThumbnail("https://cdn.discordapp.com/attachments/673161310145609750/777529948956524544/668146823231307776.png");
     },
 
     successEmbed: function (message, discord){

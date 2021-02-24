@@ -25,7 +25,7 @@ module.exports = {
                 .then(m => m.delete({timeout: 5000}));
         }
 
-        
+
 
         // No bot permissions
         if (!message.guild.me.hasPermission("KICK_MEMBERS")) {
