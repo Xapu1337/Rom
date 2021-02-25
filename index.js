@@ -3,7 +3,7 @@ const GuildModel = require("./utils/GuildSchema");
 const { getMember, ecoMathAcc, getEcoAcc } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember, Message} = require("discord.js");
-const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER"], disableMentions: "everyone"});
+const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER", "GUILD_MEMBER"], disableMentions: "everyone"});
 const fs = require("fs");
 const colors = require("colors");
 const fetch = require("node-fetch");
@@ -352,7 +352,6 @@ client.on("message", async message => {
                 command.run(client, message, args);
             }
         } catch (e) {
-            await message.reply(`Something went wrong... this error is logged. try it later again.`);
             await client.logError(message, "Error executing an command...", e);
         }
 
@@ -433,15 +432,181 @@ client.on('messageReactionAdd', async (reaction, user)=>{
 });
 
 client.ws.on('INTERACTION_CREATE', async interaction => {
-   switch (interaction.data.options[0].name.toLowerCase()) {
+
+    let message = new Message(client, interaction, (await client.guilds.fetch(interaction.guild_id)).channels.cache.get(interaction.channel_id));
+    if(message.guild.members.fetch(interaction.member.user.id).partial)
+        await message.guild.members.fetch(interaction.member.user.id).fetch()
+    message.author = (await (await message.guild.members.fetch(interaction.member.user.id)).fetch()).user;
+   switch (interaction.data.name.toLowerCase()) {
        case "ping":
            client.api.interactions(interaction.id, interaction.token).callback.post({data: {
                    type: 4,
                    data: {
-                       content: `Fucker no ping but here is your id: ${interaction.member.user.id}`
+                       content: `F no ping but here is your id: ${interaction.member.user.id}`
                    }
                }
            })
+           break;
+       case "chatbot":
+           if(!interaction.data.options[0])
+               client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+                       type: 3,
+                       data: {
+                           flags: 64,
+                           content: `Please give me an message.`
+                       }
+                   }
+               });
+           else
+           client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+                   type: 4,
+                   data: {
+                       content: await client.snowapi.chatbot({name: "rom", gender: "male", user: interaction.member.user.username, message: interaction.data.options[0].value})
+                   }
+               }
+           })
+           break;
+       case "music":
+           switch (interaction.data.options[0].name) {
+               case "play":
+                   await client.player.play(message, interaction.data.options[0].options[0].value).then(async song => {
+                       try {
+                           await message.channel.send(await client.getQueueEmbed(message));
+                       } catch (e) {
+                           console.log(e);
+                       }
+                   });
+               break;
+               case "stop":
+                   await client.player.stop(message);
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: "✔ | Stopping..."
+                           }
+                       }
+                   });
+                   break;
+               case "pause":
+                   await client.player.pause(message);
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                   data: {
+                       type: 3,
+                       data: {
+                           flags: 64,
+                           content: "✔ | Pausing..."
+                       }
+                    }
+                    });                   break;
+               case "resume":
+                   await client.player.resume(message);
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: "✔ | Resuming..."
+                           }
+                       }
+                   });
+                   break;
+               case "progress":
+                   if(!client.player.isPlaying(message)){
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: "❌ | Nothing is playing..."
+                           }
+                       }
+                   });
+                   break;
+               }
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: await client.player.createProgressBar(message, {timecodes: true})
+                           }
+                       }
+                   });
+                   break;
+               case "queue":
+                   if(!client.player.isPlaying(message)){
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: "❌ | The queue is empty."
+                           }
+                       }
+                   });
+                   break;
+               }
+                    await message.channel.send( await client.getQueueEmbed(message));
+                   break;
+               case "vol":
+                   let vol = Number(interaction.data.options[0].options[0].value);
+                   if(vol > 101 || vol < 0 )
+                       client.api.interactions(interaction.id, interaction.token).callback.post({
+                           data: {
+                               type: 3,
+                               data: {
+                                   flags: 64,
+                                   content: "❌ Please provide an number between 0 and 100."
+                               }
+                           }
+                       });
+                   await client.player.setVolume(message, vol);
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                   data: {
+                       type: 3,
+                       data: {
+                           flags: 64,
+                           content: `Volume got changed to ${vol}`
+                       }
+                   }
+               });
+                   break;
+               case "repeat":
+                   let bool = Boolean(interaction.data.options[0].options[0].value);
+                   await client.player.setRepeatMode(message, bool);
+                   client.api.interactions(interaction.id, interaction.token).callback.post({
+                       data: {
+                           type: 3,
+                           data: {
+                               flags: 64,
+                               content: `✔ | Repeat mode is set to: ${bool ? "enabled" : "disabled"}`
+                           }
+                       }
+                   });
+                   break;
+               case "skip":
+                   await client.player.skip(message);
+                       client.api.interactions(interaction.id, interaction.token).callback.post({
+                           data: {
+                               type: 3,
+                               data: {
+                                   flags: 64,
+                                   content: "✔ | Skipping..."
+                               }
+                           }
+                       });
+                   break;
+           }
+           //
+           // await client.player.play(message, interaction.data.options[0].value).then(async song => {
+           //     try {
+           //         await message.channel.send(await client.getQueueEmbed(message));
+           //     } catch (e) {
+           //         console.log(e);
+           //     }
+           // });
            break;
    }
 })

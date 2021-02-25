@@ -21,13 +21,12 @@
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/botrelated-informations/stats.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/ban.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/ban.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/kick.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/kick.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/server-actions/giveaway.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/musiceffects.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/play.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/play.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/queue.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/queue.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/skip.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/skip.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/music-commands/stop.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/music-commands/stop.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -219,14 +218,9 @@
       <workItem from="1613823242658" duration="20074000" />
       <workItem from="1613909000250" duration="3331000" />
       <workItem from="1614094220976" duration="5922000" />
-      <workItem from="1614179939844" duration="925000" />
-    </task>
-    <task id="LOCAL-00127" summary="Initial commit">
-      <created>1611229215317</created>
-      <option name="number" value="00127" />
-      <option name="presentableId" value="LOCAL-00127" />
-      <option name="project" value="LOCAL" />
-      <updated>1611229215317</updated>
+      <workItem from="1614179939844" duration="1801000" />
+      <workItem from="1614226616293" duration="6284000" />
+      <workItem from="1614269598858" duration="8169000" />
     </task>
     <task id="LOCAL-00128" summary="YES">
       <created>1611310876089</created>
@@ -564,7 +558,14 @@
       <option name="project" value="LOCAL" />
       <updated>1613918782683</updated>
     </task>
-    <option name="localTasksCounter" value="176" />
+    <task id="LOCAL-00176" summary="Initial commit">
+      <created>1614181051071</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1614181051072</updated>
+    </task>
+    <option name="localTasksCounter" value="177" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -605,8 +606,8 @@
     <MESSAGE value="YES" />
     <MESSAGE value="master" />
     <MESSAGE value="yeet" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="yee" />
-    <option name="LAST_COMMIT_MESSAGE" value="yee" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
