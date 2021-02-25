@@ -60,7 +60,7 @@ client.getQueueEmbed = async (message) => {
 let searchTrys = 0;
 client.player = player
 .on("error", async (err, message) => {
-   await message.reply("Something went wrong. Try it again");
+   //await message.reply("Something went wrong. Try it again");
    console.log(err);
    await client.logError(message, "Player error not resolved.", err);
 })
