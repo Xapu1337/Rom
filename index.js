@@ -433,6 +433,19 @@ client.on('messageReactionAdd', async (reaction, user)=>{
 
 client.ws.on('INTERACTION_CREATE', async interaction => {
 
+    if(!interaction.guild_id){
+        client.api.interactions(interaction.id, interaction.token).callback.post({
+            data: {
+                type: 3,
+                data: {
+                    flags: 64,
+                    content: "Slash commands are currently only working within an guild."
+                }
+            }
+        });
+        return;
+    }
+
     let message = new Message(client, interaction, (await client.guilds.fetch(interaction.guild_id)).channels.cache.get(interaction.channel_id));
     if(message.guild.members.fetch(interaction.member.user.id).partial)
         await message.guild.members.fetch(interaction.member.user.id).fetch()
