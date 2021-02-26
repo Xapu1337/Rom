@@ -499,7 +499,8 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                            content: "✔ | Pausing..."
                        }
                     }
-                    });                   break;
+                   });
+                   break;
                case "resume":
                    await client.player.resume(message);
                    client.api.interactions(interaction.id, interaction.token).callback.post({
@@ -530,7 +531,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                            type: 3,
                            data: {
                                flags: 64,
-                               content: await client.player.createProgressBar(message, {timecodes: true})
+                               content: `\`\`\`${await client.player.createProgressBar(message, {timecodes: true})}\`\`\``
                            }
                        }
                    });
