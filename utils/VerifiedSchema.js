@@ -1,12 +1,13 @@
 const { Schema, model } = require("mongoose");
 
 const Verified = Schema({
-    users: [
-        {
-            ID: String,
-            trusted: Boolean,
-        }
-    ],
+    ID: {
+        type: String,
+        required: true,
+    },
+    trusted: {
+        type: Boolean,
+    },
 });
 
 module.exports = model('VerifiedUsers', Verified);
