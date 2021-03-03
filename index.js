@@ -1,5 +1,6 @@
 const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
+const VerifiedModel = require("./utils/VerifiedSchema");
 const { getMember, ecoMathAcc, getEcoAcc } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember, Message} = require("discord.js");
@@ -32,6 +33,9 @@ client.ECO = {
     getEcoAcc,
     ecoMathAcc
 };
+
+
+
 
 /*
 Public vars. accesable via Client.
@@ -122,8 +126,6 @@ client.player = player
 
 
 
-
-
 //let Vibrant = require('node-vibrant');
 const getColors = require('get-image-colors');
 
@@ -138,6 +140,18 @@ client.categories = fs.readdirSync("./commands/");
 client.charList = {
     EMPTY: "\u200B"
 }
+
+/**
+ *
+ * @param id
+ * @returns {Promise<Boolean>}
+ */
+client.verifyUser = async function(id){
+    let user = await VerifiedModel.findOne({id});
+
+    return user !== [];
+};
+
 
 client.extendedMemberSearch = async function (message, args, argsIndex){
     let user = await getMember(message, args[argsIndex])
@@ -337,6 +351,13 @@ client.on("message", async message => {
                             await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
                         }
                         break;
+                    case "VERIFIED":
+                        if (message.author.id === (await client.botAuthor).id || await client.verifyUser(message.author.id)) {
+                        command.run(client, message, args);
+                        } else {
+                            await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
+                        }
+                        break;
                     case "EVERYONE":
                         command.run(client, message, args);
                         break;
@@ -433,7 +454,7 @@ client.on('messageReactionAdd', async (reaction, user)=>{
 
 client.ws.on('INTERACTION_CREATE', async interaction => {
 
-    if(!interaction.guild_id){
+    if(!interaction.guild_id){ // if not within an guild, abort
         client.api.interactions(interaction.id, interaction.token).callback.post({
             data: {
                 type: 3,
@@ -448,8 +469,12 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
 
     let message = new Message(client, interaction, (await client.guilds.fetch(interaction.guild_id)).channels.cache.get(interaction.channel_id));
     if(message.guild.members.fetch(interaction.member.user.id).partial)
-        await message.guild.members.fetch(interaction.member.user.id).fetch()
+        await message.guild.members.fetch(interaction.member.user.id).fetch() // Don't ask...
     message.author = (await (await message.guild.members.fetch(interaction.member.user.id)).fetch()).user;
+
+    if(message.author.bot)
+        return;
+
    switch (interaction.data.name.toLowerCase()) {
        case "ping":
            client.api.interactions(interaction.id, interaction.token).callback.post({data: {

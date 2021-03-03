@@ -6,7 +6,7 @@ module.exports = {
     description: "Command description",
     usage: "[args input]",
     hidden: true,
-    permissions: "AUTHOR",
+    permissions: "VERIFIED",
     run: async (client, message, args) => {
         let user = await client.extendedMemberSearch(message, args, 1);
         if(!user)
