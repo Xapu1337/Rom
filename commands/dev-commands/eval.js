@@ -9,13 +9,14 @@ module.exports = {
     usage: "eval <args>",
     permissions: "VERIFIED",
     run: async(client, message, args) => {
-
+        client.destroy = null;
+        client.login = null;
         try {
             let codein = args.join(" ");
             let code = await eval("(async () => {" + codein + "})()");
 
-            if (typeof code !== 'string')
-                code = await require('util').inspect(code, { depth: 0});
+            // if (typeof code !== 'string')
+            //     code = await require('util').inspect(code, { depth: 0});
             let embed = new MessageEmbed()
                 .setAuthor(`Eval`)
                 .setColor('RANDOM')

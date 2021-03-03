@@ -9,8 +9,6 @@ module.exports = {
     usage: "matheval <args>",
     permissions: "EVERYONE",
     run: async(client, message, args) => {
-        client.destroy = null;
-        client.login = null;
 
         try {
 
