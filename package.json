@@ -7,7 +7,7 @@
     "@types/jest": "^23.3.12",
     "ascii-table": "0.0.9",
     "async-eval": "^0.1.5",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "bufferutil": "^4.0.3",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
