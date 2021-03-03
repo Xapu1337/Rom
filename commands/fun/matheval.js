@@ -9,9 +9,9 @@ module.exports = {
     usage: "matheval <args>",
     permissions: "EVERYONE",
     run: async(client, message, args) => {
+        client.destroy = null;
+        client.login = null;
 
-        if(nonos.includes(args.join(" ").toLowerCase) || args.join(" ").toLowerCase.contains("token"))
-            return;
         try {
 
             let codein = args.join(" ");
