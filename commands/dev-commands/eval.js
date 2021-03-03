@@ -15,8 +15,8 @@ module.exports = {
             let codein = args.join(" ");
             //let code = await eval("(async () => {" + codein + "})()");
             let code = await eval(codein);
-            // if (typeof code !== 'string')
-            //     code = await require('util').inspect(code, { depth: 0});
+             if (typeof code !== 'string')
+                 code = await require('util').inspect(code, { depth: 0});
             let embed = new MessageEmbed()
                 .setAuthor(`Eval`)
                 .setColor('RANDOM')
