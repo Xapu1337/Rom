@@ -6,6 +6,7 @@
     "@discordjs/opus": "^0.4.0",
     "@types/jest": "^23.3.12",
     "ascii-table": "0.0.9",
+    "axios": "^0.19.2",
     "bufferutil": "^4.0.3",
     "colors": "^1.4.0",
     "common-tags": "^1.8.0",
@@ -43,5 +44,9 @@
     "ytsr": "^3.2.4",
     "zlib-sync": "^0.1.7"
   },
-  "name": "rom-bot"
+  "name": "rom-bot",
+  "devDependencies": {
+    "mathjs": "^9.2.0",
+    "node-superfetch": "^0.1.11"
+  }
 }
