@@ -12,7 +12,7 @@ module.exports = {
 
         try {
             let codein = args.join(" ");
-            let code = eval("(async () => {" + codein + "})()");
+            let code = await eval("(async () => {" + codein + "})()");
 
             if (typeof code !== 'string')
                 code = await require('util').inspect(code, { depth: 0});
