@@ -356,7 +356,7 @@ client.on("message", async message => {
                         if (await client.verifyUser(message.author.id, false) || message.author.id === (await client.botAuthor).id) { // message.author.id === (await client.botAuthor).id ||
                         command.run(client, message, args);
                         } else {
-                            await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (Only the bot Author can use these commands!)`);
+                            await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (only selected users can use this command!)`);
                         }
                         break;
                     case "EVERYONE":
