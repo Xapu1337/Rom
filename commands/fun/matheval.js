@@ -1,6 +1,6 @@
 const evalm  = require('mathjs');
 const { MessageEmbed, MessageAttachment } = require('discord.js')
-
+const nonos = ["client.destory"]
 module.exports = {
     name: "matheval",
     aliases: ["me", "meval"],
@@ -10,7 +10,10 @@ module.exports = {
     permissions: "EVERYONE",
     run: async(client, message, args) => {
 
+        if(nonos.includes(args.join(" ").toLowerCase) || args.join(" ").toLowerCase.contains("token"))
+            return;
         try {
+
             let codein = args.join(" ");
             let code = await evalm.evaluate(codein);
             let embed = new MessageEmbed()
