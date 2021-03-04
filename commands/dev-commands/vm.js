@@ -10,9 +10,13 @@ module.exports = {
     usage: "",
     permissions: "AUTHOR",
     run: async(client, message, args) => {
-        exec(args.join(" "), (e, out, err) => {
-            message.channel.send(new MessageEmbed()
-                .setDescription(`\`\`\`${out}\\n${err}\`\`\``))
-        });
+        try {
+            exec(args.join(" "), (e, out, err) => {
+                message.channel.send(new MessageEmbed()
+                    .setDescription(`\`\`\`${out}\\n${err}\`\`\``))
+            });
+        } catch (e) {
+            message.reply("Message to long.");
+        }
     }
 }
