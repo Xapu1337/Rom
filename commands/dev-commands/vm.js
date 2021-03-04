@@ -11,7 +11,7 @@ module.exports = {
     permissions: "AUTHOR",
     run: async(client, message, args) => {
         exec(args.join(" "), (e, out, err) => {
-            message.channel.send(`\`\`\`${out}\\n${err}\`\`\``)
+            message.channel.send(`\`${out}\\n${err}\``)
         });
     }
 }
