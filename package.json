@@ -42,7 +42,7 @@
     "table": "^6.0.7",
     "utf-8-validate": "^5.0.3",
     "ytdl-core": "^4.4.1",
-    "ytsr": "^3.2.4",
+    "ytsr": "^3.3.0",
     "zlib-sync": "^0.1.7"
   },
   "name": "rom-bot",
