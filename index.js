@@ -209,7 +209,7 @@ client.logError = async function(message, errorMsg, ...ExtraError)
             Error: {
                 Error Message: ${errorMsg}
                 More Details:
-                 ${(ExtraError) ? JSON.stringify(ExtraError, null, '  ') : "None."}
+                 ${ExtraError ? ExtraError : "None."}
             }`;
 
     console.log(errorMsg);
