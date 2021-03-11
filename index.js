@@ -265,7 +265,7 @@ client.deleteWarning = async function (message, id){
 /*
 Prototyping to add extra functions.
  */
-Boolean.prototype.parseFromString = function (i){
+String.prototype.toBoolean = function (){
     return i === "1" || i === "true";
 };
 
@@ -333,7 +333,7 @@ client.on("message", async message => {
 
     const [, matchedPrefix] = message.content.match(prefixRegex);
 
-    const args = message.content.slice(prefix.length).trim().split(/ +/g);
+    const args = message.content.slice(matchedPrefix.length).trim().split(/ +/g);
     const cmd = args.shift().toLowerCase();
 
     if(cmd.length === 0) return;

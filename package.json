@@ -47,6 +47,7 @@
   },
   "name": "rom-bot",
   "devDependencies": {
+    "chartjs-node-canvas": "^3.1.0",
     "mathjs": "^9.2.0",
     "node-superfetch": "^0.1.11"
   }
