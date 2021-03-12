@@ -52,7 +52,7 @@ module.exports = {
 
             embed.setTitle(pages[options.page].title)
             embed.setDescription(pages[options.page].value);
-            if(!message.me.hasPermission("ADD_REACTIONS")){
+            if(!message.guild.me.hasPermission("ADD_REACTIONS")){
                 embed.setFooter("Missing the permissions \`ADD_REACTIONS\` Making the help command useless. So here is an list view:");
                 embed.setDescription(client.categories
                     .remove("dev-commands")
