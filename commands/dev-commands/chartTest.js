@@ -43,7 +43,7 @@ module.exports = {
         const canvas = new ChartJSNodeCanvas({width, height, chartCallback})
 
         const configuration = {
-            type: '',
+            type: 'bar',
             data: {
                 labels: dataText,
                 datasets: [

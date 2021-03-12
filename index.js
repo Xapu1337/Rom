@@ -3,10 +3,9 @@ const GuildModel = require("./utils/GuildSchema");
 const VerifiedModel = require("./utils/VerifiedSchema");
 const { getMember, ecoMathAcc, getEcoAcc } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Discord, Client, MessageEmbed, Collection, ColorResolvable, GuildMember, Message} = require("discord.js");
+const { Client, MessageEmbed, Collection, Message} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER", "GUILD_MEMBER"], disableMentions: "everyone"});
 const fs = require("fs");
-const colors = require("colors");
 const fetch = require("node-fetch");
 const snowModule = require("snowflake-api").Client;
 const snowClient = new snowModule("MTg4OTg4NDU1NTU0OTA4MTYw.MTYwOTY4NTA1NTYwNQ==.bd278b074d53f1f324f6fe9a8f842993");
@@ -89,7 +88,7 @@ client.player = player
     }
 
     if(searchTrys > 2){
-        await message.channel.send("Search failed 3 times, Aborting current search...").then(value => {
+        await message.channel.send("Search failed 3 times, Aborting current search...").then(async() => {
             collector.stop();
         });
         await searchMessage.delete();
@@ -100,7 +99,7 @@ client.player = player
     searchTrys += 1;
 
 })
-.on('searchCancel', async(message, query, tracks) => {
+.on('searchCancel', async(message) => {
     await message.channel.send('Response is not valid, canceling...');
     await searchMessage.delete();
 })
@@ -142,8 +141,9 @@ client.charList = {
 }
 
 /**
- *
- * @param id
+ * Allow or add people to the trusted DB
+ * @param id UserID Resolved in an string
+ * @param add should it add to the DB?
  * @returns {Promise<Boolean>}
  */
 client.verifyUser = async function(id, add){
@@ -233,7 +233,7 @@ client.addWarning = async function (message, user, reason){
     // GET THAT FUCKING MONGODB
     req.warnings.push({reason: reason, userID: await user.id, warnID: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
     // CUKA PUSHING THE ARRAY HARDER THEN THE T-28 THE .308 ANTI TANK ARMOR BULLETS
-    req.save();
+    await req.save();
     // What my parents should do before i were born, make an save game.
     await message.channel.send(new MessageEmbed()
         .setColor("GREEN")
@@ -253,7 +253,7 @@ client.deleteWarning = async function (message, id){
         return;
     }
     req.warnings = req.warnings.filter(i => i.warnID !== id);
-    req.save();
+    await req.save();
     await message.channel.send(new MessageEmbed()
         .setColor("RED")
         .setTitle("Success! ✅")
@@ -265,10 +265,6 @@ client.deleteWarning = async function (message, id){
 /*
 Prototyping to add extra functions.
  */
-String.prototype.toBoolean = function (){
-    return i === "1" || i === "true";
-};
-
 Array.prototype.remove = function() {
     let what, a = arguments, L = a.length, ax;
     while (L && this.length) {
@@ -508,7 +504,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
        case "music":
            switch (interaction.data.options[0].name) {
                case "play":
-                   await client.player.play(message, interaction.data.options[0].options[0].value).then(async song => {
+                   await client.player.play(message, interaction.data.options[0].options[0].value).then(async() => {
                        try {
                            await message.channel.send(await client.getQueueEmbed(message));
                        } catch (e) {
