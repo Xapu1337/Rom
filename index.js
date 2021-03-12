@@ -6,6 +6,7 @@ const { connect } = require("mongoose");
 const { Client, MessageEmbed, Collection, Message} = require("discord.js");
 const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER", "GUILD_MEMBER"], disableMentions: "everyone"});
 const fs = require("fs");
+const colors = require("colors");
 const fetch = require("node-fetch");
 const snowModule = require("snowflake-api").Client;
 const snowClient = new snowModule("MTg4OTg4NDU1NTU0OTA4MTYw.MTYwOTY4NTA1NTYwNQ==.bd278b074d53f1f324f6fe9a8f842993");

@@ -20,9 +20,6 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commit">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/dev-commands/chartTest.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/chartTest.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/nsfw/r34.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -245,14 +242,7 @@
       <workItem from="1615528500733" duration="149000" />
       <workItem from="1615528853672" duration="4000" />
       <workItem from="1615528876897" duration="1192000" />
-      <workItem from="1615572589128" duration="1866000" />
-    </task>
-    <task id="LOCAL-00148" summary="master">
-      <created>1612087762898</created>
-      <option name="number" value="00148" />
-      <option name="presentableId" value="LOCAL-00148" />
-      <option name="project" value="LOCAL" />
-      <updated>1612087762898</updated>
+      <workItem from="1615572589128" duration="2239000" />
     </task>
     <task id="LOCAL-00149" summary="master">
       <created>1612087948417</created>
@@ -590,7 +580,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615487140098</updated>
     </task>
-    <option name="localTasksCounter" value="197" />
+    <task id="LOCAL-00197" summary="Initial commit">
+      <created>1615583156008</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1615583156011</updated>
+    </task>
+    <option name="localTasksCounter" value="198" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -633,9 +630,9 @@
     <MESSAGE value="yeet" />
     <MESSAGE value="yee" />
     <MESSAGE value="yass" />
-    <MESSAGE value="Initial commit" />
     <MESSAGE value="3" />
     <MESSAGE value="69420" />
-    <option name="LAST_COMMIT_MESSAGE" value="69420" />
+    <MESSAGE value="Initial commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Initial commit" />
   </component>
 </project>
