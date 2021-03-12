@@ -52,6 +52,13 @@ module.exports = {
 
             embed.setTitle(pages[options.page].title)
             embed.setDescription(pages[options.page].value);
+            if(!message.me.hasPermission("ADD_REACTIONS")){
+                embed.setFooter("Missing the permissions \`ADD_REACTIONS\` Making the help command useless. So here is an list view:");
+                embed.setDescription(client.categories
+                    .remove("dev-commands")
+                    .map(value => stripIndents`**${client.betterCategoryNames.has(value) ? client.betterCategoryNames.get(value) : value[0].toUpperCase() + value.slice(1)}:** \n ${commands(value)}`)
+                    .join(" "))
+            }
             let msg = await message.channel.send(embed);
             await msg.react("▶");
             let collector = msg.createReactionCollector(filter, {time: 60000});
