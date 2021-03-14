@@ -41,7 +41,7 @@
     "snowflake-api": "^3.0.3",
     "table": "^6.0.7",
     "utf-8-validate": "^5.0.3",
-    "ytdl-core": "^4.4.1",
+    "ytdl-core": "^4.5.0",
     "ytsr": "^3.2.4",
     "zlib-sync": "^0.1.7"
   },
