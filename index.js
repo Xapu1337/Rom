@@ -1,16 +1,44 @@
 const config = require("./config.json");
 const GuildModel = require("./utils/GuildSchema");
-const VerifiedModel = require("./utils/VerifiedSchema");
-const { getMember, ecoMathAcc, getEcoAcc } = require("./utils/utils");
+const { ecoMathAcc,
+    getEcoAcc,
+    successEmbed,
+    errorEmbed,
+    promptMessage,
+    formatDate,
+    addWarning,
+    deleteWarning,
+    extendedMemberSearch,
+    getMember,
+    getColorFromUserId,
+    getQueueEmbed,
+    logError,
+    getGuildDB,
+    verifyUser } = require("./utils/utils");
 const { connect } = require("mongoose");
-const { Client, MessageEmbed, Collection, Message} = require("discord.js");
-const client = new Client({ ws: { properties: { $browser: "Discord iOS" }}, partials: ["REACTION", "MESSAGE", "USER", "GUILD_MEMBER"], disableMentions: "everyone"});
+const { Client, MessageEmbed, Collection, Message } = require("discord.js");
+const client = new Client({
+    ws: { properties: { $device: "Discord iOS" }},
+    intents: [
+        'GUILDS',
+        'GUILD_MEMBERS',
+        'GUILD_BANS',
+        'GUILD_EMOJIS',
+        'GUILD_INTEGRATIONS',
+        'GUILD_WEBHOOKS',
+        'GUILD_INVITES',
+        'GUILD_VOICE_STATES',
+        'GUILD_PRESENCES',
+        'GUILD_MESSAGES',
+        'GUILD_MESSAGE_REACTIONS',
+        'GUILD_MESSAGE_TYPING',
+    ],
+    allowedMentions: ["roles", "users"],
+    partials: ['USER', 'CHANNEL', 'GUILD_MEMBER','MESSAGE', 'REACTION']});
 const fs = require("fs");
 const colors = require("colors");
-const fetch = require("node-fetch");
 const snowModule = require("snowflake-api").Client;
 const snowClient = new snowModule("MTg4OTg4NDU1NTU0OTA4MTYw.MTYwOTY4NTA1NTYwNQ==.bd278b074d53f1f324f6fe9a8f842993");
-const nano  = require("nanoid");
 //const { Player, Util } = require("discord-music-player");
 const { Player } = require("discord-player");
 const player = new Player(client, {
@@ -29,39 +57,32 @@ betterCatNames.set("moderation", "🛡 - Moderation");
 betterCatNames.set("music-commands", "🎵 - Music Commands");
 betterCatNames.set("server-actions", "💻 - Server Actions");
 client.betterCategoryNames = betterCatNames;
-client.ECO = {
+client.utilFeatures = {
+    ecoMathAcc,
     getEcoAcc,
-    ecoMathAcc
+    successEmbed,
+    errorEmbed,
+    promptMessage,
+    formatDate,
+    addWarning,
+    deleteWarning,
+    extendedMemberSearch,
+    getMember,
+    getColorFromUserId,
+    getQueueEmbed,
+    logError,
+    getGuildDB,
+    verifyUser,
 };
-
-
 
 
 /*
 Public vars. accesable via Client.
  */
-let searchMessage;
-client.getQueueEmbed = async (message) => {
-        let queue = await client.player.getQueue(message);
-        let ql = (queue.tracks.map((song, i) => {
-            return `${i === 0 ? 'Now Playing' : `\`#${i+1}\``} - \`${song.title}\`${song.author ?  ` | \`${song.author}\`` : ""} (${song.duration})`
-        })).join("\n");
-        let embed = new MessageEmbed()
-            .setColor(await client.getColorFromUserId(message.member))
-            .setFooter(`A request from: ${message.author.username}`)
-            .setTimestamp()
-            .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-            .setDescription(ql.length >= 2048 ? "Splitting into fields..." : ql);
-        if(ql.length >= 2048){
-            let qql = ql.convertStringToArray(1024);
-            qql.forEach(i => {
-                embed.addField(client.charList.EMPTY, i);
-            });
-        }
-        return embed;
-};
+
 
 let searchTrys = 0;
+let searchMessage;
 client.player = player
 .on("error", async (err, message) => {
    //await message.reply("Something went wrong. Try it again");
@@ -78,7 +99,7 @@ client.player = player
             `\`#${i+1}\` - ${t.title} ${t.author ? ` | \`${t.author}\`` : ""} (${t.duration})`
         ))
         .setFooter('Send the number of the song you want to play!')
-        .setColor(await client.getColorFromUserId(message.author))
+        .setColor(await client.utilFeatures.getColorFromUserId(message.author, client))
     searchMessage = await message.channel.send(embed);
 
 })
@@ -126,8 +147,6 @@ client.player = player
 
 
 
-//let Vibrant = require('node-vibrant');
-const getColors = require('get-image-colors');
 
 (async() => {
     client.botAuthor = await client.users.fetch("188988455554908160");
@@ -141,127 +160,14 @@ client.charList = {
     EMPTY: "\u200B"
 }
 
-/**
- * Allow or add people to the trusted DB
- * @param id UserID Resolved in an string
- * @param add should it add to the DB?
- * @returns {Promise<Boolean>}
- */
-client.verifyUser = async function(id, add){
-    let user = await VerifiedModel.findOne({ID: id});
-    if(!user && add)
-        await VerifiedModel.create({ID: id, trusted: true})
-    return user !== null ? user.trusted : false;
-};
 
 
-client.extendedMemberSearch = async function (message, args, argsIndex){
-    let user = await getMember(message, args[argsIndex])
-    if (user === "NOT_FOUND") {
-        message.reply("This user was not found.");
-
-    } else {
-
-        return user;
-    }
-}
-
-client.getColorFromUserId = async function (user){
-        if(!user || user.isPrototypeOf(Message) || user.content)
-            return;
-    //let userHex = (await Vibrant.from((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).getPalette()).Vibrant.hex
-        if(user) {
-            let userHex;
-            await getColors((await client.users.fetch(user.id)).displayAvatarURL({format: "png"})).then(value => {
-                userHex = value[Math.randomBetween(0, value.length - 1)]._rgb;
-            });
-            if (userHex === null || userHex === undefined) {
-                return "#f0f0f0";
-            }
-            return userHex
-        }
-
-}
-
-client.getGuildDB = async function (gID){
-    let guildDB = await GuildModel.findOne( { id: gID } );
-
-    if(guildDB){
-        return guildDB;
-    } else {
-        guildDB = new GuildModel({
-            id: gID
-        });
-        await guildDB.save().catch(err => console.log(err));
-        return guildDB;
-    }
-};
 
 
-client.logError = async function(message, errorMsg, ...ExtraError)
-{
-    let errorMsgToSend = `
-            Got an error. 
-            Guild infos: {
-                Guild id: ${message ? message.guild : "Message empty. got an non command or message error."}
-                Guild Name: ${message ? message.guild.name : "Message empty. got an non command or message error."}
-            }
-            Message: ${message ? message.content : "Message empty. got an non command or message error."}
-            Error: {
-                Error Message: ${errorMsg}
-                More Details:
-                 ${ExtraError ? ExtraError : "None."}
-            }`;
 
-    console.log(errorMsg);
-    try{
-        await fetch(`https://api.telegram.org/bot1486860047:AAGoSiBYuQc1nQ0fb-mryWakCMlBREN-30U/sendMessage?chat_id=1492002913&text=${errorMsgToSend}`);
-    } catch (e) {
-        return;
-    }
-    await client.botAuthor.send(new MessageEmbed()
-        .setColor("DARK_RED")
-        .setDescription(errorMsgToSend));
-//        .setThumbnail( message.guild.iconURL).then(m => m.delete({timeout: 2500}));
-}
 
-client.addWarning = async function (message, user, reason){
-    reason = reason.length > 0 ? reason : "None.";
-    // if the reason was not included. use "none" else its shit.
-    const id = nano.customAlphabet(message.id + message.guild.id + await user.id + "WARNINGSYSTEM" +  await user.username + message.author.name + message.author.discriminator, 21);
-    // Cursed way of getting an id. this is actually shit but i don't care and it is kinda unique... i guess.
-    const req = await client.getGuildDB(message.guild.id);
-    // GET THAT FUCKING MONGODB
-    req.warnings.push({reason: reason, userID: await user.id, warnID: id().toString(), creatorID: message.author.id, creationTime: Date.now()});
-    // CUKA PUSHING THE ARRAY HARDER THEN THE T-28 THE .308 ANTI TANK ARMOR BULLETS
-    await req.save();
-    // What my parents should do before i were born, make an save game.
-    await message.channel.send(new MessageEmbed()
-        .setColor("GREEN")
-        .setTitle("Success! ✅")
-        .setDescription(`Created a warning with the id: \`${id()}\` and the reason: \`${reason}\` for the user: ${await user.user}`)
-        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-    ).then(m => m.delete({timeout: 6500}));
-    // Send embed that is... s t y l i s h ? and delete after 6.5 seconds.
-};
 
-client.deleteWarning = async function (message, id){
-    const req = await client.getGuildDB(message.guild.id);
-    let filteredWarn = req.warnings.filter(i => i.warnID === id);
-    message.reply(filteredWarn);
-    if(!filteredWarn.id) {
-        message.reply(`The warn with the id: \`${id}\` doesn't exist.`);
-        return;
-    }
-    req.warnings = req.warnings.filter(i => i.warnID !== id);
-    await req.save();
-    await message.channel.send(new MessageEmbed()
-        .setColor("RED")
-        .setTitle("Success! ✅")
-        .setDescription(`Removed the Warning with the id: ${id}. (Warn Reason: ${await req.warnings.filter(i => i.warnID === id).reason})`)
-        .setThumbnail(message.author.displayAvatarURL({dynamic: true}))
-    ).then(m => m.delete({timeout: 6500}));
-};
+
 
 /*
 Prototyping to add extra functions.
@@ -320,10 +226,10 @@ client.on("ready", () => {
 const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
 
-client.on("message", async message => {
+client.on("message", async (message) => {
     if(message.author.bot) return;
     if(!message.guild) return;
-    const req = await client.getGuildDB(message.guild.id);
+    const req = await client.utilFeatures.getGuildDB(message.guild.id, client);
     let prefix = req.prefix;
     const prefixRegex = new RegExp(`^(<@!?${client.user.id}>|${escapeRegex(prefix)})\\s*`);
     if (!prefixRegex.test(message.content)) return;
@@ -360,7 +266,7 @@ client.on("message", async message => {
                         command.run(client, message, args);
                         break;
                     default:
-                        if(message.member.hasPermission(command.permissions)){
+                        if(message.member.permissions.has(command.permissions)){
                             command.run(client, message, args);
                         } else {
                             await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\``);
@@ -435,11 +341,11 @@ client.on('messageReactionAdd', async (reaction, user)=>{
     if(reaction.message.partial)
         await reaction.message.fetch()
     if(user.bot) return;
-    if(!reaction.message.guild.me.hasPermission("MANAGE_ROLES")) return; // permission check.
+    if(!reaction.message.guild.me.permissions.has("MANAGE_ROLES")) return; // permission check.
 
     let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
 
-    let req = await client.getGuildDB(reaction.message.guild.id);
+    let req = await client.utilFeatures.getGuildDB(reaction.message.guild.id);
 
     if(req){
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
@@ -478,7 +384,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
            client.api.interactions(interaction.id, interaction.token).callback.post({data: {
                    type: 4,
                    data: {
-                       content: `F no ping but here is your id: ${interaction.member.user.id}`
+                       content: `🏓 Pong reaction time: \`${message.createdTimestamp - Date.now()}ms\``
                    }
                }
            })
@@ -500,14 +406,18 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                        content: await client.snowapi.chatbot({name: "rom", gender: "male", user: interaction.member.user.username, message: interaction.data.options[0].value})
                    }
                }
-           })
+           });
            break;
        case "music":
            switch (interaction.data.options[0].name) {
                case "play":
+                   client.api.interactions(interaction.id, interaction.token).callback.post({data: {
+                           type: 2,
+                       }
+                   });
                    await client.player.play(message, interaction.data.options[0].options[0].value).then(async() => {
                        try {
-                           await message.channel.send(await client.getQueueEmbed(message));
+                           await message.channel.send(await client.utilFeatures.getQueueEmbed(message, client));
                        } catch (e) {
                            console.log(e);
                        }
@@ -585,7 +495,7 @@ client.ws.on('INTERACTION_CREATE', async interaction => {
                    });
                    break;
                }
-                    await message.channel.send( await client.getQueueEmbed(message));
+                    await message.channel.send( await client.utilFeatures.getQueueEmbed(message, client));
                    break;
                case "vol":
                    let vol = Number(interaction.data.options[0].options[0].value);
@@ -652,12 +562,12 @@ client.on('messageReactionRemove', async (reaction, user)=>{
     if(reaction.message.partial)
         await reaction.message.fetch()
     if(user.bot) return;
-    if(!reaction.message.guild.me.hasPermission("MANAGE_ROLES")) return; // permission check.
+    if(!reaction.message.guild.me.permissions.has("MANAGE_ROLES")) return; // permission check.
 
 
     let emote = reaction.emoji.id ? reaction.emoji.id : reaction.emoji.name;
 
-    let req = await client.getGuildDB(reaction.message.guild.id);
+    let req = await client.utilFeatures.getGuildDB(reaction.message.guild.id);
 
     if(req){
         let role = await req.reactionRoles.filter(rr => rr.messageID === reaction.message.id && rr.emoteID === emote);
@@ -669,13 +579,13 @@ client.on('messageReactionRemove', async (reaction, user)=>{
 
 
 process.on('unhandledRejection', (e) => {
-    client.logError(null, "unhandledRejection", e);
+    client.utilFeatures.logError(client, null, "unhandledRejection", e);
     console.log('UNHANDLED_REJECTION: ', e);
 });
 
 process.on('uncaughtException', (e) => {
     console.log('UNCAUGHT_EXCEPTION: ', e);
-    client.logError(null, "uncaughtException", e);
+    client.utilFeatures.logError(client, null, "uncaughtException", e);
     console.log('NODE_WARN: ', {
         stack: 'Uncaught Exception detected. Restarting...'
     });

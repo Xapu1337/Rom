@@ -14,7 +14,7 @@ module.exports = {
             return getCMD(client, message, args[0]);
         } else {
             const embed = new MessageEmbed()
-            .setColor(await client.getColorFromUserId(message.author))
+            .setColor(await client.utilFeatures.getColorFromUserId(message.author, client))
             .setTimestamp()
             .addField('Emoji Definition:', `
         ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false);
@@ -50,7 +50,7 @@ module.exports = {
                 page: 0,
             };
 
-            if(!message.guild.me.hasPermission("ADD_REACTIONS")){
+            if(!message.guild.me.permissions.has("ADD_REACTIONS")){
                 embed.setFooter("Missing the permissions \`ADD_REACTIONS\` Making the help command useless. So here is an list view:");
                 embed.setDescription(client.categories
                     .remove("dev-commands")

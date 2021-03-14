@@ -22,6 +22,13 @@
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commityy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/handlers/command.js" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/command.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -89,11 +96,13 @@
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.33" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/conrad" />
     <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.6432.11\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -104,6 +113,10 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
     </key>
+  </component>
+  <component name="RustProjectSettings">
+    <option name="toolchainHomeDirectory" value="$USER_HOME$/.cargo/bin" />
+    <option name="version" value="2" />
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -245,6 +258,9 @@
       <workItem from="1615528876897" duration="1192000" />
       <workItem from="1615572589128" duration="3004000" />
       <workItem from="1615587092774" duration="699000" />
+      <workItem from="1615630293118" duration="2590000" />
+      <workItem from="1615661562321" duration="593000" />
+      <workItem from="1615729220691" duration="13206000" />
     </task>
     <task id="LOCAL-00152" summary="master">
       <created>1612088208638</created>
@@ -637,5 +653,9 @@
     <MESSAGE value="Initial commit" />
     <MESSAGE value="Initial commityy" />
     <option name="LAST_COMMIT_MESSAGE" value="Initial commityy" />
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

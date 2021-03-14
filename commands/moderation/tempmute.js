@@ -12,7 +12,7 @@ module.exports = {
     run: async(client, message, args) => {
         let tomute = message.mentions.members.first() || message.guild.members.cache.get(args[0]);
         if(!tomute) return message.reply(`User not found.`);
-        if(tomute.hasPermission("MANAGE_MESSAGES")) return message.reply(`Can't mute this person. The permission Manage Messages bypasses it.`);
+        if(tomute.permissions.has("MANAGE_MESSAGES")) return message.reply(`Can't mute this person.`);
         let muterole = message.guild.roles.cache.find(role => role.name === "muted");
         if(!muterole){
             try{
@@ -23,7 +23,7 @@ module.exports = {
                         permissions: []
                     }
                 })
-                message.guild.channels.cache.forEach(async (channel, id) => {
+                message.guild.channels.cache.forEach(async (channel) => {
                     await channel.overwritePermissions([
                         {
 
@@ -31,7 +31,7 @@ module.exports = {
                             deny: ['SEND_MESSAGES', 'ADD_REACTIONS'],
 
                         },
-                    ], 'Adding Muted role for the bot.');
+                    ], 'Adding muted role for the bot.');
                 });
             }catch(e){
                 console.log(e.stack);
@@ -39,7 +39,7 @@ module.exports = {
         }
         let mutetime = args[1];
         if(!mutetime) return message.reply(`You didn't specify a time!`);
-        if(isNaN(ms(mutetime))) return message.reply(client.embederror(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `allowed is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
+        if(isNaN(ms(mutetime))) return message.reply(client.utilFeatures.errorEmbed(`ERROR! | Your date is not valid!`, message.author.username, message.author.displayAvatarURL({dynamic: true}), `an allowed format is (1m, 2w, 5d, 1s or 5h, weeks = w, days = d, hours = h, seconds = s, minutes = m, month is undefined. use 31 days instead!`));
         await(tomute.roles.add(muterole.id));
         message.reply(`<@${tomute.id}> has been muted for ${pms(ms(mutetime), {verbose: true})}`).then(m => m.delete({timeout: 5000}));
 

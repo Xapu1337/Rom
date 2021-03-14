@@ -16,7 +16,7 @@
     "debug": "^4.3.2",
     "discord-music-player": "^6.4.1",
     "discord-player": "^3.2.1",
-    "discord.js": "^12.5.1",
+    "discord.js": "github:discordjs/discord.js",
     "erlpack": "github:discord/erlpack",
     "get-image-colors": "^4.0.0",
     "gpt3": "^2.1.1",
