@@ -21,14 +21,7 @@
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commityy">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/moderation/tempmute.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/moderation/tempmute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/commands/server-actions/giveaway.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/handlers/command.js" beforeDir="false" afterPath="$PROJECT_DIR$/handlers/command.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -102,7 +95,7 @@
     <property name="node.js.selected.package.standard" value="" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="settings.editor.selected.configurable" value="Settings.JavaScript.Linters.JSHint" />
+    <property name="settings.editor.selected.configurable" value="io.unthrottled.amii.config.ui.PluginSettingsUI" />
     <property name="ts.external.directory.path" value="C:\Users\XapuR\AppData\Local\JetBrains\Toolbox\apps\WebStorm\ch-0\211.6432.11\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
@@ -260,7 +253,12 @@
       <workItem from="1615587092774" duration="699000" />
       <workItem from="1615630293118" duration="2590000" />
       <workItem from="1615661562321" duration="593000" />
-      <workItem from="1615729220691" duration="13206000" />
+      <workItem from="1615729220691" duration="13816000" />
+      <workItem from="1615818506443" duration="592000" />
+      <workItem from="1615822626312" duration="676000" />
+      <workItem from="1615937907754" duration="33000" />
+      <workItem from="1616010186375" duration="1082000" />
+      <workItem from="1616074541270" duration="96000" />
     </task>
     <task id="LOCAL-00152" summary="master">
       <created>1612088208638</created>

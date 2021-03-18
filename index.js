@@ -256,7 +256,7 @@ client.on("message", async (message) => {
                         }
                         break;
                     case "VERIFIED":
-                        if (await client.verifyUser(message.author.id, false) || message.author.id === (await client.botAuthor).id) { // message.author.id === (await client.botAuthor).id ||
+                        if (await client.utilFeatures.verifyUser(message.author.id, false) || message.author.id === (await client.botAuthor).id) { // message.author.id === (await client.botAuthor).id ||
                         command.run(client, message, args);
                         } else {
                             await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (only selected users can use this command!)`);
@@ -277,7 +277,7 @@ client.on("message", async (message) => {
                 command.run(client, message, args);
             }
         } catch (e) {
-            await client.logError(message, "Error executing an command...", e);
+            await client.utilFeatures.logError(client, message, "Error executing an command...", e);
         }
 
         if (message.author.id !== (await client.botAuthor).id) {
