@@ -14,7 +14,8 @@ const { ecoMathAcc,
     getQueueEmbed,
     logError,
     getGuildDB,
-    verifyUser } = require("./utils/utils");
+    verifyUser,
+    stackoverflowSearch } = require("./utils/utils");
 const { connect } = require("mongoose");
 const { Client, MessageEmbed, Collection, Message } = require("discord.js");
 const client = new Client({
@@ -72,7 +73,7 @@ client.utilFeatures = {
     getQueueEmbed,
     logError,
     getGuildDB,
-    verifyUser,
+    verifyUser
 };
 
 
@@ -257,7 +258,7 @@ client.on("message", async (message) => {
                         break;
                     case "VERIFIED":
                         if (await client.utilFeatures.verifyUser(message.author.id, false) || message.author.id === (await client.botAuthor).id) { // message.author.id === (await client.botAuthor).id ||
-                        command.run(client, message, args);
+                            command.run(client, message, args);
                         } else {
                             await message.reply(`Sorry, you don't have the permission \`\`\`${command.permissions}\`\`\` (only selected users can use this command!)`);
                         }
@@ -295,7 +296,7 @@ client.on("message", async (message) => {
                 .send(embed);
         }
     }
-    
+
 });
 
 client.on("error", e => {
@@ -589,7 +590,7 @@ process.on('uncaughtException', (e) => {
     console.log('NODE_WARN: ', {
         stack: 'Uncaught Exception detected. Restarting...'
     });
-    process.exit(1);
+    // process.exit(1);
 });
 
 

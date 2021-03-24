@@ -20,8 +20,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f04f9fe9-53bd-410e-84ea-1e037ecf692c" name="Default Changelist" comment="Initial commityy">
+      <change afterPath="$PROJECT_DIR$/commands/dev-commands/codeExecutor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/commands/dev-commands/stackSearch.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/stackexchange.rar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/dev-commands/eval.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/dev-commands/eval.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/commands/information/help.js" beforeDir="false" afterPath="$PROJECT_DIR$/commands/information/help.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/utils/utils.js" beforeDir="false" afterPath="$PROJECT_DIR$/utils/utils.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -58,6 +66,7 @@
     <setting file="file://$PROJECT_DIR$/node_modules/chartjs-node-canvas/dist/index.d.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/node_modules/chartjs-node-canvas/src/index.ts" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/node_modules/canvas/types/index.d.ts" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/node_modules/nconf/lib/nconf.js" root0="SKIP_INSPECTION" />
   </component>
   <component name="MacroExpansionManager">
     <option name="directoryName" value="juao0cg6" />
@@ -87,7 +96,7 @@
     <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="Rust" />
     <property name="javascript.nodejs.core.library.configured.version" value="15.3.0" />
     <property name="javascript.nodejs.core.library.typings.version" value="14.14.33" />
-    <property name="last_opened_file_path" value="$USER_HOME$/Downloads/conrad" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../reactApps/reactUtils" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.detected.package.tslint" value="true" />
@@ -104,6 +113,7 @@
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\music-commands" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\XapuR\OneDrive\Rom\utils" />
       <recent name="C:\Users\XapuR\OneDrive\Rom\commands\dev-commands" />
     </key>
   </component>
@@ -258,14 +268,9 @@
       <workItem from="1615822626312" duration="676000" />
       <workItem from="1615937907754" duration="33000" />
       <workItem from="1616010186375" duration="1082000" />
-      <workItem from="1616074541270" duration="96000" />
-    </task>
-    <task id="LOCAL-00152" summary="master">
-      <created>1612088208638</created>
-      <option name="number" value="00152" />
-      <option name="presentableId" value="LOCAL-00152" />
-      <option name="project" value="LOCAL" />
-      <updated>1612088208638</updated>
+      <workItem from="1616074541270" duration="1158000" />
+      <workItem from="1616148985463" duration="6945000" />
+      <workItem from="1616158817376" duration="8726000" />
     </task>
     <task id="LOCAL-00153" summary="master">
       <created>1612088313771</created>
@@ -603,7 +608,14 @@
       <option name="project" value="LOCAL" />
       <updated>1615587736347</updated>
     </task>
-    <option name="localTasksCounter" value="201" />
+    <task id="LOCAL-00201" summary="Initial commityy">
+      <created>1616074972483</created>
+      <option name="number" value="00201" />
+      <option name="presentableId" value="LOCAL-00201" />
+      <option name="project" value="LOCAL" />
+      <updated>1616074972483</updated>
+    </task>
+    <option name="localTasksCounter" value="202" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

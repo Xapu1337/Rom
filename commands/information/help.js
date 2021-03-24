@@ -20,8 +20,6 @@ module.exports = {
         ⚙️ - This command you run and it will ask for an message, write the message and it will use the message automatically.`, false);
 
             const commands = (category) => {
-
-                // Future note: is empty is just an category mismatch
                 return client.commands
                     .filter(cmd => cmd.category === category)
                     .map(cmd => cmd.hidden === true ? "" : `\`${cmd.name} ${(cmd.note) ? cmd.note : ""}(${cmd.permissions})\``)

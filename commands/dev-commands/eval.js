@@ -25,6 +25,7 @@ module.exports = {
             await message.channel.send(await embed)
         } catch (e) {
             await message.channel.send(`\`\`\`js\n${await e}\n\`\`\``);
+            console.log(e);
         }
 
     }
