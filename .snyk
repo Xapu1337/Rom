@@ -6,3 +6,6 @@ patch:
   'npm:debug:20170905':
     - images-downloader > mocha > debug:
         patched: '2020-12-09T09:31:22.068Z'
+  'npm:lodash:20180130':
+    - paiza-io > lodash:
+        patched: '2021-03-24T19:54:20.845Z'
