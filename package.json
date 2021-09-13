@@ -53,7 +53,7 @@
     "ytdl-core": "^4.4.1",
     "ytsr": "^3.2.4",
     "zlib-sync": "^0.1.7",
-    "snyk": "^1.509.0"
+    "snyk": "^1.685.0"
   },
   "name": "rom-bot",
   "devDependencies": {
