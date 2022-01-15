@@ -30,7 +30,7 @@
     "jpeg-js": "^0.4.2",
     "libsodium-wrappers": "^0.7.9",
     "lodash": "^4.17.21",
-    "marked": "^2.0.1",
+    "marked": "^4.0.10",
     "minimist": "^1.2.5",
     "mkdirp": "^0.5.5",
     "mocha": "^3.5.3",
